@@ -6,3 +6,4 @@
 
 # For ease of use as cmake build directory
 /build
+.DS_Store
