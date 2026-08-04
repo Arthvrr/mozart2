@@ -108,11 +108,11 @@ void BoostVM::run() {
     vm->setReferenceTime(env.getReferenceTime());
 
     // Setup the preemption timer
-    boost::asio::post(env.io_context, [&](){
+    boost::asio::post(env.io_context.get_executor(), [this]() {
         preemptionTimer->expires_after(std::chrono::milliseconds(1));
-        preemptionTimer->async_wait(boost::bind(
-              &BoostVM::onPreemptionTimerExpire,
-              this, boost::asio::placeholders::error));
+        preemptionTimer->async_wait([this](const boost::system::error_code& error) {
+            this->onPreemptionTimerExpire(error);
+        });
     });
 
     // Run the VM
@@ -120,7 +120,7 @@ void BoostVM::run() {
     auto nextInvoke = nextInvokePair.first;
 
     // Stop the preemption timer
-    boost::asio::post(env.io_context, [&](){
+    boost::asio::post(env.io_context.get_executor(), [this]() {
         preemptionTimer->expires_at(boost::asio::steady_timer::time_point::max());
     });
 
@@ -186,9 +186,9 @@ void BoostVM::onPreemptionTimerExpire(const boost::system::error_code& error) {
     // Reschedule
     preemptionTimer->expires_at(
         preemptionTimer->expiry() + std::chrono::milliseconds(1));
-    preemptionTimer->async_wait(boost::bind(
-          &BoostVM::onPreemptionTimerExpire,
-          this, boost::asio::placeholders::error));
+    preemptionTimer->async_wait([this](const boost::system::error_code& error) {
+        this->onPreemptionTimerExpire(error);
+    });
   }
 }
 
