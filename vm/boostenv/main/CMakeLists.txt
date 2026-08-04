@@ -24,11 +24,11 @@ endif()
 
 if(MINGW)
   # Work around a bug in MinGW
-  string(REGEX REPLACE "(^| )-std=c\\+\\+0x($| )" " -std=gnu++0x "
+  string(REGEX REPLACE "(^| )-std=c\\+\\+14($| )" " -std=gnu++14 "
          CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-  set(CXX_STD_OPT -std=gnu++0x)
+  set(CXX_STD_OPT -std=gnu++14)
 else()
-  set(CXX_STD_OPT -std=c++0x)
+  set(CXX_STD_OPT -std=c++14)
 endif()
 
 # Mozart VM library
