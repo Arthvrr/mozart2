@@ -4,12 +4,12 @@
 
 using namespace mozart;
 
-namespace std {
-  template <class T, class U, class V, class W>
-  static bool operator==(const pair<T, U>& a, const pair<V, W>& b) noexcept {
-    return a.first == b.first && a.second == b.second;
-  }
-}
+// namespace std {
+//   template <class T, class U, class V, class W>
+//   static bool operator==(const pair<T, U>& a, const pair<V, W>& b) noexcept {
+//     return a.first == b.first && a.second == b.second;
+//   }
+// }
 // ^ This needs to be defined in std namespace in order to make ADL work.
 
 class UTFTest : public MozartTest {};

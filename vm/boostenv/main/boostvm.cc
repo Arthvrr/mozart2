@@ -107,10 +107,13 @@ void BoostVM::run() {
     // Make sure the VM knows the reference time before starting
     vm->setReferenceTime(env.getReferenceTime());
 
+    // Extraction sécurisée du pointeur pour les appels asynchrones
+    auto pTimer = preemptionTimer;
+
     // Setup the preemption timer
-    boost::asio::post(env.io_context.get_executor(), [this]() {
-        preemptionTimer->expires_after(std::chrono::milliseconds(1));
-        preemptionTimer->async_wait([this](const boost::system::error_code& error) {
+    boost::asio::post(env.io_context.get_executor(), [this, pTimer]() {
+        pTimer->expires_after(std::chrono::milliseconds(1));
+        pTimer->async_wait([this](const boost::system::error_code& error) {
             this->onPreemptionTimerExpire(error);
         });
     });
@@ -120,8 +123,8 @@ void BoostVM::run() {
     auto nextInvoke = nextInvokePair.first;
 
     // Stop the preemption timer
-    boost::asio::post(env.io_context.get_executor(), [this]() {
-        preemptionTimer->expires_at(boost::asio::steady_timer::time_point::max());
+    boost::asio::post(env.io_context.get_executor(), [pTimer]() {
+        pTimer->expires_at(boost::asio::steady_timer::time_point::max());
     });
 
     {

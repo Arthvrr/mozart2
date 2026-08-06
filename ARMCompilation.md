@@ -747,3 +747,176 @@ logs.txt
 ```
 
 afin de poursuivre progressivement la modernisation des composants encore incompatibles avec les versions actuelles de Java, CMake, C++ et Boost.
+
+# 11. Résolution des Plantages du Garbage Collector (Heisenbugs sur ARM64)
+
+## Problème
+
+Pendant la compilation du code Oz — aux étapes `library_stage_2`, `library_stage_3` et dans la bibliothèque graphique QTk — des erreurs récurrentes de type `Segmentation fault: 11` ont été constatées.
+
+La cause identifiée est le comportement instable du garbage collector de l’émulateur Mozart face aux allocations mémoire concurrentes et à l’ASLR (*Address Space Layout Randomization*) sur ARM64 / Apple Silicon. Les fichiers lourds particulièrement concernés étaient notamment :
+
+```text
+VM.ozf
+TreeWidget.ozf
+QTkEntry.ozf
+QTkGrid.ozf
+QTkListbox.ozf
+QTkMenu.ozf
+QTkRubberframe.ozf
+```
+
+## Contournement « passe-muraille »
+
+1. **Compiler séquentiellement.** Après un crash, abandonner le parallélisme de `make -j` au profit de :
+
+   ```bash
+   make
+   ```
+
+   Cela réduit la pression mémoire et la concurrence entre threads.
+
+2. **Compiler l’artefact bloquant sous LLDB.** Le débogueur désactive l’ASLR, ce qui stabilise la disposition mémoire et permet au garbage collector de terminer la compilation du fichier concerné.
+
+   ```bash
+   # Depuis le répertoire build
+   lldb ./boosthost/emulator/ozemulator
+   ```
+
+3. **Rejouer dans LLDB la commande exacte ayant échoué.** Reprendre les options et chemins dans la ligne d’erreur de `logs.txt` :
+
+   ```text
+   (lldb) run --home /chemin/vers/build --search-load ... x-oz://system/Compile.ozf -c FichierBloquant.oz -o FichierBloquant.ozf
+   ```
+
+4. Attendre :
+
+   ```text
+   exited with status = 0
+   ```
+
+   Puis quitter LLDB :
+
+   ```text
+   (lldb) quit
+   ```
+
+5. Reprendre la compilation globale :
+
+   ```bash
+   make
+   ```
+
+Répéter uniquement pour les fichiers `.oz` qui bloquent. LLDB sert à générer l’artefact instable ; le reste du graphe de build reste géré par Make.
+
+---
+
+# 12. Correction du Crash Asynchrone (Boost.Asio & C++14)
+
+## Problème
+
+Lors de la compilation manuelle de `QTkMenu.oz` sous LLDB, un crash a été capturé :
+
+```text
+EXC_BAD_ACCESS (code=1, address=0x10)
+```
+
+La trace d’appel révélait un déréférencement de pointeur nul dans la gestion des timers asynchrones de `vm/boostenv/main/boostvm.cc`. Les captures par référence `[&]` et `boost::bind` de l’ancien code n’étaient plus sûrs avec ARM64 et le compilateur C++ moderne : une référence pouvait être devenue invalide avant l’exécution du travail posté à l’exécuteur.
+
+## Modification
+
+Fichier concerné :
+
+```text
+vm/boostenv/main/boostvm.cc
+```
+
+Les appels asynchrones ont été modernisés avec des lambdas C++14 et une capture explicite de l’instance via `[this]`.
+
+Avant (autour des lignes 104 et 159) :
+
+```cpp
+boost::asio::post(env.io_context, [&](){
+    preemptionTimer->expires_after(std::chrono::milliseconds(1));
+    preemptionTimer->async_wait(boost::bind(
+          &BoostVM::onPreemptionTimerExpire,
+          this, boost::asio::placeholders::error));
+});
+```
+
+Après :
+
+```cpp
+boost::asio::post(env.io_context.get_executor(), [this]() {
+    preemptionTimer->expires_after(std::chrono::milliseconds(1));
+    preemptionTimer->async_wait([this](const boost::system::error_code& error) {
+        this->onPreemptionTimerExpire(error);
+    });
+});
+```
+
+La même modification doit être appliquée à la fonction d’arrêt de `preemptionTimer` (autour de la ligne 116) : remplacer les captures `[&]` et `boost::bind` par des lambdas capturant `[this]`.
+
+Cette correction supprime la durée de vie ambiguë des références différées et stabilise les timers Asio sur ARM64.
+
+---
+
+# 13. Installation et Déploiement du Système
+
+Après une compilation complète réussie, y compris `qtklibrary`, installer Mozart 2 dans le système :
+
+```bash
+sudo make install
+```
+
+Résultat attendu :
+
+- Les binaires `ozemulator`, `ozc` et `ozengine` sont déployés dans `/usr/local/bin/`.
+- Les modules précompilés (`.ozf`), plugins Emacs (`.elc`) et composants graphiques (images, icônes) sont installés dans `/usr/local/share/mozart/`.
+- Le compilateur et la machine virtuelle deviennent accessibles depuis n’importe quel dossier.
+
+Vérification rapide :
+
+```bash
+command -v ozc
+command -v ozengine
+```
+
+---
+
+# 14. Validation Finale de l’Exécution Native ARM64
+
+Pour valider de bout en bout le compilateur `ozc`, la machine virtuelle `ozengine` et la bibliothèque graphique QTk, créer le fichier `test.oz` suivant :
+
+```oz
+functor
+import
+   QTk
+   Application
+define
+   Window
+   Description = td(
+      title: "Mozart 2 ARM64"
+      label(text: "Victoire ! L'interface graphique fonctionne sur Apple Silicon." font: "{Helvetica} 14")
+      button(text: "Fermer" action:proc {$} {Application.exit 0} end)
+   )
+in
+   % Construction et affichage de la fenêtre
+   Window = {QTk.build Description}
+   {Window show}
+end
+```
+
+Compiler puis exécuter :
+
+```bash
+# Compilation du fichier source en bytecode Oz
+ozc -c test.oz
+
+# Exécution du bytecode
+ozengine test.ozf
+```
+
+## Résultat validé
+
+Le programme compile sans erreur. `ozengine` affiche une fenêtre graphique native ARM64 avec le texte de validation et un bouton « Fermer » fonctionnel. Cette validation confirme que Mozart 2 — compilateur, machine virtuelle et QTk — a été modernisé, compilé et installé avec succès sur macOS Apple Silicon.
