@@ -920,3 +920,292 @@ ozengine test.ozf
 ## Résultat validé
 
 Le programme compile sans erreur. `ozengine` affiche une fenêtre graphique native ARM64 avec le texte de validation et un bouton « Fermer » fonctionnel. Cette validation confirme que Mozart 2 — compilateur, machine virtuelle et QTk — a été modernisé, compilé et installé avec succès sur macOS Apple Silicon.
+
+---
+
+# 15. Diagnostic et Correction du Chargement des Fichiers `.ozf` de Test
+
+## Problème rencontré
+
+Lors de l'exécution initiale de la suite de tests via CTest, la machine virtuelle échouait lors du chargement du fichier de test compilé :
+
+```bash
+ctest --verbose -R "conversion.oz"
+```
+
+Erreur obtenue :
+
+```text
+2: Test command: [...] ozemulator [...] "platform-test/simple_runner.ozf" "platform-test/base/conversion.ozf"
+2: Working Directory: /Users/arthurlouette/Documents/Aarthur/Code/mozart2/build/platform-test
+2: Test timeout computed to be: 1500
+2:
+2: [CRITIQUE] Le fichier .ozf est introuvable ou inaccessible !
+1/1 Test #2: /base/conversion.oz ..............Subprocess aborted***Exception:   0.04 sec
+```
+
+### Analyse
+
+Le fichier binaire compilé `simple_runner.ozf` était bien présent.
+
+En revanche, le fichier de test compilé :
+
+```text
+platform-test/base/conversion.ozf
+```
+
+n'avait pas été généré par le système de build CMake standard.
+
+Par conséquent, l'émulateur tentait de charger un fichier inexistant, ce qui provoquait un arrêt immédiat de la machine virtuelle.
+
+---
+
+## Amélioration de la Robustesse (`vm/vm/main/unpickler.cc`)
+
+Afin d'éviter des plantages silencieux ou des lectures mémoire invalides lorsqu'un fichier `.ozf` est absent ou incomplet, le lecteur de bytecode (`unpickler`) a été renforcé.
+
+La fonction `read()` est devenue :
+
+```cpp
+void read(char* buffer, size_t length) {
+    if (!input.good()) {
+        std::cerr << "\n[CRITIQUE] Le fichier .ozf est introuvable ou inaccessible !" << std::endl;
+        std::abort();
+    }
+
+    input.read(buffer, length);
+
+    if (input.gcount() != length) {
+        std::cerr << "\n[CRITIQUE] Fichier vide ou tronqué ! Lecture de mémoire poubelle évitée." << std::endl;
+        std::abort();
+    }
+}
+```
+
+Cette vérification permet désormais de détecter immédiatement :
+
+- un fichier inexistant ;
+- un fichier vide ;
+- un fichier tronqué ;
+- toute lecture partielle de bytecode.
+
+La machine virtuelle affiche ainsi une erreur explicite au lieu d'effectuer une lecture mémoire invalide.
+
+---
+
+# 16. Validation Manuelle du Premier Test (`conversion.oz`)
+
+Afin de vérifier que le portage ARM64 était pleinement fonctionnel une fois le fichier `.ozf` généré, une compilation manuelle du premier test a été réalisée.
+
+## Création du répertoire cible
+
+```bash
+mkdir -p platform-test/base
+```
+
+## Compilation manuelle du fichier Oz
+
+```bash
+./boosthost/emulator/ozemulator \
+    --home $(pwd) \
+    --search-load cache=$(pwd)/lib/cache \
+    x-oz://system/Compile.ozf \
+    -c ../platform-test/base/conversion.oz \
+    -o platform-test/base/conversion.ozf
+```
+
+Cette commande utilise le compilateur Oz intégré afin de produire directement le fichier :
+
+```text
+platform-test/base/conversion.ozf
+```
+
+## Exécution du test
+
+```bash
+ctest --verbose -R "conversion.oz"
+```
+
+Résultat obtenu :
+
+```text
+2: Testing conversion
+2: stringToFloat
+2:   OK
+2: stringToAtom
+2:   OK
+2: stringToInt
+2:   OK
+2: floatToString
+2:   OK
+2: noFloat
+2:   OK
+2: noFloatType
+2:   OK
+1/1 Test #2: /base/conversion.oz ..............   Passed    0.03 sec
+```
+
+Le premier test de la plateforme est alors entièrement validé.
+
+---
+
+# 17. Compilation de la Cible de Test Globale (`platform-test`)
+
+Une fois le fonctionnement du premier test confirmé, l'objectif était d'automatiser la génération de tous les fichiers `.ozf` de la plateforme.
+
+L'analyse des cibles CMake :
+
+```bash
+make help | grep -i test
+```
+
+a permis d'identifier la cible dédiée :
+
+```text
+platform-test
+```
+
+La compilation complète est ensuite lancée avec :
+
+```bash
+make platform-test
+```
+
+Cette cible génère automatiquement tous les fichiers `.ozf` nécessaires aux tests.
+
+### Base
+
+- float.ozf
+- exception.ozf
+- type.ozf
+- dictionary.ozf
+- ofs.ozf
+- listComprehension.ozf
+- pickle.ozf
+- state.ozf
+- thread.ozf
+- unify.ozf
+- reflection.ozf
+- serializer.ozf
+
+### Bench
+
+- compiler.ozf
+- diff.ozf
+- port.ozf
+- rec.ozf
+- tak.ozf
+
+### DP
+
+- url.ozf
+
+### DP-bench
+
+- Client.ozf
+
+### Debug
+
+- stacktrace_line_num.ozf
+- gc.ozf
+
+L'ensemble des fichiers de test est alors disponible sans compilation manuelle supplémentaire.
+
+---
+
+# 18. Exécution et Validation de la Suite Complète (CTest)
+
+Une fois tous les fichiers `.ozf` générés, la totalité des tests de la plateforme peut être exécutée.
+
+Commande utilisée :
+
+```bash
+ctest --output-on-failure
+```
+
+## Rapport d'exécution
+
+```text
+Test project /Users/arthurlouette/Documents/Aarthur/Code/mozart2/build
+
+     Start  1: vmtest
+ 1/23 Test  #1: vmtest ...........................   Passed    0.02 sec
+
+     Start  2: /base/conversion.oz
+ 2/23 Test  #2: /base/conversion.oz ..............   Passed    0.02 sec
+
+     Start  3: /base/float.oz
+ 3/23 Test  #3: /base/float.oz ...................   Passed    0.02 sec
+
+     Start  4: /base/exception.oz
+ 4/23 Test  #4: /base/exception.oz ...............   Passed    0.02 sec
+
+     Start  5: /base/type.oz
+ 5/23 Test  #5: /base/type.oz ....................   Passed    0.02 sec
+
+     Start  6: /base/dictionary.oz
+ 6/23 Test  #6: /base/dictionary.oz ..............   Passed    0.03 sec
+
+     Start  7: /base/ofs.oz
+ 7/23 Test  #7: /base/ofs.oz .....................   Passed    0.02 sec
+
+     Start  8: /base/listComprehension.oz
+ 8/23 Test  #8: /base/listComprehension.oz .......   Passed    0.47 sec
+
+     Start  9: /base/pickle.oz
+ 9/23 Test  #9: /base/pickle.oz ..................   Passed    0.03 sec
+
+     Start 10: /base/state.oz
+10/23 Test #10: /base/state.oz ...................   Passed    0.02 sec
+
+     Start 11: /base/thread.oz
+11/23 Test #11: /base/thread.oz ..................   Passed    1.02 sec
+
+     Start 12: /base/unify.oz
+12/23 Test #12: /base/unify.oz ...................   Passed    0.02 sec
+
+     Start 13: /base/reflection.oz
+13/23 Test #13: /base/reflection.oz ..............   Passed    0.13 sec
+
+     Start 14: /base/serializer.oz
+14/23 Test #14: /base/serializer.oz ..............   Passed    0.02 sec
+
+     Start 15: /bench/compiler.oz
+15/23 Test #15: /bench/compiler.oz ...............   Passed    2.55 sec
+
+     Start 16: /bench/diff.oz
+16/23 Test #16: /bench/diff.oz ...................   Passed    0.39 sec
+
+     Start 17: /bench/port.oz
+17/23 Test #17: /bench/port.oz ...................   Passed    0.14 sec
+
+     Start 18: /bench/rec.oz
+18/23 Test #18: /bench/rec.oz ....................   Passed    0.36 sec
+
+     Start 19: /bench/tak.oz
+19/23 Test #19: /bench/tak.oz ....................   Passed    0.13 sec
+
+     Start 20: /dp/url.oz
+20/23 Test #20: /dp/url.oz .......................   Passed    0.02 sec
+
+     Start 21: /dp-bench/Client.oz
+21/23 Test #21: /dp-bench/Client.oz ..............   Passed    0.02 sec
+
+     Start 22: /debug/stacktrace_line_num.oz
+22/23 Test #22: /debug/stacktrace_line_num.oz ....   Passed    0.02 sec
+
+     Start 23: /debug/gc.oz
+23/23 Test #23: /debug/gc.oz .....................   Passed    0.02 sec
+
+100% tests passed out of 23
+
+Total Test time (real) =   5.52 sec
+```
+
+## Bilan Final
+
+Le portage de Mozart 2 sur macOS Apple Silicon (ARM64) est désormais entièrement validé.
+
+L'ensemble de la plateforme compile correctement, tous les fichiers `.ozf` sont générés automatiquement par le système de build, et les **23 tests officiels** de la suite de validation sont exécutés avec succès.
+
+Cette validation confirme que le portage ARM64 est pleinement opérationnel et compatible avec l'environnement macOS Apple Silicon.
