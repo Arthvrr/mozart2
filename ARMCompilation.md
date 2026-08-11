@@ -1209,3 +1209,551 @@ Le portage de Mozart 2 sur macOS Apple Silicon (ARM64) est désormais entièreme
 L'ensemble de la plateforme compile correctement, tous les fichiers `.ozf` sont générés automatiquement par le système de build, et les **23 tests officiels** de la suite de validation sont exécutés avec succès.
 
 Cette validation confirme que le portage ARM64 est pleinement opérationnel et compatible avec l'environnement macOS Apple Silicon.
+
+---
+
+# 19. Diagnostic et Correction de l'Interface Graphique (Fenêtres Blanches)
+
+## Problème rencontré
+
+Une fois la machine virtuelle compilée et installée, l'exécution d'une commande graphique comme :
+
+```oz
+{Browse 'Test'}
+```
+
+via l'outil `ozwish` ouvrait correctement une fenêtre macOS native.
+
+Cependant, **le contenu de la fenêtre restait entièrement blanc et vide**.
+
+Aucun texte ne s'affichait dans :
+
+- le **Browser** ;
+- l'**Inspector** ;
+- les autres interfaces graphiques basées sur Tk.
+
+---
+
+## Analyse — Le faux Tcl/Tk d'Apple
+
+Sur macOS Apple Silicon, le moteur de rendu CoreGraphics ne supporte plus correctement certaines anciennes polices X11 utilisées par les vieilles versions de Tk.
+
+Le diagnostic avec `otool` a révélé que l'application ne s'appuyait pas sur le paquet Tcl/Tk installé récemment via Homebrew, mais sur une ancienne version intégrée au système macOS.
+
+La commande utilisée était :
+
+```bash
+otool -L wish/ozwish
+```
+
+Le résultat problématique indiquait notamment :
+
+```text
+/System/Library/Frameworks/Tcl.framework/Versions/8.5/Tcl
+```
+
+avec une version système ancienne :
+
+```text
+Tcl 8.5.9
+```
+
+Cette version de Tcl/Tk était incompatible avec le fonctionnement graphique attendu sur l'environnement Apple Silicon moderne.
+
+Par ailleurs, la version par défaut de `tcl-tk` proposée par Homebrew était récemment passée à **Tcl/Tk 9.0**.
+
+Cette nouvelle version modifie notamment le nom des bibliothèques dynamiques, par exemple :
+
+```text
+libtcl9.0.dylib
+```
+
+ce qui provoque des problèmes de rétrocompatibilité avec les composants C++ historiques attendus par Mozart 2.
+
+---
+
+## Solution — Forcer Tcl/Tk 8.6
+
+La solution retenue a consisté à installer explicitement Tcl/Tk 8 via Homebrew, puis à forcer CMake à utiliser cette version au lieu des bibliothèques système ou de Tcl/Tk 9.
+
+### Installation de Tcl/Tk 8
+
+```bash
+brew install tcl-tk@8
+```
+
+### Nettoyage du cache CMake
+
+Le cache précédent pouvait contenir les mauvais chemins vers Tcl/Tk.
+
+Il a donc été supprimé :
+
+```bash
+rm CMakeCache.txt
+```
+
+### Reconfiguration de CMake
+
+CMake a ensuite été reconfiguré en indiquant explicitement les chemins vers Tcl/Tk 8.6 :
+
+```bash
+cmake \
+    -DTCL_LIBRARY=/opt/homebrew/opt/tcl-tk@8/lib/libtcl8.6.dylib \
+    -DTCL_INCLUDE_PATH=/opt/homebrew/opt/tcl-tk@8/include \
+    -DTK_LIBRARY=/opt/homebrew/opt/tcl-tk@8/lib/libtk8.6.dylib \
+    -DTK_INCLUDE_PATH=/opt/homebrew/opt/tcl-tk@8/include \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    ..
+```
+
+La variable :
+
+```text
+CMAKE_POLICY_VERSION_MINIMUM=3.5
+```
+
+permet également d'injecter la politique de version minimale nécessaire afin de corriger les avertissements CMake rencontrés dans certains sous-dossiers du projet.
+
+---
+
+# 20. Correction du Bootcompiler (Erreur Java/Scala sbt)
+
+## Problème rencontré
+
+Lors de l'étape de compilation finale avec :
+
+```bash
+make
+```
+
+une erreur inattendue est apparue lors de la construction du **bootcompiler**, écrit en **Scala 2.12**.
+
+L'erreur rencontrée était :
+
+```text
+[info] welcome to sbt 1.6.2 (Oracle Corporation Java 21.0.2)
+error: bad constant pool index: 0 at pos: 48461
+```
+
+---
+
+## Analyse et Solution
+
+Le gestionnaire de build Scala `sbt` utilisait automatiquement **Java 21**, qui était la version Java par défaut du système.
+
+Cette version de Java produisait un bytecode moderne qui n'était pas correctement interprété par l'ancien compilateur Scala 2.12 utilisé par Mozart 2.
+
+La solution a consisté à utiliser temporairement **Java 11**, version compatible avec l'environnement de compilation du bootcompiler.
+
+---
+
+## Installation d'OpenJDK 11
+
+```bash
+brew install openjdk@11
+```
+
+---
+
+## Configuration de Java 11
+
+Les variables d'environnement ont ensuite été redirigées vers Java 11 pour la session courante :
+
+```bash
+export JAVA_HOME="/opt/homebrew/opt/openjdk@11"
+export PATH="$JAVA_HOME/bin:$PATH"
+```
+
+Il est alors possible de vérifier la version active avec :
+
+```bash
+java -version
+```
+
+---
+
+## Nettoyage et recompilation
+
+Après le changement de version de Java, le cache CMake a été supprimé :
+
+```bash
+rm CMakeCache.txt
+```
+
+La configuration CMake a ensuite été relancée avec les paramètres Tcl/Tk définis à l'étape précédente.
+
+La compilation complète a finalement été exécutée avec :
+
+```bash
+make
+```
+
+Puis l'installation système :
+
+```bash
+sudo make install
+```
+
+Les étapes de compilation et d'installation ont alors été réalisées avec succès.
+
+---
+
+# 21. Intégration VS Code & Serveur OPI (Zéro Boilerplate)
+
+## Objectif
+
+L'objectif final était d'obtenir une expérience **Plug & Play** pour l'étudiant, comparable à celle disponible sous Windows ou Linux.
+
+L'utilisation de Mozart/Oz devait notamment permettre d'exécuter directement :
+
+```oz
+{Browse 1}
+```
+
+sans devoir :
+
+- créer manuellement un functor ;
+- importer explicitement `Browser` ;
+- configurer manuellement l'environnement pour chaque fichier.
+
+---
+
+## Validation
+
+La configuration des chemins dans l'extension VS Code Mozart/Oz a permis de connecter directement le moteur natif ARM64 fraîchement compilé.
+
+Les paramètres utilisés sont :
+
+```text
+Oz: Ozengine Path : /usr/local/bin/ozengine
+Oz: Home : /usr/local/share/mozart
+```
+
+Cette configuration permet à VS Code d'utiliser directement l'installation native de Mozart 2.
+
+---
+
+## Fonctionnement du Serveur OPI
+
+Une fois la configuration terminée, l'envoi de code depuis VS Code avec :
+
+```text
+Clic droit → Oz: Feed Region
+```
+
+ne lance pas simplement une compilation classique et isolée.
+
+Le code est transmis au **serveur OPI** fonctionnant en arrière-plan.
+
+Ce serveur effectue alors plusieurs opérations :
+
+1. Il enveloppe dynamiquement l'environnement global nécessaire à l'exécution du code.
+2. Il importe silencieusement les composants nécessaires tels que `Browser`, `Inspector`, etc.
+3. Il transmet le code au moteur Mozart 2 natif ARM64.
+4. Il utilise le pont Tk (`ozwish`) corrigé lors de l'étape 19.
+5. Il affiche instantanément le résultat dans l'interface graphique native macOS.
+
+---
+
+## Résultat final
+
+L'ensemble de la chaîne d'exécution est désormais fonctionnel :
+
+```text
+VS Code
+   │
+   │  Oz: Feed Region
+   ▼
+Serveur OPI
+   │
+   │  Environnement Mozart/Oz
+   ▼
+ozengine ARM64
+   │
+   ├── VM Mozart 2
+   │
+   └── ozwish / Tcl-Tk 8.6
+           │
+           ▼
+      Interface macOS
+```
+
+Le portage technique **bas niveau et haut niveau** est ainsi entièrement achevé et validé de bout en bout :
+
+- compilation native Apple Silicon ;
+- machine virtuelle ARM64 ;
+- génération et exécution des fichiers `.ozf` ;
+- interface graphique Tcl/Tk ;
+- bootcompiler Scala ;
+- installation système ;
+- intégration VS Code ;
+- communication via le serveur OPI ;
+- exécution directe des commandes Oz telles que `{Browse 1}`.
+
+**Le portage de Mozart 2 sur macOS Apple Silicon (ARM64) est ainsi validé de bout en bout, depuis la compilation native jusqu'à l'utilisation interactive dans VS Code.**
+
+---
+
+# 22. Intégration avec Aquamacs (Éditeur Emacs pour macOS)
+
+## Objectif
+
+En plus de VS Code, le projet requérait le support d'**Aquamacs**, une distribution d'Emacs optimisée pour macOS.
+
+Cette intégration était nécessaire afin de conserver une expérience de développement compatible avec les habitudes de certains utilisateurs et professeurs.
+
+Lors de la compilation du projet avec :
+
+```bash
+make emacs_mode
+```
+
+les plugins Emacs Lisp suivants étaient correctement générés dans :
+
+```text
+/usr/local/share/mozart/elisp
+```
+
+Notamment :
+
+```text
+oz.elc
+mozart.elc
+oz-server.elc
+```
+
+---
+
+## Problème rencontré — Erreur 127
+
+Lors de la tentative d'exécution de code Oz depuis Aquamacs avec la commande **Feed Region**, l'erreur suivante apparaissait dans le buffer :
+
+```text
+Process Oz Emulator exited abnormally with code 127
+```
+
+Les logs système d'Aquamacs (`Messages`) indiquaient également :
+
+```text
+/usr/local/share/mozart/bin/ozengine: No such file or directory
+```
+
+Le code de retour **127** indique ici que le processus ne parvenait pas à trouver ou à lancer l'exécutable demandé.
+
+---
+
+## Analyse
+
+Le problème était lié à deux spécificités de l'exécution d'applications graphiques macOS avec Aquamacs.
+
+### 1. Gestion du `PATH`
+
+Les applications graphiques macOS n'héritent pas nécessairement des mêmes variables d'environnement que celles définies dans un terminal.
+
+Ainsi, même si :
+
+```bash
+which ozengine
+```
+
+ou :
+
+```bash
+which oz
+```
+
+fonctionnait correctement depuis le terminal, Aquamacs pouvait ne pas connaître automatiquement le chemin :
+
+```text
+/usr/local/bin
+```
+
+Le plugin Mozart essayait alors d'exécuter les commandes Oz sans disposer du chemin absolu correct.
+
+### 2. Mauvaise racine `OZHOME`
+
+Le système cherchait également les exécutables dans :
+
+```text
+/usr/local/share/mozart/bin/
+```
+
+alors que l'installation fonctionnelle utilisait :
+
+```text
+/usr/local/bin/
+```
+
+La variable `OZHOME` devait donc être configurée pour pointer vers la racine correcte de l'installation :
+
+```text
+/usr/local
+```
+
+---
+
+# Solution
+
+Afin de rendre l'intégration indépendante de l'environnement hérité du terminal, les chemins vers Mozart 2 ont été configurés explicitement dans Aquamacs.
+
+Le fichier de préférences utilisé est :
+
+```text
+~/Library/Preferences/Aquamacs Emacs/Preferences.el
+```
+
+Les variables d'environnement, les chemins des exécutables ainsi que le chargement du mode Oz ont été définis directement dans ce fichier.
+
+---
+
+## Configuration de `Preferences.el`
+
+Le contenu suivant a été ajouté :
+
+```elisp
+;; =================================================================
+;; Configuration de Mozart 2 ARM64 pour Aquamacs
+;; =================================================================
+
+;; 1. Définition des variables d'environnement pour Mozart
+(setenv "OZHOME" "/usr/local")
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+
+;; Indiquer à Emacs le chemin des binaires et des bibliothèques
+(add-to-list 'exec-path "/usr/local/bin")
+(setq oz-home "/usr/local")
+
+;; 2. Forcer les chemins ABSOLUS vers les exécutables (Fix Erreur 127)
+(setq oz-compiler-command "/usr/local/bin/ozc")
+(setq oz-emulator-command "/usr/local/bin/oz")
+
+;; 3. Ajouter le dossier Emacs Lisp de Mozart au load-path
+(add-to-list 'load-path "/usr/local/share/mozart/elisp")
+
+;; 4. Charger le mode Oz / Mozart
+(require 'mozart)
+
+;; 5. Association automatique des fichiers .oz et .ozf au mode Oz
+(add-to-list 'auto-mode-alist '("\\.oz\\'" . oz-mode))
+(add-to-list 'auto-mode-alist '("\\.ozf\\'" . oz-gump-mode))
+```
+
+---
+
+## Explication de la configuration
+
+### Variables d'environnement
+
+```elisp
+(setenv "OZHOME" "/usr/local")
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+```
+
+Ces deux lignes permettent à Aquamacs de retrouver correctement l'installation de Mozart 2, indépendamment de l'environnement du terminal.
+
+Le répertoire :
+
+```text
+/usr/local/bin
+```
+
+est également ajouté au `PATH` afin que les exécutables Mozart soient accessibles.
+
+---
+
+### Chemin des exécutables
+
+Le chemin d'exécution est explicitement ajouté à `exec-path` :
+
+```elisp
+(add-to-list 'exec-path "/usr/local/bin")
+```
+
+Puis les commandes utilisées par le mode Mozart sont définies avec leur chemin absolu :
+
+```elisp
+(setq oz-compiler-command "/usr/local/bin/ozc")
+(setq oz-emulator-command "/usr/local/bin/oz")
+```
+
+Cette configuration évite que le plugin tente de rechercher les exécutables dans :
+
+```text
+/usr/local/share/mozart/bin/
+```
+
+et permet de résoudre directement l'erreur 127.
+
+---
+
+### Chargement des extensions Mozart
+
+Le répertoire contenant les fichiers Emacs Lisp compilés est ajouté au `load-path` :
+
+```elisp
+(add-to-list 'load-path "/usr/local/share/mozart/elisp")
+```
+
+Le mode Mozart peut ensuite être chargé avec :
+
+```elisp
+(require 'mozart)
+```
+
+---
+
+### Association automatique des fichiers Oz
+
+Les fichiers `.oz` sont automatiquement associés au mode Oz :
+
+```elisp
+(add-to-list 'auto-mode-alist '("\\.oz\\'" . oz-mode))
+```
+
+Les fichiers `.ozf` sont quant à eux associés au mode correspondant :
+
+```elisp
+(add-to-list 'auto-mode-alist '("\\.ozf\\'" . oz-gump-mode))
+```
+
+Cela permet à Aquamacs d'activer automatiquement l'environnement Mozart lors de l'ouverture d'un fichier Oz.
+
+---
+
+# Résultat validé
+
+Après redémarrage d'Aquamacs, l'intégration Mozart 2 ARM64 fonctionne correctement.
+
+### Ouverture des fichiers `.oz`
+
+L'ouverture d'un fichier `.oz` active automatiquement :
+
+- le mode Oz ;
+- la coloration syntaxique ;
+- le menu Mozart/Oz dédié.
+
+### Exécution avec `Feed Region`
+
+L'exécution d'un bloc de code via :
+
+```text
+Oz → Feed Region
+```
+
+fonctionne désormais correctement.
+
+Le serveur OPI est lancé en arrière-plan et reçoit le code envoyé depuis Aquamacs.
+
+Les résultats sont ensuite affichés instantanément dans l'interface graphique native Tk :
+
+- **Browser** ;
+- **Inspector** ;
+- autres interfaces graphiques Mozart.
+
+Aucune erreur `127` n'est désormais générée.
+
+---
+
+## Validation finale
+
+L'intégration complète d'Aquamacs avec le portage Mozart 2 sur macOS Apple Silicon est ainsi validée. Le support d'Aquamacs est ainsi pleinement opérationnel, en complément de l'intégration VS Code, et permet d'utiliser Mozart 2 ARM64 de manière transparente sur macOS Apple Silicon.
