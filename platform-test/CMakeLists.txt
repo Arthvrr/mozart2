@@ -15,6 +15,13 @@ set(BASE_FUNCTORS
     #"vm.oz" #FIXME vm tests are buggy, see #313.
     "unify.oz"
     "reflection.oz" "serializer.oz"
+    "os_edge_cases.oz"
+    "arch_limits.oz"
+    "thread_stress.oz"
+    "gc_stress.oz"
+    "qtk_concurrency.oz"
+    "dp_network_stress.oz"
+    "stack_overflow.oz"
 )
 file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/base")
 foreach(FUNCTOR ${BASE_FUNCTORS})
