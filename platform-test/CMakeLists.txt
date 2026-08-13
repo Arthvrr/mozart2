@@ -22,6 +22,11 @@ set(BASE_FUNCTORS
     "qtk_concurrency.oz"
     "dp_network_stress.oz"
     "stack_overflow.oz"
+    "arm_memory_coherence.oz"
+    "timer_drift.oz"
+    "pickle_alignment.oz"
+    "ffi_arguments.oz"
+    "apfs_unicode.oz"
 )
 file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/base")
 foreach(FUNCTOR ${BASE_FUNCTORS})
