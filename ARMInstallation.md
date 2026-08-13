@@ -143,40 +143,6 @@ Puis réessayez de taper :
 oz
 ```
 
-### 🔒 macOS bloque l'application
-
-Si macOS vous avertit qu'un binaire ne peut pas être ouvert :
-
-1. Allez dans **Réglages Système**.
-2. Ouvrez **Confidentialité et sécurité**.
-3. Autorisez l'application ou le binaire concerné.
-
-Vous pouvez également supprimer l'attribut de quarantaine avec :
-
-```bash
-xattr -d com.apple.quarantine <chemin>
-```
-
-> ⚠️ Remplacez `<chemin>` par le chemin réel du fichier ou de l'application concernée.
-
-## 💡 En cas de problème — FAQ
-
-### ❌ `command not found: oz`
-
-Assurez-vous d'avoir bien fermé puis rouvert votre Terminal après l'installation afin que la modification du fichier `.zshrc` soit prise en compte.
-
-Vous pouvez également essayer :
-
-```bash
-source ~/.zshrc
-```
-
-Puis réessayez de taper :
-
-```bash
-oz
-```
-
 ---
 
 ### 🔒 macOS bloque l'application
