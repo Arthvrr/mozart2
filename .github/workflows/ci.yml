@@ -20,6 +20,8 @@ jobs:
     steps:
     - name: Récupération du code source
       uses: actions/checkout@v4
+      with:
+        submodules: recursive # <-- CORRECTION LINUX : Télécharge stdlib et gtest
 
     # Configuration vitale de Java 11 pour compiler le bootcompiler (SBT/Scala)
     - name: Configuration de Java 11
@@ -33,13 +35,13 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         sudo apt-get update
-        sudo apt-get install -y cmake g++ libboost-all-dev tcl-dev tk-dev
+        sudo apt-get install -y cmake g++ libboost-all-dev tcl-dev tk-dev emacs # <-- CORRECTION BONUS : emacs ajouté
 
     # Dépendances pour Windows
     - name: Installation des dépendances (Windows)
       if: runner.os == 'Windows'
       run: |
-        choco install tcl
+        choco install magicsplat-tcl-tk # <-- CORRECTION WINDOWS : Vrai nom du paquet
         # Les serveurs Windows GitHub Actions possèdent déjà des versions de Boost préinstallées.
 
     # Étape de configuration CMake
