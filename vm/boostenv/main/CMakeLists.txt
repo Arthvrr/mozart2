@@ -28,7 +28,7 @@ if(MINGW)
          CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
   set(CXX_STD_OPT -std=gnu++14)
 else()
-  set(CXX_STD_OPT -std=c++14)
+  set(CXX_STD_OPT -std=c++20)
 endif()
 
 # Mozart VM library

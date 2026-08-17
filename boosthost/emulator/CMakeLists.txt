@@ -3,7 +3,7 @@ set(MOZART_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../..")
 set(MOZART_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/../..")
 
 # Configure compiler
-set(CMAKE_CXX_FLAGS "-Wall -std=c++14 ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "-Wall -std=c++20 ${CMAKE_CXX_FLAGS}")
 
 if(WIN32)
   # Boost requires this
