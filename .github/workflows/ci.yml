@@ -41,7 +41,7 @@ jobs:
     - name: Installation des dépendances (Windows)
       if: runner.os == 'Windows'
       run: |
-        choco install magicsplat-tcl-tk # <-- CORRECTION WINDOWS : Vrai nom du paquet
+        choco install magicsplat-tcl-tk --no-progress -y
         # Les serveurs Windows GitHub Actions possèdent déjà des versions de Boost préinstallées.
 
     # Étape de configuration CMake
@@ -52,9 +52,11 @@ jobs:
     - name: Compilation de Mozart 2
       run: cmake --build build --config Release --parallel 4
 
-    # Génération des 35 fichiers de test de la plateforme
-    - name: Génération des tests (platform-test)
-      run: cmake --build build --target platform-test --config Release
+    # Génération des fichiers de test de la plateforme et du test C++
+    - name: Génération des tests (vmtest & platform-test)
+      run: |
+        cmake --build build --target vmtest --config Release
+        cmake --build build --target platform-test --config Release
 
     # Exécution de la suite de tests
     - name: Exécution de CTest
