@@ -1,0 +1,60 @@
+name: Mozart 2 CI (Linux & Windows)
+
+on:
+  push:
+    branches: [ master, upgrade-cpp20 ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-test:
+    name: Build & Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    
+    # Stratégie matricielle : lance les jobs en parallèle sur Linux et Windows
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+    - name: Récupération du code source
+      uses: actions/checkout@v4
+
+    # Configuration vitale de Java 11 pour compiler le bootcompiler (SBT/Scala)
+    - name: Configuration de Java 11
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+
+    # Dépendances pour Linux (Ubuntu)
+    - name: Installation des dépendances (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake g++ libboost-all-dev tcl-dev tk-dev
+
+    # Dépendances pour Windows
+    - name: Installation des dépendances (Windows)
+      if: runner.os == 'Windows'
+      run: |
+        choco install tcl
+        # Les serveurs Windows GitHub Actions possèdent déjà des versions de Boost préinstallées.
+
+    # Étape de configuration CMake
+    - name: Configuration CMake
+      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+    # Compilation multi-cœurs du projet
+    - name: Compilation de Mozart 2
+      run: cmake --build build --config Release --parallel 4
+
+    # Génération des 35 fichiers de test de la plateforme
+    - name: Génération des tests (platform-test)
+      run: cmake --build build --target platform-test --config Release
+
+    # Exécution de la suite de tests
+    - name: Exécution de CTest
+      working-directory: ./build
+      run: ctest --output-on-failure -C Release
