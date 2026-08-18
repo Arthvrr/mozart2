@@ -56,11 +56,12 @@ jobs:
       id: install-boost
       with:
         boost_version: 1.83.0
+        toolset: mingw
 
     - name: Configuration CMake (Windows)
       if: runner.os == 'Windows'
       run: >
-        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release 
+        cmake -S . -B build -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release 
         "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" 
         -DBOOST_ROOT="${{ steps.install-boost.outputs.BOOST_ROOT }}" 
         -DTCL_LIBRARY="C:/Program Files/Tcl/lib/tcl86.lib" 
