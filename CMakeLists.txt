@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 
 # This needs to be before "project(..)".
 if(NOT DEFINED CMAKE_BUILD_TYPE)
@@ -8,6 +8,12 @@ message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
 
 project(MOZART CXX)
+
+if(MSVC)
+    add_compile_options(/Zc:char8_t-)
+else()
+    add_compile_options(-fno-char8_t)
+endif()
 
 ENABLE_TESTING()
 add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND})
