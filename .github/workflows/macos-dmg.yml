@@ -1,0 +1,44 @@
+name: Build macOS DMG (ARM64)
+
+on:
+  push:
+    branches: [ app-installer ] # S'exécute uniquement sur ta nouvelle branche
+
+jobs:
+  build-mac:
+    runs-on: macos-latest
+
+    steps:
+    - name: Récupération du code source
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Configuration de Java 11
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+
+    - name: Installation des dépendances (Homebrew)
+      run: |
+        brew update
+        brew install emacs tcl-tk@8
+
+    - name: Configuration CMake
+      # Sur Apple Silicon, Homebrew installe les paquets dans /opt/homebrew/
+      # On force CMake à utiliser ce Tcl/Tk 8.6 plutôt que celui du système
+      run: >
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release 
+        -DTCL_LIBRARY="/opt/homebrew/opt/tcl-tk@8/lib/libtcl8.6.dylib" 
+        -DTK_LIBRARY="/opt/homebrew/opt/tcl-tk@8/lib/libtk8.6.dylib" 
+        -DTCL_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include" 
+        -DTK_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include"
+
+    - name: Compilation de Mozart 2
+      run: cmake --build build --config Release --parallel 4
+
+    - name: Création du fichier DMG
+      working-directory: ./build
+      # Demande à CPack (intégré à CMake) de créer un installeur "Drag & Drop" (DMG)
+      run: cpack -G DragNDrop
