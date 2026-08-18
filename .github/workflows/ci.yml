@@ -49,10 +49,14 @@ jobs:
       if: runner.os == 'Linux'
       run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
 
-    # Étape de configuration CMake (Windows) - Avec le chemin explicite vers Boost
+    # Étape de configuration CMake (Windows)
     - name: Configuration CMake (Windows)
       if: runner.os == 'Windows'
-      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" -DBOOST_ROOT="$env:BOOST_ROOT_1_83_0"
+      run: |
+        $BoostDir = (Get-ChildItem Env:BOOST_ROOT_* | Sort-Object Name -Descending)[0].Value
+        $BoostDir = $BoostDir -replace '\\', '/'
+        echo "Dossier Boost detecte : $BoostDir"
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" "-DBOOST_ROOT=$BoostDir"
 
     # Compilation multi-cœurs du projet
     - name: Compilation de Mozart 2
