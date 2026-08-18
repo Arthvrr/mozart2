@@ -21,15 +21,15 @@ jobs:
         java-version: '11'
 
     - name: Installation des dépendances (Homebrew)
+      # AJOUT : "boost" est désormais installé pour éviter le crash de CMake
       run: |
         brew update
-        brew install emacs tcl-tk@8
+        brew install emacs tcl-tk@8 boost
 
     - name: Configuration CMake
       # Sur Apple Silicon, Homebrew installe les paquets dans /opt/homebrew/
-      # On force CMake à utiliser ce Tcl/Tk 8.6 plutôt que celui du système
       run: >
-        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release 
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
         -DTCL_LIBRARY="/opt/homebrew/opt/tcl-tk@8/lib/libtcl8.6.dylib" 
         -DTK_LIBRARY="/opt/homebrew/opt/tcl-tk@8/lib/libtk8.6.dylib" 
         -DTCL_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include" 
@@ -40,5 +40,12 @@ jobs:
 
     - name: Création du fichier DMG
       working-directory: ./build
-      # Demande à CPack (intégré à CMake) de créer un installeur "Drag & Drop" (DMG)
       run: cpack -G DragNDrop
+
+    - name: Mise à disposition du DMG pour le téléchargement
+      # AJOUT : Cette étape récupère le fichier DMG généré et te permet de le télécharger depuis GitHub
+      uses: actions/upload-artifact@v4
+      with:
+        name: Mozart2-macOS-ARM64-App
+        path: ./build/*.dmg
+        if-no-files-found: error
