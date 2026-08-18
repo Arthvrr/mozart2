@@ -29,18 +29,15 @@ jobs:
     - name: Configuration CMake
       # Sur Apple Silicon, Homebrew installe les paquets dans /opt/homebrew/
       run: >
-        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" 
+        "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-stack_size,0x4000000" 
         -DTCL_LIBRARY="/opt/homebrew/opt/tcl-tk@8/lib/libtcl8.6.dylib" 
         -DTK_LIBRARY="/opt/homebrew/opt/tcl-tk@8/lib/libtk8.6.dylib" 
         -DTCL_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include" 
         -DTK_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include"
 
     - name: Compilation de Mozart 2
-      # On augmente la limite de la pile (Stack Size) à ~65 Mo pour éviter 
-      # le Segmentation Fault lors de la compilation des gros fichiers .oz
-      run: |
-        ulimit -s 65532
-        cmake --build build --config Release --parallel 4
+      run: cmake --build build --config Release --parallel 4
 
     - name: Création du fichier DMG
       working-directory: ./build
