@@ -59,7 +59,7 @@ jobs:
 
     - name: Configuration CMake (Windows)
       if: runner.os == 'Windows'
-      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" -DBOOST_ROOT="${{ steps.install-boost.outputs.BOOST_ROOT }}"
 
 
     # ==========================================
