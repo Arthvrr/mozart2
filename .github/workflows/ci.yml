@@ -46,7 +46,7 @@ jobs:
 
     # Étape de configuration CMake
     - name: Configuration CMake
-      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
     # Compilation multi-cœurs du projet
     - name: Compilation de Mozart 2
