@@ -36,7 +36,11 @@ jobs:
         -DTK_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include"
 
     - name: Compilation de Mozart 2
-      run: cmake --build build --config Release --parallel 4
+      # On augmente la limite de la pile (Stack Size) à ~65 Mo pour éviter 
+      # le Segmentation Fault lors de la compilation des gros fichiers .oz
+      run: |
+        ulimit -s 65532
+        cmake --build build --config Release --parallel 4
 
     - name: Création du fichier DMG
       working-directory: ./build
