@@ -44,9 +44,15 @@ jobs:
         choco install magicsplat-tcl-tk --no-progress -y
         # Les serveurs Windows GitHub Actions possèdent déjà des versions de Boost préinstallées.
 
-    # Étape de configuration CMake
-    - name: Configuration CMake
+    # Étape de configuration CMake (Linux)
+    - name: Configuration CMake (Linux)
+      if: runner.os == 'Linux'
       run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+
+    # Étape de configuration CMake (Windows) - Avec le chemin explicite vers Boost
+    - name: Configuration CMake (Windows)
+      if: runner.os == 'Windows'
+      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" -DBOOST_ROOT="$env:BOOST_ROOT_1_83_0"
 
     # Compilation multi-cœurs du projet
     - name: Compilation de Mozart 2
