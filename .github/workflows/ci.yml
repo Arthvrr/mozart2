@@ -48,7 +48,7 @@ jobs:
     # ==========================================
     - name: Installation de Tcl/Tk (Windows)
       if: runner.os == 'Windows'
-      run: choco install magicsplat-tcl-tk --version 8.6.13.1 --allow-downgrade --no-progress -y
+      run: choco install magicsplat-tcl-tk --version 1.16.0 --allow-downgrade --no-progress -y
 
     - name: Installation de Boost (Windows)
       if: runner.os == 'Windows'
