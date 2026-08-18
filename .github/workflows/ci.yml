@@ -48,7 +48,7 @@ jobs:
     # ==========================================
     - name: Installation de Tcl/Tk (Windows)
       if: runner.os == 'Windows'
-      run: choco install magicsplat-tcl-tk --no-progress -y
+      run: choco install magicsplat-tcl-tk --version 8.6.13.1 --allow-downgrade --no-progress -y
 
     - name: Installation de Boost (Windows)
       if: runner.os == 'Windows'
@@ -59,7 +59,14 @@ jobs:
 
     - name: Configuration CMake (Windows)
       if: runner.os == 'Windows'
-      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" -DBOOST_ROOT="${{ steps.install-boost.outputs.BOOST_ROOT }}"
+      run: >
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release 
+        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" 
+        -DBOOST_ROOT="${{ steps.install-boost.outputs.BOOST_ROOT }}" 
+        -DTCL_LIBRARY="C:/Program Files/Tcl/lib/tcl86.lib" 
+        -DTK_LIBRARY="C:/Program Files/Tcl/lib/tk86.lib" 
+        -DTCL_INCLUDE_PATH="C:/Program Files/Tcl/include" 
+        -DTK_INCLUDE_PATH="C:/Program Files/Tcl/include"
 
 
     # ==========================================
