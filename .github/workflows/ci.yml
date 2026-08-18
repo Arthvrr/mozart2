@@ -64,6 +64,7 @@ jobs:
         cmake -S . -B build -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release 
         "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" 
         -DBOOST_ROOT="${{ steps.install-boost.outputs.BOOST_ROOT }}" 
+        -DBoost_COMPILER=-mgw12 
         -DTCL_LIBRARY="C:/Program Files/Tcl/lib/tcl86.lib" 
         -DTK_LIBRARY="C:/Program Files/Tcl/lib/tk86.lib" 
         -DTCL_INCLUDE_PATH="C:/Program Files/Tcl/include" 
