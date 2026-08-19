@@ -37,7 +37,7 @@ jobs:
         -DTK_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include"
 
     - name: Compilation de Mozart 2
-      run: cmake --build build --config Release --parallel 4
+      run: cmake --build build --config Release
 
     - name: Création du fichier DMG
       working-directory: ./build
