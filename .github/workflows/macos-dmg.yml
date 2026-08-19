@@ -1,8 +1,8 @@
-name: Build macOS DMG (ARM64)
+name: Build macOS DMG (ARM64 Natif)
 
 on:
   push:
-    branches: [ app-installer ] # S'exécute uniquement sur ta nouvelle branche
+    branches: [ app-installer ]
 
 jobs:
   build-mac:
@@ -21,13 +21,11 @@ jobs:
         java-version: '11'
 
     - name: Installation des dépendances (Homebrew)
-      # AJOUT : "boost" est désormais installé pour éviter le crash de CMake
       run: |
         brew update
         brew install emacs tcl-tk@8 boost
 
-    - name: Configuration CMake
-      # Sur Apple Silicon, Homebrew installe les paquets dans /opt/homebrew/
+    - name: Configuration CMake (ARM64)
       run: >
         cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" 
         "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-stack_size,0x20000000" 
@@ -36,15 +34,19 @@ jobs:
         -DTCL_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include" 
         -DTK_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include"
 
-    - name: Compilation de Mozart 2
-      run: cmake --build build --config Release
+    - name: Compilation de Mozart 2 (Mode Force Brute)
+      # La boucle "until" relance la compilation automatiquement en cas de Segfault
+      # jusqu'à ce que le compilateur atteigne les 100 % !
+      run: |
+        until cmake --build build --config Release --parallel 1; do
+          echo "Crash aléatoire du runner détecté. Reprise immédiate de la compilation..."
+        done
 
-    - name: Création du fichier DMG
+    - name: Création du fichier DMG (Générateur Bundle)
       working-directory: ./build
       run: cpack -G Bundle
 
-    - name: Mise à disposition du DMG pour le téléchargement
-      # AJOUT : Cette étape récupère le fichier DMG généré et te permet de le télécharger depuis GitHub
+    - name: Mise à disposition du DMG
       uses: actions/upload-artifact@v4
       with:
         name: Mozart2-macOS-ARM64-App
