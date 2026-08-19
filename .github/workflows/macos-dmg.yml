@@ -44,29 +44,43 @@ jobs:
 
     - name: Assemblage manuel de Mozart2.app
       run: |
-        # 1. On extrait les fichiers compilés dans un dossier temporaire
         cmake --install build --prefix ./raw_install
         
-        # 2. On crée l'architecture stricte d'une application macOS
+        # 1. Création de l'architecture macOS
         mkdir -p Mozart2.app/Contents/MacOS
         mkdir -p Mozart2.app/Contents/Resources
+        mkdir -p Mozart2.app/Contents/Frameworks
         
-        # 3. On copie le "cerveau" de l'application (tes fichiers macos/)
+        # 2. Copie du cerveau et de l'icône (avec le bon nom !)
         cp macos/Info.plist Mozart2.app/Contents/
         cp macos/startup Mozart2.app/Contents/MacOS/Mozart2
         chmod +x Mozart2.app/Contents/MacOS/Mozart2
+        cp macos/*.icns Mozart2.app/Contents/Resources/Mozart2.icns || true
         
-        # 4. On copie l'icône (si elle est dans le dossier macos)
-        cp macos/*.icns Mozart2.app/Contents/Resources/ || true
-        
-        # 5. On range le moteur de Mozart dans les ressources de l'app
+        # 3. Rangement du moteur Mozart
         mv ./raw_install/bin Mozart2.app/Contents/Resources/
         mv ./raw_install/share Mozart2.app/Contents/Resources/
+        
+        # 4. LE SECRET : Aspiration des bibliothèques Homebrew
+        cp /opt/homebrew/opt/tcl-tk@8/lib/libtcl8.6.dylib Mozart2.app/Contents/Frameworks/
+        cp /opt/homebrew/opt/tcl-tk@8/lib/libtk8.6.dylib Mozart2.app/Contents/Frameworks/
+        
+        # 5. PIRATAGE DE L'ADN : On dit à ozwish de chercher à l'intérieur de l'app
+        # ozwish se trouve dans Contents/Resources/bin, il doit remonter de 2 dossiers (../../) pour atteindre Frameworks
+        install_name_tool -change /opt/homebrew/opt/tcl-tk@8/lib/libtcl8.6.dylib @executable_path/../../Frameworks/libtcl8.6.dylib Mozart2.app/Contents/Resources/bin/ozwish
+        install_name_tool -change /opt/homebrew/opt/tcl-tk@8/lib/libtk8.6.dylib @executable_path/../../Frameworks/libtk8.6.dylib Mozart2.app/Contents/Resources/bin/ozwish
 
-    - name: Création du fichier DMG natif (Outil Apple)
+    - name: Création du fichier DMG avec raccourci Applications
       run: |
-        # Utilisation de l'outil officiel macOS pour créer une image disque parfaite
-        hdiutil create -volname "Mozart 2" -srcfolder Mozart2.app -ov -format UDZO Mozart2-ARM64.dmg
+        # 1. Création d'un dossier de "mise en scène"
+        mkdir dmg_layout
+        mv Mozart2.app dmg_layout/
+        
+        # 2. Ajout du raccourci natif macOS
+        ln -s /Applications dmg_layout/Applications
+        
+        # 3. Création de l'image disque à partir de ce dossier
+        hdiutil create -volname "Mozart 2" -srcfolder dmg_layout -ov -format UDZO Mozart2-ARM64.dmg
 
     - name: Mise à disposition du DMG
       uses: actions/upload-artifact@v4
