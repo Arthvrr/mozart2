@@ -42,13 +42,35 @@ jobs:
           echo "Crash aléatoire du runner détecté. Reprise immédiate de la compilation..."
         done
 
-    - name: Création du fichier DMG (Générateur Bundle)
-      working-directory: ./build
-      run: cpack -G Bundle
+    - name: Assemblage manuel de Mozart2.app
+      run: |
+        # 1. On extrait les fichiers compilés dans un dossier temporaire
+        cmake --install build --prefix ./raw_install
+        
+        # 2. On crée l'architecture stricte d'une application macOS
+        mkdir -p Mozart2.app/Contents/MacOS
+        mkdir -p Mozart2.app/Contents/Resources
+        
+        # 3. On copie le "cerveau" de l'application (tes fichiers macos/)
+        cp macos/Info.plist Mozart2.app/Contents/
+        cp macos/startup Mozart2.app/Contents/MacOS/Mozart2
+        chmod +x Mozart2.app/Contents/MacOS/Mozart2
+        
+        # 4. On copie l'icône (si elle est dans le dossier macos)
+        cp macos/*.icns Mozart2.app/Contents/Resources/ || true
+        
+        # 5. On range le moteur de Mozart dans les ressources de l'app
+        mv ./raw_install/bin Mozart2.app/Contents/Resources/
+        mv ./raw_install/share Mozart2.app/Contents/Resources/
+
+    - name: Création du fichier DMG natif (Outil Apple)
+      run: |
+        # Utilisation de l'outil officiel macOS pour créer une image disque parfaite
+        hdiutil create -volname "Mozart 2" -srcfolder Mozart2.app -ov -format UDZO Mozart2-ARM64.dmg
 
     - name: Mise à disposition du DMG
       uses: actions/upload-artifact@v4
       with:
         name: Mozart2-macOS-ARM64-App
-        path: ./build/*.dmg
+        path: ./Mozart2-ARM64.dmg
         if-no-files-found: error
