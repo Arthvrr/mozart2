@@ -46,9 +46,9 @@ jobs:
       run: |
         cmake --install build --prefix ./raw_install
         
-        # 1. Création de l'architecture macOS
+        # 1. Création de l'architecture macOS (On ajoute le dossier lib)
         mkdir -p Mozart2.app/Contents/MacOS
-        mkdir -p Mozart2.app/Contents/Resources
+        mkdir -p Mozart2.app/Contents/Resources/lib
         mkdir -p Mozart2.app/Contents/Frameworks
         
         # 2. Copie du cerveau et de l'icône (avec le bon nom !)
@@ -61,12 +61,15 @@ jobs:
         mv ./raw_install/bin Mozart2.app/Contents/Resources/
         mv ./raw_install/share Mozart2.app/Contents/Resources/
         
-        # 4. LE SECRET : Aspiration des bibliothèques Homebrew
+        # 4. Aspiration des bibliothèques dynamiques (Le moteur)
         cp /opt/homebrew/opt/tcl-tk@8/lib/libtcl8.6.dylib Mozart2.app/Contents/Frameworks/
         cp /opt/homebrew/opt/tcl-tk@8/lib/libtk8.6.dylib Mozart2.app/Contents/Frameworks/
+
+        # 5. NOUVEAU : Aspiration des scripts Tcl/Tk (L'essence)
+        cp -R /opt/homebrew/opt/tcl-tk@8/lib/tcl8.6 Mozart2.app/Contents/Resources/lib/
+        cp -R /opt/homebrew/opt/tcl-tk@8/lib/tk8.6 Mozart2.app/Contents/Resources/lib/
         
-        # 5. PIRATAGE DE L'ADN : On dit à ozwish de chercher à l'intérieur de l'app
-        # ozwish se trouve dans Contents/Resources/bin, il doit remonter de 2 dossiers (../../) pour atteindre Frameworks
+        # 6. PIRATAGE DE L'ADN
         install_name_tool -change /opt/homebrew/opt/tcl-tk@8/lib/libtcl8.6.dylib @executable_path/../../Frameworks/libtcl8.6.dylib Mozart2.app/Contents/Resources/bin/ozwish
         install_name_tool -change /opt/homebrew/opt/tcl-tk@8/lib/libtk8.6.dylib @executable_path/../../Frameworks/libtk8.6.dylib Mozart2.app/Contents/Resources/bin/ozwish
 
