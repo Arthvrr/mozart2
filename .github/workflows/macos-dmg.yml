@@ -41,7 +41,7 @@ jobs:
 
     - name: Création du fichier DMG
       working-directory: ./build
-      run: cpack -G DragNDrop
+      run: cpack -G Bundle
 
     - name: Mise à disposition du DMG pour le téléchargement
       # AJOUT : Cette étape récupère le fichier DMG généré et te permet de le télécharger depuis GitHub

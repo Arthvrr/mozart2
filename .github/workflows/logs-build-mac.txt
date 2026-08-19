@@ -1,0 +1,1731 @@
+﻿2026-08-18T17:54:24.3958710Z Current runner version: '2.336.0'
+2026-08-18T17:54:24.3972440Z ##[group]Runner Image Provisioner
+2026-08-18T17:54:24.3972910Z Hosted Compute Agent
+2026-08-18T17:54:24.3973260Z Version: 20260707.563
+2026-08-18T17:54:24.3973630Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+2026-08-18T17:54:24.3974060Z Build Date: 2026-07-07T19:33:50Z
+2026-08-18T17:54:24.3974460Z Worker ID: {6f9135ca-2bb1-4a86-a703-34437e404da1}
+2026-08-18T17:54:24.3974870Z Azure Region: westus
+2026-08-18T17:54:24.3975190Z ##[endgroup]
+2026-08-18T17:54:24.3976020Z ##[group]Operating System
+2026-08-18T17:54:24.3976360Z macOS
+2026-08-18T17:54:24.3976650Z 26.5.2
+2026-08-18T17:54:24.3976930Z 25F84
+2026-08-18T17:54:24.3977220Z ##[endgroup]
+2026-08-18T17:54:24.3977540Z ##[group]Runner Image
+2026-08-18T17:54:24.3977870Z Image: macos-26-arm64
+2026-08-18T17:54:24.3978200Z Version: 20260728.0273.1
+2026-08-18T17:54:24.3978930Z Included Software: https://github.com/actions/runner-images/blob/macos-26-arm64/20260728.0273/images/macos/macos-26-arm64-Readme.md
+2026-08-18T17:54:24.3979890Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-26-arm64%2F20260728.0273
+2026-08-18T17:54:24.3980480Z ##[endgroup]
+2026-08-18T17:54:24.3981170Z ##[group]GITHUB_TOKEN Permissions
+2026-08-18T17:54:24.3982060Z Contents: read
+2026-08-18T17:54:24.3982390Z Metadata: read
+2026-08-18T17:54:24.3982720Z Packages: read
+2026-08-18T17:54:24.3983040Z ##[endgroup]
+2026-08-18T17:54:24.3984330Z Secret source: Actions
+2026-08-18T17:54:24.3984920Z Prepare workflow directory
+2026-08-18T17:54:24.4239810Z Prepare all required actions
+2026-08-18T17:54:24.4274190Z Getting action download info
+2026-08-18T17:54:24.6002430Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-08-18T17:54:24.7966500Z Download action repository 'actions/setup-java@v4' (SHA:cf277c60eb25467037889841efdb72551f06f6c3)
+2026-08-18T17:54:25.8720060Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-08-18T17:54:26.0717990Z Complete job name: build-mac
+2026-08-18T17:54:26.1158860Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-18T17:54:26.1165570Z ##[group]Run actions/checkout@v4
+2026-08-18T17:54:26.1166080Z with:
+2026-08-18T17:54:26.1166420Z   submodules: recursive
+2026-08-18T17:54:26.1166820Z   repository: Arthvrr/mozart2
+2026-08-18T17:54:26.1170060Z   token: ***
+2026-08-18T17:54:26.1170520Z   ssh-strict: true
+2026-08-18T17:54:26.1170930Z   ssh-user: git
+2026-08-18T17:54:26.1171300Z   persist-credentials: true
+2026-08-18T17:54:26.1171720Z   clean: true
+2026-08-18T17:54:26.1172050Z   sparse-checkout-cone-mode: true
+2026-08-18T17:54:26.1172440Z   fetch-depth: 1
+2026-08-18T17:54:26.1172780Z   fetch-tags: false
+2026-08-18T17:54:26.1173200Z   show-progress: true
+2026-08-18T17:54:26.1173600Z   lfs: false
+2026-08-18T17:54:26.1173930Z   set-safe-directory: true
+2026-08-18T17:54:26.1174370Z   allow-unsafe-pr-checkout: false
+2026-08-18T17:54:26.1175000Z ##[endgroup]
+2026-08-18T17:54:26.5181200Z Syncing repository: Arthvrr/mozart2
+2026-08-18T17:54:26.5182660Z ##[group]Getting Git version info
+2026-08-18T17:54:26.5183300Z Working directory is '/Users/runner/work/mozart2/mozart2'
+2026-08-18T17:54:26.5184020Z [command]/opt/homebrew/bin/git version
+2026-08-18T17:54:26.5457700Z git version 2.55.0
+2026-08-18T17:54:26.5472570Z ##[endgroup]
+2026-08-18T17:54:26.5479140Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/be54104a-feb4-461f-9967-48fa5cf7ace7/.gitconfig'
+2026-08-18T17:54:26.5484530Z Temporarily overriding HOME='/Users/runner/work/_temp/be54104a-feb4-461f-9967-48fa5cf7ace7' before making global git config changes
+2026-08-18T17:54:26.5485670Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-18T17:54:26.5487700Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/mozart2/mozart2
+2026-08-18T17:54:26.5596850Z Deleting the contents of '/Users/runner/work/mozart2/mozart2'
+2026-08-18T17:54:26.5599460Z ##[group]Initializing the repository
+2026-08-18T17:54:26.5603140Z [command]/opt/homebrew/bin/git init /Users/runner/work/mozart2/mozart2
+2026-08-18T17:54:26.5806550Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-08-18T17:54:26.5807540Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-08-18T17:54:26.5808450Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-08-18T17:54:26.5809180Z hint: call:
+2026-08-18T17:54:26.5809500Z hint:
+2026-08-18T17:54:26.5809990Z hint: 	git config --global init.defaultBranch <name>
+2026-08-18T17:54:26.5810480Z hint:
+2026-08-18T17:54:26.5810930Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-08-18T17:54:26.5811780Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-08-18T17:54:26.5812310Z hint:
+2026-08-18T17:54:26.5812670Z hint: 	git branch -m <name>
+2026-08-18T17:54:26.5813190Z hint:
+2026-08-18T17:54:26.5813770Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-08-18T17:54:26.5814560Z Initialized empty Git repository in /Users/runner/work/mozart2/mozart2/.git/
+2026-08-18T17:54:26.5836290Z [command]/opt/homebrew/bin/git remote add origin https://github.com/Arthvrr/mozart2
+2026-08-18T17:54:26.6152560Z ##[endgroup]
+2026-08-18T17:54:26.6153190Z ##[group]Disabling automatic garbage collection
+2026-08-18T17:54:26.6155000Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-08-18T17:54:26.6216290Z ##[endgroup]
+2026-08-18T17:54:26.6217050Z ##[group]Setting up auth
+2026-08-18T17:54:26.6221480Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-18T17:54:26.6292290Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-18T17:54:26.7371740Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-18T17:54:26.7430750Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-18T17:54:26.8170860Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-18T17:54:26.8224840Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-18T17:54:26.9322160Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-18T17:54:26.9327740Z ##[endgroup]
+2026-08-18T17:54:26.9328520Z ##[group]Fetching the repository
+2026-08-18T17:54:26.9329690Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +cc4ac72260de25c7f1bc1218e6671152d00e2b85:refs/remotes/origin/app-installer
+2026-08-18T17:54:29.5977420Z From https://github.com/Arthvrr/mozart2
+2026-08-18T17:54:29.5978880Z  * [new ref]         cc4ac72260de25c7f1bc1218e6671152d00e2b85 -> origin/app-installer
+2026-08-18T17:54:29.5987940Z ##[endgroup]
+2026-08-18T17:54:29.5988870Z ##[group]Determining the checkout info
+2026-08-18T17:54:29.5989880Z ##[endgroup]
+2026-08-18T17:54:29.5993170Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-08-18T17:54:29.6086930Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-08-18T17:54:29.6157220Z ##[group]Checking out the ref
+2026-08-18T17:54:29.6160420Z [command]/opt/homebrew/bin/git checkout --progress --force -B app-installer refs/remotes/origin/app-installer
+2026-08-18T17:54:29.8338400Z Switched to a new branch 'app-installer'
+2026-08-18T17:54:29.8349620Z branch 'app-installer' set up to track 'origin/app-installer'.
+2026-08-18T17:54:29.8356520Z ##[endgroup]
+2026-08-18T17:54:29.8357670Z ##[group]Setting up auth for fetching submodules
+2026-08-18T17:54:29.8360530Z [command]/opt/homebrew/bin/git config --global http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-18T17:54:29.8457410Z [command]/opt/homebrew/bin/git config --global --unset-all url.https://github.com/.insteadOf
+2026-08-18T17:54:29.8537760Z [command]/opt/homebrew/bin/git config --global --add url.https://github.com/.insteadOf git@github.com:
+2026-08-18T17:54:29.8604260Z [command]/opt/homebrew/bin/git config --global --add url.https://github.com/.insteadOf org-101578651@github.com:
+2026-08-18T17:54:29.8695100Z ##[endgroup]
+2026-08-18T17:54:29.8697110Z ##[group]Fetching submodules
+2026-08-18T17:54:29.8700090Z [command]/opt/homebrew/bin/git submodule sync --recursive
+2026-08-18T17:54:29.9856080Z [command]/opt/homebrew/bin/git -c protocol.version=2 submodule update --init --force --depth=1 --recursive
+2026-08-18T17:54:30.0533620Z Submodule 'stdlib' (https://github.com/mozart/mozart2-stdlib.git) registered for path 'stdlib'
+2026-08-18T17:54:30.0538290Z Submodule 'gtest' (https://github.com/google/googletest) registered for path 'vm/vm/test/gtest'
+2026-08-18T17:54:30.0651030Z Cloning into '/Users/runner/work/mozart2/mozart2/stdlib'...
+2026-08-18T17:54:31.7939550Z Cloning into '/Users/runner/work/mozart2/mozart2/vm/vm/test/gtest'...
+2026-08-18T17:54:32.8882500Z Submodule path 'stdlib': checked out 'f90f4953ef739ef385a952babd5e64dbd035d610'
+2026-08-18T17:54:36.6114300Z From https://github.com/google/googletest
+2026-08-18T17:54:36.6115030Z  * branch            dc043e1ca6bd509a92452ed54e817b6979869372 -> FETCH_HEAD
+2026-08-18T17:54:36.6829580Z Submodule path 'vm/vm/test/gtest': checked out 'dc043e1ca6bd509a92452ed54e817b6979869372'
+2026-08-18T17:54:36.6928290Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local gc.auto 0
+2026-08-18T17:54:36.7801240Z Entering 'stdlib'
+2026-08-18T17:54:36.7974670Z Entering 'vm/vm/test/gtest'
+2026-08-18T17:54:36.8153770Z ##[endgroup]
+2026-08-18T17:54:36.8154260Z ##[group]Persisting credentials for submodules
+2026-08-18T17:54:36.8158490Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'url\.https\:\/\/github\.com\/\.insteadOf' && git config --local --unset-all 'url.https://github.com/.insteadOf' || :"
+2026-08-18T17:54:36.8931570Z Entering 'stdlib'
+2026-08-18T17:54:36.9096130Z Entering 'vm/vm/test/gtest'
+2026-08-18T17:54:36.9766970Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local 'http.https://github.com/.extraheader' 'AUTHORIZATION: basic ***' && git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-08-18T17:54:37.0521650Z Entering 'stdlib'
+2026-08-18T17:54:37.0758250Z file:/Users/runner/work/mozart2/mozart2/.git/modules/stdlib/config	remote.origin.url
+2026-08-18T17:54:37.0853580Z Entering 'vm/vm/test/gtest'
+2026-08-18T17:54:37.1177520Z file:/Users/runner/work/mozart2/mozart2/.git/modules/gtest/config	remote.origin.url
+2026-08-18T17:54:37.1271310Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'git@github.com:'
+2026-08-18T17:54:37.2102760Z Entering 'stdlib'
+2026-08-18T17:54:37.2283110Z Entering 'vm/vm/test/gtest'
+2026-08-18T17:54:37.3395060Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --add 'url.https://github.com/.insteadOf' 'org-101578651@github.com:'
+2026-08-18T17:54:37.4599000Z Entering 'stdlib'
+2026-08-18T17:54:37.4800070Z Entering 'vm/vm/test/gtest'
+2026-08-18T17:54:37.5302920Z ##[endgroup]
+2026-08-18T17:54:37.5556070Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-08-18T17:54:37.5701090Z cc4ac72260de25c7f1bc1218e6671152d00e2b85
+2026-08-18T17:54:37.6269220Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-18T17:54:37.6275600Z ##[group]Run actions/setup-java@v4
+2026-08-18T17:54:37.6275790Z with:
+2026-08-18T17:54:37.6275970Z   distribution: temurin
+2026-08-18T17:54:37.6276180Z   java-version: 11
+2026-08-18T17:54:37.6276350Z   java-package: jdk
+2026-08-18T17:54:37.6276530Z   check-latest: false
+2026-08-18T17:54:37.6276720Z   server-id: github
+2026-08-18T17:54:37.6276910Z   server-username: GITHUB_ACTOR
+2026-08-18T17:54:37.6277100Z   server-password: GITHUB_TOKEN
+2026-08-18T17:54:37.6277290Z   overwrite-settings: true
+2026-08-18T17:54:37.6277460Z   job-status: success
+2026-08-18T17:54:37.6279710Z   token: ***
+2026-08-18T17:54:37.6280090Z ##[endgroup]
+2026-08-18T17:54:37.8043370Z ##[warning]setup-java v4 is deprecated and will no longer receive updates. Please migrate to actions/setup-java@v5.
+2026-08-18T17:54:37.8049250Z ##[group]Installed distributions
+2026-08-18T17:54:37.8067440Z Resolved Java 11.0.31+11 from tool-cache
+2026-08-18T17:54:37.8067810Z Setting Java 11.0.31+11 as the default
+2026-08-18T17:54:37.8082670Z (node:2627) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-18T17:54:37.8085030Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-18T17:54:37.8086920Z Creating toolchains.xml for JDK version 11 from temurin
+2026-08-18T17:54:37.8143710Z Writing to /Users/runner/.m2/toolchains.xml
+2026-08-18T17:54:37.8144860Z 
+2026-08-18T17:54:37.8145010Z Java configuration:
+2026-08-18T17:54:37.8145310Z   Distribution: temurin
+2026-08-18T17:54:37.8145650Z   Version: 11.0.31+11
+2026-08-18T17:54:37.8146080Z   Path: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/arm64/Contents/Home
+2026-08-18T17:54:37.8146450Z 
+2026-08-18T17:54:37.8146790Z ##[endgroup]
+2026-08-18T17:54:37.8164080Z Creating settings.xml with server-id: github
+2026-08-18T17:54:37.8164440Z Writing to /Users/runner/.m2/settings.xml
+2026-08-18T17:54:37.8283780Z ##[group]Run brew update
+2026-08-18T17:54:37.8284070Z [36;1mbrew update[0m
+2026-08-18T17:54:37.8284290Z [36;1mbrew install emacs tcl-tk@8 boost[0m
+2026-08-18T17:54:37.8342920Z shell: /bin/bash -e {0}
+2026-08-18T17:54:37.8343180Z env:
+2026-08-18T17:54:37.8343550Z   JAVA_HOME: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/arm64/Contents/Home
+2026-08-18T17:54:37.8344230Z   JAVA_HOME_11_ARM64: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/arm64/Contents/Home
+2026-08-18T17:54:37.8344650Z ##[endgroup]
+2026-08-18T17:54:39.4905690Z [34m==>[0m [1mUpdating Homebrew...[0m
+2026-08-18T17:54:59.8438120Z To restore the stashed changes to /opt/homebrew/Library/Taps/homebrew/homebrew-core, run:
+2026-08-18T17:54:59.8439110Z   cd /opt/homebrew/Library/Taps/homebrew/homebrew-core && git stash pop
+2026-08-18T17:55:01.7657150Z [34m==>[0m [1mHomebrew's analytics have entirely moved to our InfluxDB instance in the EU.[0m
+2026-08-18T17:55:01.7748430Z We gather less data than before and have destroyed all Google Analytics data:
+2026-08-18T17:55:01.7793180Z   [4mhttps://docs.brew.sh/Analytics[24m[0m
+2026-08-18T17:55:01.7794700Z Please reconsider re-enabling analytics to help our volunteer maintainers with:
+2026-08-18T17:55:01.7813210Z   brew analytics on
+2026-08-18T17:55:01.7814080Z [34m==>[0m [1mHomebrew is run entirely by unpaid volunteers. Please consider donating:[0m
+2026-08-18T17:55:01.7815130Z   [4mhttps://github.com/Homebrew/brew#-donations[24m
+2026-08-18T17:55:01.7815480Z 
+2026-08-18T17:55:02.4349380Z Updated 5 taps (hashicorp/tap, azure/bicep, aws/tap, homebrew/core and homebrew/cask).
+2026-08-18T17:55:02.4350730Z [34m==>[0m [1mNew Formulae[0m
+2026-08-18T17:55:02.4359030Z awww: Answer to your Wayland Wallpaper Woes
+2026-08-18T17:55:02.4359600Z b4n: Terminal user interface (TUI) for Kubernetes API written in Rust
+2026-08-18T17:55:02.4366610Z bluetuith: Cross-platform TUI bluetooth manager
+2026-08-18T17:55:02.4367150Z cliphist: Wayland clipboard manager with support for multimedia
+2026-08-18T17:55:02.4371520Z cuttlefish: Build compacted de Bruijn graphs from references or reads
+2026-08-18T17:55:02.4372100Z delly: Structural variant discovery by paired-end and split-read analysis
+2026-08-18T17:55:02.4372540Z dnsglobe: Global DNS propagation checker TUI
+2026-08-18T17:55:02.4373260Z evnx: Comprehensive CLI tool for managing .env files
+2026-08-18T17:55:02.4374250Z flite: Small fast and portable speech synthesis system
+2026-08-18T17:55:02.4374890Z fluxcd: Open and extensible continuous delivery solution for Kubernetes
+2026-08-18T17:55:02.4375340Z fusesoc: Package manager and build abstraction tool for HDL code
+2026-08-18T17:55:02.4375870Z git-pkgs-brief: Tool that detects and reports a project's toolchain, configuration, and more
+2026-08-18T17:55:02.4376390Z git-pkgs-forge: Go library and CLI for working with git forges
+2026-08-18T17:55:02.4377100Z git-pkgs-proxy: Lightweight caching proxy for package registries
+2026-08-18T17:55:02.4377760Z hashicorp/tap/tfpolicy
+2026-08-18T17:55:02.4378110Z honker: SQLite message queue extension
+2026-08-18T17:55:02.4378370Z httpx2: HTTP client library for Python
+2026-08-18T17:55:02.4378790Z inshellisense: IDE style command-line auto complete
+2026-08-18T17:55:02.4379210Z kata: Local-first, federated issue tracker for humans and coding agents
+2026-08-18T17:55:02.4379780Z lazy-tmux: Save all your tmux sessions and lazy restore them
+2026-08-18T17:55:02.4380210Z lazyrsync: Terminal UI for rsync, written in Rust
+2026-08-18T17:55:02.4380730Z lfk: Terminal user interface for navigating and managing Kubernetes clusters
+2026-08-18T17:55:02.4381110Z libyang: YANG data modeling language library
+2026-08-18T17:55:02.4381580Z livebook-cli: Code notebooks for Elixir developers
+2026-08-18T17:55:02.4381980Z lld@22: LLVM Project Linker
+2026-08-18T17:55:02.4382450Z llvm@22: Next-gen compiler infrastructure
+2026-08-18T17:55:02.4382730Z modal: Client library and CLI for Modal
+2026-08-18T17:55:02.4384270Z nats: Utility for NATS Server and JetStream administration
+2026-08-18T17:55:02.4384970Z network-doctor: Network troubleshooting TUI
+2026-08-18T17:55:02.4385550Z oh-my-reddit: Beautiful Reddit threads, live in your terminal
+2026-08-18T17:55:02.4386090Z open-code-review: AI-powered code review tool with deterministic pipelines and an LLM agent
+2026-08-18T17:55:02.4386730Z opencrabs: Autonomous, self-improving AI agent in a single Rust binary
+2026-08-18T17:55:02.4387380Z openkermit: Scriptable network and serial communication for UNIX and VMS
+2026-08-18T17:55:02.4387920Z openlore: Persistent architectural memory and structural cognition for AI coding agents
+2026-08-18T17:55:02.4388650Z oxvg: Fastest SVG toolchain for optimisation, minification, linting, and actions
+2026-08-18T17:55:02.4389330Z pear: Peer-to-peer application runtime
+2026-08-18T17:55:02.4389860Z podcast-dl: CLI for downloading and archiving podcasts
+2026-08-18T17:55:02.4390320Z rammap: Extensible and performant aligner and read mapper
+2026-08-18T17:55:02.4390870Z seqwish: Alignment to variation graph inducer
+2026-08-18T17:55:02.4391330Z solod: Strict subset of Go with transpiler that translates to regular C
+2026-08-18T17:55:02.4391970Z svlang: SystemVerilog compiler and language services
+2026-08-18T17:55:02.4392390Z systemd-lsp: Language server for systemd unit files
+2026-08-18T17:55:02.4392890Z treehouse: Manage worktrees without managing worktrees
+2026-08-18T17:55:02.4393290Z tuicr: Code review TUI with vim keybindings
+2026-08-18T17:55:02.4394040Z tytanic: Test runner for Typst projects
+2026-08-18T17:55:02.4394380Z usbtree: Live USB device tree in your terminal
+2026-08-18T17:55:02.4394900Z vapoursynth-vszip: VapourSynth Zig Image Process
+2026-08-18T17:55:02.4395410Z vi-sql: Terminal UI for SQL databases
+2026-08-18T17:55:02.4395770Z worm-scraper: Scrape Worm, Ward, and Glow-worm web serials into EPUB ebooks
+2026-08-18T17:55:02.4396770Z xmedcon: Medical image conversion toolkit
+2026-08-18T17:55:02.4397150Z [34m==>[0m [1mNew Casks[0m
+2026-08-18T17:55:02.4397580Z android-cli: Command-line interface for Android app development with AI agents
+2026-08-18T17:55:02.4398100Z bb: IDE for running and orchestrating coding agents
+2026-08-18T17:55:02.4398490Z bettercmdtab@beta: Replacement for the built-in Cmd+Tab app switcher
+2026-08-18T17:55:02.4398930Z canario: Terminal emulator
+2026-08-18T17:55:02.4399290Z caskhub: Native GUI for Homebrew casks
+2026-08-18T17:55:02.4399870Z cmtrace-open: Log viewer for ConfigMgr, Intune, and Windows diagnostic logs
+2026-08-18T17:55:02.4400210Z degr: Temperature and clock screensaver
+2026-08-18T17:55:02.4400690Z diversion: Cloud-native version control CLI and agent
+2026-08-18T17:55:02.4401070Z diversion-app: Desktop app for Diversion version control
+2026-08-18T17:55:02.4401580Z ds4-control: Menu bar pane for DeepSeek V4 via DwarfStar
+2026-08-18T17:55:02.4402140Z esphome-device-builder: Desktop app to create, edit and install your ESPHome device configurations
+2026-08-18T17:55:02.4402860Z font-annotationmono-nerd-font
+2026-08-18T17:55:02.4403350Z font-googlesanscode-nerd-font
+2026-08-18T17:55:02.4403750Z font-jetendard
+2026-08-18T17:55:02.4404100Z font-luciole
+2026-08-18T17:55:02.4404320Z font-nexon-bazzi
+2026-08-18T17:55:02.4404670Z font-nexon-football-gothic
+2026-08-18T17:55:02.4404920Z font-nexon-kart-gothic
+2026-08-18T17:55:02.4405230Z font-nexon-lv1-gothic
+2026-08-18T17:55:02.4405490Z font-nexon-lv2-gothic
+2026-08-18T17:55:02.4405900Z font-nexon-maplestory
+2026-08-18T17:55:02.4406160Z glean: Workplace search and AI assistant
+2026-08-18T17:55:02.4406670Z grok-bot: AI teammates that work across your apps and tools
+2026-08-18T17:55:02.4407080Z headroom: Reduce token usage for Claude Code and Codex
+2026-08-18T17:55:02.4407540Z kirocrew: Persistent AI development workspace with multi-agent support
+2026-08-18T17:55:02.4407940Z koreader: Document viewer for e-ink devices
+2026-08-18T17:55:02.4408410Z lemonade-server: Local LLM server with GPU and NPU acceleration
+2026-08-18T17:55:02.4408940Z lm-studio-bionic: AI agent for working with open models
+2026-08-18T17:55:02.4409750Z luna-display: Use your iPad as a wireless second display
+2026-08-18T17:55:02.4410280Z luna-secondary: Turn a computer or tablet into a second display
+2026-08-18T17:55:02.4410720Z meetingrecorder: Recorder for meetings capturing mic and system audio
+2026-08-18T17:55:02.4411220Z mend: Application security scanning CLI
+2026-08-18T17:55:02.4412790Z mongrel: Database workbench with terminals, containers, Kubernetes, and API client
+2026-08-18T17:55:02.4413390Z muse-code: Interactive terminal coding agent
+2026-08-18T17:55:02.4413860Z orbit: Multiple Google accounts in isolated sessions in one window
+2026-08-18T17:55:02.4417910Z owlocr: On-device OCR for screenshots, images, and PDFs
+2026-08-18T17:55:02.4418330Z petdex: Desktop pet that reflects coding agent activity
+2026-08-18T17:55:02.4418830Z phosphene: Custom video wallpapers for the desktop and lock screen
+2026-08-18T17:55:02.4419260Z redot: Multi-platform 2D and 3D game engine
+2026-08-18T17:55:02.4419970Z sentry-cli: Command-line utility to interact with Sentry
+2026-08-18T17:55:02.4420460Z sina-finance: Stock market data and financial news platform
+2026-08-18T17:55:02.4421010Z space-rabbit: Removes animations when switching between Spaces
+2026-08-18T17:55:02.4421430Z spacejump: Menu bar utility to name and switch desktop Spaces
+2026-08-18T17:55:02.4421940Z subtitle-edit: Subtitle editor
+2026-08-18T17:55:02.4423020Z switchy: Switch Magic Keyboard, Trackpad and Mouse between Macs
+2026-08-18T17:55:02.4423450Z tauritavern: SillyTavern-compatible native client
+2026-08-18T17:55:02.4423810Z textream: Teleprompter that highlights scripts in real time as you speak
+2026-08-18T17:55:02.4424470Z tickernotch: Tickers, news, weather and social counters beside the notch or in the menu bar
+2026-08-18T17:55:02.4425630Z tight-studio: Screen recorder and video editor
+2026-08-18T17:55:02.4425990Z unity-cli: Command-line interface for Unity
+2026-08-18T17:55:02.4426510Z unity-hub@beta: Management tool for Unity
+2026-08-18T17:55:02.4426990Z warp-agent-cli: Agentic development environment for command-line workflows
+2026-08-18T17:55:02.4427660Z work-louder-input: Keyboard configurator for Work Louder devices
+2026-08-18T17:55:02.4428120Z zcode: AI-assisted development environment
+2026-08-18T17:55:02.7889030Z [34m==>[0m [1mOutdated Formulae[0m
+2026-08-18T17:55:02.7889860Z aws-sam-cli
+2026-08-18T17:55:02.7890770Z azure-cli
+2026-08-18T17:55:02.7899250Z bicep
+2026-08-18T17:55:02.7899770Z ca-certificates
+2026-08-18T17:55:02.7900210Z cffi
+2026-08-18T17:55:02.7900630Z cmake
+2026-08-18T17:55:02.7901020Z cryptography
+2026-08-18T17:55:02.7901290Z fontconfig
+2026-08-18T17:55:02.7901610Z gh
+2026-08-18T17:55:02.7901940Z glib
+2026-08-18T17:55:02.7902250Z gradle
+2026-08-18T17:55:02.7902550Z harfbuzz
+2026-08-18T17:55:02.7902790Z libnghttp2
+2026-08-18T17:55:02.7903120Z libpq
+2026-08-18T17:55:02.7903410Z libpsl
+2026-08-18T17:55:02.7903790Z node@24
+2026-08-18T17:55:02.7904040Z p11-kit
+2026-08-18T17:55:02.7904380Z perl
+2026-08-18T17:55:02.7904680Z pipx
+2026-08-18T17:55:02.7904980Z pkgconf
+2026-08-18T17:55:02.7905260Z python@3.14
+2026-08-18T17:55:02.7905610Z rustup
+2026-08-18T17:55:02.7905890Z selenium-server
+2026-08-18T17:55:02.7906210Z simdjson
+2026-08-18T17:55:02.7906670Z [34m==>[0m [1mOutdated Casks[0m
+2026-08-18T17:55:02.7907080Z firefox
+2026-08-18T17:55:02.7907370Z google-chrome
+2026-08-18T17:55:02.7907770Z microsoft-edge
+2026-08-18T17:55:02.7908020Z 
+2026-08-18T17:55:02.7908320Z You have [1m24[0m outdated formulae and [1m3[0m outdated casks installed.
+2026-08-18T17:55:02.7909060Z You can upgrade them with [1mbrew upgrade[0m
+2026-08-18T17:55:02.7909490Z or list them with [1mbrew outdated[0m.
+2026-08-18T17:55:03.9624680Z [33mWarning:[0m tcl-tk@8 8.6.18 is already installed and up-to-date.
+2026-08-18T17:55:03.9625530Z To reinstall 8.6.18, run:
+2026-08-18T17:55:03.9626010Z   brew reinstall tcl-tk@8
+2026-08-18T17:55:04.0669070Z ##[warning]The following taps are not trusted:
+  aws/tap
+
+Homebrew is currently ignoring formulae, casks and commands from these taps because tap trust is required.
+
+Untap them with:
+  brew untap aws/tap
+Trust specific formulae, casks and commands with:
+  brew trust --formula <user>/<tap>/<formula>
+  brew trust --cask <user>/<tap>/<cask>
+  brew trust --command <user>/<tap>/<command>
+Whole-tap trust is broader and includes all current and future formulae,
+casks and commands from the listed taps. Trust whole taps with:
+  brew trust aws/tap
+To disable trust checks:
+  export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
+This is not recommended and will be removed in a later release.
+For more information, see:
+  https://docs.brew.sh/Tap-Trust
+2026-08-18T17:55:04.3913130Z [32m==>[0m [1mDownloading bottle manifests[0m
+2026-08-18T17:55:04.4755610Z ✔︎ Bottle Manifest emacs (30.2_2)
+2026-08-18T17:55:04.5615750Z ✔︎ Bottle Manifest boost (1.92.0)
+2026-08-18T17:55:04.5616930Z [34m==>[0m [1mWould install 2 formulae:[0m
+2026-08-18T17:55:04.5617640Z emacs boost
+2026-08-18T17:55:04.6438780Z [34m==>[0m [1mWould install 1 dependency for emacs:[0m
+2026-08-18T17:55:04.6439510Z tree-sitter@0.25
+2026-08-18T17:55:04.6440090Z [34m==>[0m [1mWould upgrade 2 dependencies for emacs:[0m
+2026-08-18T17:55:04.6440550Z ca-certificates
+2026-08-18T17:55:04.6441020Z p11-kit
+2026-08-18T17:55:04.6959310Z [32m==>[0m [1mFetching downloads for: [32memacs[39m and [32mboost[39m[0m
+2026-08-18T17:55:05.1669070Z ✔︎ Bottle Manifest ca-certificates (2026-08-13)
+2026-08-18T17:55:05.1810760Z ✔︎ Bottle ca-certificates (2026-08-13)
+2026-08-18T17:55:05.1912160Z ✔︎ Bottle Manifest p11-kit (0.26.5)
+2026-08-18T17:55:05.2153890Z ✔︎ Bottle p11-kit (0.26.5)
+2026-08-18T17:55:05.6448950Z ✔︎ Bottle Manifest tree-sitter@0.25 (0.25.10)
+2026-08-18T17:55:05.6920720Z ✔︎ Bottle tree-sitter@0.25 (0.25.10)
+2026-08-18T17:55:06.9681520Z ✔︎ Bottle emacs (30.2_2)
+2026-08-18T17:55:09.1112590Z ✔︎ Bottle boost (1.92.0)
+2026-08-18T17:55:09.1413900Z [32m==>[0m [1mInstalling emacs dependency: [32mtree-sitter@0.25[39m[0m
+2026-08-18T17:55:09.1428840Z [34m==>[0m [1mPouring tree-sitter@0.25--0.25.10.arm64_tahoe.bottle.tar.gz[0m
+2026-08-18T17:55:09.2371710Z 🍺  /opt/homebrew/Cellar/tree-sitter@0.25/0.25.10: 11 files, 490.5KB
+2026-08-18T17:55:09.2373740Z [32m==>[0m [1mInstalling [32memacs[39m[0m
+2026-08-18T17:55:09.2375180Z [34m==>[0m [1mPouring emacs--30.2_2.arm64_tahoe.bottle.1.tar.gz[0m
+2026-08-18T17:55:10.3974050Z [34m==>[0m [1mCaveats[0m
+2026-08-18T17:55:10.3974500Z To start emacs now and restart at login:
+2026-08-18T17:55:10.3974820Z   brew services start emacs
+2026-08-18T17:55:10.3975220Z Or, if you don't want/need a background service you can just run:
+2026-08-18T17:55:10.3975580Z   /opt/homebrew/opt/emacs/bin/emacs --fg-daemon
+2026-08-18T17:55:10.3975940Z [34m==>[0m [1mSummary[0m
+2026-08-18T17:55:10.4440330Z 🍺  /opt/homebrew/Cellar/emacs/30.2_2: 4,379 files, 130MB
+2026-08-18T17:55:10.4528060Z [34m==>[0m [1mPouring boost--1.92.0.arm64_tahoe.bottle.tar.gz[0m
+2026-08-18T17:55:16.7099380Z 🍺  /opt/homebrew/Cellar/boost/1.92.0: 16,678 files, 358.5MB
+2026-08-18T17:55:16.7102720Z [32m==>[0m [1mCaveats[0m
+2026-08-18T17:55:16.7103080Z [34m==>[0m [1memacs[0m
+2026-08-18T17:55:16.7103370Z To start emacs now and restart at login:
+2026-08-18T17:55:16.7120220Z   brew services start emacs
+2026-08-18T17:55:16.7120670Z Or, if you don't want/need a background service you can just run:
+2026-08-18T17:55:16.7121040Z   /opt/homebrew/opt/emacs/bin/emacs --fg-daemon
+2026-08-18T17:55:16.7252150Z ##[group]Run cmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"  "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-stack_size,0x20000000"  -DTCL_LIBRARY="/opt/homebrew/opt/tcl-tk@8/lib/libtcl8.6.dylib"  -DTK_LIBRARY="/opt/homebrew/opt/tcl-tk@8/lib/libtk8.6.dylib"  -DTCL_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include"  -DTK_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include"
+2026-08-18T17:55:16.7254050Z [36;1mcmake -S . -B build -DCMAKE_BUILD_TYPE=Release "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"  "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-stack_size,0x20000000"  -DTCL_LIBRARY="/opt/homebrew/opt/tcl-tk@8/lib/libtcl8.6.dylib"  -DTK_LIBRARY="/opt/homebrew/opt/tcl-tk@8/lib/libtk8.6.dylib"  -DTCL_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include"  -DTK_INCLUDE_PATH="/opt/homebrew/opt/tcl-tk@8/include"[0m
+2026-08-18T17:55:16.7366190Z shell: /bin/bash -e {0}
+2026-08-18T17:55:16.7366350Z env:
+2026-08-18T17:55:16.7366690Z   JAVA_HOME: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/arm64/Contents/Home
+2026-08-18T17:55:16.7367220Z   JAVA_HOME_11_ARM64: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/arm64/Contents/Home
+2026-08-18T17:55:16.7367570Z ##[endgroup]
+2026-08-18T17:55:16.8199210Z -- Build type: Release
+2026-08-18T17:55:18.6704730Z -- The CXX compiler identification is AppleClang 21.0.0.21000101
+2026-08-18T17:55:19.2560640Z -- Detecting CXX compiler ABI info
+2026-08-18T17:55:19.8591960Z -- Detecting CXX compiler ABI info - done
+2026-08-18T17:55:19.8732880Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-08-18T17:55:19.8739900Z -- Detecting CXX compile features
+2026-08-18T17:55:19.8747770Z -- Detecting CXX compile features - done
+2026-08-18T17:55:19.8872880Z -- Found Git: /opt/homebrew/bin/git (found version "2.55.0")
+2026-08-18T17:55:19.9620500Z -- The C compiler identification is AppleClang 21.0.0.21000101
+2026-08-18T17:55:19.9682790Z -- Detecting C compiler ABI info
+2026-08-18T17:55:20.0973030Z -- Detecting C compiler ABI info - done
+2026-08-18T17:55:20.1111570Z -- Check for working C compiler: /usr/bin/cc - skipped
+2026-08-18T17:55:20.1113930Z -- Detecting C compile features
+2026-08-18T17:55:20.1117030Z -- Detecting C compile features - done
+2026-08-18T17:55:20.1992810Z CMake Warning at cmake_local/MozartProperties.cmake:39 (message):
+2026-08-18T17:55:20.1993280Z   'git describe --dirty' did not return something sensible
+2026-08-18T17:55:20.1993560Z Call Stack (most recent call first):
+2026-08-18T17:55:20.1993780Z   CMakeLists.txt:23 (include)
+2026-08-18T17:55:20.1997520Z 
+2026-08-18T17:55:20.1997520Z 
+2026-08-18T17:55:20.2079130Z -- Mozart unknown (Tue, 18 Aug 2026 19:54:15 +0200)
+2026-08-18T17:55:20.2079620Z -- Building inside the source tree: 'dist' target disabled
+2026-08-18T17:55:20.2087390Z CMake Warning (deprecated) at vm/CMakeLists.txt:1 (cmake_minimum_required):
+2026-08-18T17:55:20.2087840Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-08-18T17:55:20.2088150Z   CMake.
+2026-08-18T17:55:20.2088240Z 
+2026-08-18T17:55:20.2088410Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-08-18T17:55:20.2088820Z   to tell CMake that the project requires at least <min> but has been updated
+2026-08-18T17:55:20.2089190Z   to work with policies introduced by <max> or earlier.
+2026-08-18T17:55:20.2089560Z This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+2026-08-18T17:55:20.2089860Z to suppress it.
+2026-08-18T17:55:20.2089950Z 
+2026-08-18T17:55:20.2203340Z CMake Warning (deprecated) at vm/vm/test/gtest/CMakeLists.txt:1 (cmake_minimum_required):
+2026-08-18T17:55:20.2203820Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-08-18T17:55:20.2204120Z   CMake.
+2026-08-18T17:55:20.2204210Z 
+2026-08-18T17:55:20.2204370Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-08-18T17:55:20.2204770Z   to tell CMake that the project requires at least <min> but has been updated
+2026-08-18T17:55:20.2205560Z   to work with policies introduced by <max> or earlier.
+2026-08-18T17:55:20.2205950Z This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+2026-08-18T17:55:20.2206330Z to suppress it.
+2026-08-18T17:55:20.2206430Z 
+2026-08-18T17:55:20.2245140Z CMake Warning (deprecated) at vm/vm/test/gtest/googletest/CMakeLists.txt:53 (cmake_minimum_required):
+2026-08-18T17:55:20.2245780Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-08-18T17:55:20.2246080Z   CMake.
+2026-08-18T17:55:20.2246180Z 
+2026-08-18T17:55:20.2246350Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-08-18T17:55:20.2246750Z   to tell CMake that the project requires at least <min> but has been updated
+2026-08-18T17:55:20.2247120Z   to work with policies introduced by <max> or earlier.
+2026-08-18T17:55:20.2247520Z This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+2026-08-18T17:55:20.2248020Z to suppress it.
+2026-08-18T17:55:20.2248130Z 
+2026-08-18T17:55:20.2250820Z CMake Warning (policy) at vm/vm/test/gtest/googletest/cmake/internal_utils.cmake:225 (find_package):
+2026-08-18T17:55:20.2251520Z   Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+2026-08-18T17:55:20.2252000Z   are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+2026-08-18T17:55:20.2252440Z   the cmake_policy command to set the policy and suppress this warning.
+2026-08-18T17:55:20.2253230Z Call Stack (most recent call first):
+2026-08-18T17:55:20.2253590Z   vm/vm/test/gtest/googletest/CMakeLists.txt:69 (include)
+2026-08-18T17:55:20.2254150Z This warning is for project developers.  Use -Wno-author or -Wno-policy to
+2026-08-18T17:55:20.2254580Z suppress it.
+2026-08-18T17:55:20.2254700Z 
+2026-08-18T17:55:20.3676990Z -- Found PythonInterp: /Library/Frameworks/Python.framework/Versions/Current/bin/python (found version "3.14.6")
+2026-08-18T17:55:20.3695440Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2026-08-18T17:55:20.5606770Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2026-08-18T17:55:20.5613190Z -- Found Threads: TRUE
+2026-08-18T17:55:20.5636610Z CMake Warning (policy) at vm/boostenv/main/CMakeLists.txt:3 (find_package):
+2026-08-18T17:55:20.5637120Z   Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+2026-08-18T17:55:20.5637530Z   --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+2026-08-18T17:55:20.5637870Z   set the policy and suppress this warning.
+2026-08-18T17:55:20.5638260Z This warning is for project developers.  Use -Wno-author or -Wno-policy to
+2026-08-18T17:55:20.5638920Z suppress it.
+2026-08-18T17:55:20.5639020Z 
+2026-08-18T17:55:20.6431780Z -- Found Boost: /opt/homebrew/lib/cmake/Boost-1.92.0/BoostConfig.cmake (found version "1.92.0") found components: random thread filesystem chrono
+2026-08-18T17:55:21.5288100Z -- Found GMP: /opt/homebrew/include/gmp.h and /opt/homebrew/lib/libgmp.a
+2026-08-18T17:55:21.5298950Z CMake Warning (deprecated) at bootcompiler/CMakeLists.txt:1 (cmake_minimum_required):
+2026-08-18T17:55:21.5299520Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-08-18T17:55:21.5299820Z   CMake.
+2026-08-18T17:55:21.5299900Z 
+2026-08-18T17:55:21.5300070Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-08-18T17:55:21.5300470Z   to tell CMake that the project requires at least <min> but has been updated
+2026-08-18T17:55:21.5300810Z   to work with policies introduced by <max> or earlier.
+2026-08-18T17:55:21.5301160Z This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+2026-08-18T17:55:21.5301470Z to suppress it.
+2026-08-18T17:55:21.5301570Z 
+2026-08-18T17:55:21.7393930Z -- Found Java: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/arm64/Contents/Home/bin/java (found version "11.0.31") found components: Runtime
+2026-08-18T17:55:21.7421010Z CMake Warning (policy) at boosthost/emulator/CMakeLists.txt:22 (find_package):
+2026-08-18T17:55:21.7422020Z   Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+2026-08-18T17:55:21.7422550Z   --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+2026-08-18T17:55:21.7423000Z   set the policy and suppress this warning.
+2026-08-18T17:55:21.7423380Z This warning is for project developers.  Use -Wno-author or -Wno-policy to
+2026-08-18T17:55:21.7423710Z suppress it.
+2026-08-18T17:55:21.7423800Z 
+2026-08-18T17:55:21.7608620Z -- Found Boost: /opt/homebrew/lib/cmake/Boost-1.92.0/BoostConfig.cmake (found version "1.92.0") found components: program_options random thread filesystem chrono
+2026-08-18T17:55:21.7617240Z -- Found GMP: /opt/homebrew/include/gmp.h and /opt/homebrew/lib/libgmp.a
+2026-08-18T17:55:21.8444370Z -- Using emacs from: /opt/homebrew/bin/emacs
+2026-08-18T17:55:21.9687280Z -- Found X11: /opt/homebrew/include
+2026-08-18T17:55:21.9692460Z -- Looking for XOpenDisplay in /opt/homebrew/lib/libX11.dylib;/opt/homebrew/lib/libXext.dylib
+2026-08-18T17:55:22.1270110Z -- Looking for XOpenDisplay in /opt/homebrew/lib/libX11.dylib;/opt/homebrew/lib/libXext.dylib - found
+2026-08-18T17:55:22.1270620Z -- Looking for gethostbyname
+2026-08-18T17:55:22.2636020Z -- Looking for gethostbyname - found
+2026-08-18T17:55:22.2636290Z -- Looking for connect
+2026-08-18T17:55:22.4084690Z -- Looking for connect - found
+2026-08-18T17:55:22.4084930Z -- Looking for remove
+2026-08-18T17:55:22.5345980Z -- Looking for remove - found
+2026-08-18T17:55:22.5346220Z -- Looking for shmat
+2026-08-18T17:55:22.6620020Z -- Looking for shmat - found
+2026-08-18T17:55:22.7179190Z -- Found Tclsh: /opt/homebrew/opt/tcl-tk@8/bin/tclsh (found version "8.6")
+2026-08-18T17:55:22.7214210Z -- Found TCL: /opt/homebrew/opt/tcl-tk@8/lib/libtcl8.6.dylib
+2026-08-18T17:55:22.7215390Z -- Found TCLTK: /opt/homebrew/opt/tcl-tk@8/lib/libtcl8.6.dylib
+2026-08-18T17:55:22.7216460Z -- Found TK: /opt/homebrew/opt/tcl-tk@8/lib/libtk8.6.dylib
+2026-08-18T17:55:22.7225580Z CMake Warning (deprecated) at stdlib/CMakeLists.txt:1 (cmake_minimum_required):
+2026-08-18T17:55:22.7226160Z   Compatibility with CMake < 3.10 will be removed from a future version of
+2026-08-18T17:55:22.7226550Z   CMake.
+2026-08-18T17:55:22.7226700Z 
+2026-08-18T17:55:22.7226910Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+2026-08-18T17:55:22.7227360Z   to tell CMake that the project requires at least <min> but has been updated
+2026-08-18T17:55:22.7227790Z   to work with policies introduced by <max> or earlier.
+2026-08-18T17:55:22.7228210Z This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+2026-08-18T17:55:22.7229010Z to suppress it.
+2026-08-18T17:55:22.7229140Z 
+2026-08-18T17:55:22.7628580Z -- Configuring done (5.9s)
+2026-08-18T17:55:23.7339150Z -- Generating done (1.0s)
+2026-08-18T17:55:23.7349390Z -- Build files have been written to: /Users/runner/work/mozart2/mozart2/build
+2026-08-18T17:55:23.7423980Z ##[group]Run cmake --build build --config Release --parallel 4
+2026-08-18T17:55:23.7435490Z [36;1mcmake --build build --config Release --parallel 4[0m
+2026-08-18T17:55:23.7469090Z shell: /bin/bash -e {0}
+2026-08-18T17:55:23.7469280Z env:
+2026-08-18T17:55:23.7469590Z   JAVA_HOME: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/arm64/Contents/Home
+2026-08-18T17:55:23.7470140Z   JAVA_HOME_11_ARM64: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/arm64/Contents/Home
+2026-08-18T17:55:23.7470530Z ##[endgroup]
+2026-08-18T17:55:23.8278050Z [  0%] Building the bootcompiler
+2026-08-18T17:55:23.8300350Z [  0%] Built target genboostsources
+2026-08-18T17:55:23.8303760Z [  0%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/emulate.cc.o
+2026-08-18T17:55:23.8320160Z [  0%] Built target gensources
+2026-08-18T17:55:23.8645060Z [  0%] Building CXX object wish/CMakeFiles/ozwish.dir/unixmain.cc.o
+2026-08-18T17:55:23.8645480Z [  0%] Generating: oz.elc
+2026-08-18T17:55:24.0523160Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:59:8: warning: 'Tk_Window' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.0592440Z    59 | static Tk_Window mainWindow;    /* The main window for the application.  If
+2026-08-18T17:55:24.0698490Z       |        ^
+2026-08-18T17:55:24.0805610Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:120:28: note: 'Tk_Window' has been explicitly marked deprecated here
+2026-08-18T17:55:24.0907570Z   120 | typedef struct Tk_Window_ *Tk_Window;
+2026-08-18T17:55:24.0940050Z       |                            ^
+2026-08-18T17:55:24.0941070Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:91:6: warning: 'key' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.0941900Z    91 |     {fileOpt, TK_ARGV_STRING, (char *) NULL, (char *) &fileName, fileHelp},
+2026-08-18T17:55:24.0942310Z       |      ^
+2026-08-18T17:55:24.0942980Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:411:11: note: 'key' has been explicitly marked deprecated here
+2026-08-18T17:55:24.0943860Z   411 |     char *key;                  /* The key string that flags the option in the
+2026-08-18T17:55:24.0944320Z       |           ^
+2026-08-18T17:55:24.0944970Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:91:15: warning: 'type' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.0945830Z    91 |     {fileOpt, TK_ARGV_STRING, (char *) NULL, (char *) &fileName, fileHelp},
+2026-08-18T17:55:24.0955380Z       |               ^
+2026-08-18T17:55:24.0956110Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:429:26: note: expanded from macro 'TK_ARGV_STRING'
+2026-08-18T17:55:24.1065940Z   429 | #define TK_ARGV_STRING                  17
+2026-08-18T17:55:24.1174330Z       |                                         ^
+2026-08-18T17:55:24.1198410Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:413:9: note: 'type' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1212110Z   413 |     int type;                   /* Indicates option type; see below. */
+2026-08-18T17:55:24.1213980Z       |         ^
+2026-08-18T17:55:24.1214850Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:91:31: warning: 'src' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1244010Z    91 |     {fileOpt, TK_ARGV_STRING, (char *) NULL, (char *) &fileName, fileHelp},
+2026-08-18T17:55:24.1351030Z       |                               ^
+2026-08-18T17:55:24.1376800Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:414:11: note: 'src' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1377690Z   414 |     char *src;                  /* Value to be used in setting dst; usage
+2026-08-18T17:55:24.1378080Z       |           ^
+2026-08-18T17:55:24.1378720Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:91:46: warning: 'dst' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1389640Z    91 |     {fileOpt, TK_ARGV_STRING, (char *) NULL, (char *) &fileName, fileHelp},
+2026-08-18T17:55:24.1390110Z       |                                              ^
+2026-08-18T17:55:24.1390840Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:416:11: note: 'dst' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1391800Z   416 |     char *dst;                  /* Address of value to be modified; usage
+2026-08-18T17:55:24.1395930Z       |           ^
+2026-08-18T17:55:24.1396550Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:91:66: warning: 'help' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1397320Z    91 |     {fileOpt, TK_ARGV_STRING, (char *) NULL, (char *) &fileName, fileHelp},
+2026-08-18T17:55:24.1398010Z       |                                                                  ^
+2026-08-18T17:55:24.1398740Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:418:11: note: 'help' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1399500Z   418 |     char *help;                 /* Documentation message describing this
+2026-08-18T17:55:24.1399830Z       |           ^
+2026-08-18T17:55:24.1400370Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:92:6: warning: 'key' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1401040Z    92 |     {geometryOpt, TK_ARGV_STRING, (char *) NULL, (char *) &geometry, geometryHelp},
+2026-08-18T17:55:24.1401430Z       |      ^
+2026-08-18T17:55:24.1401980Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:411:11: note: 'key' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1402640Z   411 |     char *key;                  /* The key string that flags the option in the
+2026-08-18T17:55:24.1402960Z       |           ^
+2026-08-18T17:55:24.1403500Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:92:19: warning: 'type' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1404170Z    92 |     {geometryOpt, TK_ARGV_STRING, (char *) NULL, (char *) &geometry, geometryHelp},
+2026-08-18T17:55:24.1404520Z       |                   ^
+2026-08-18T17:55:24.1405050Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:429:26: note: expanded from macro 'TK_ARGV_STRING'
+2026-08-18T17:55:24.1405640Z   429 | #define TK_ARGV_STRING                  17
+2026-08-18T17:55:24.1405870Z       |                                         ^
+2026-08-18T17:55:24.1406470Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:413:9: note: 'type' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1407110Z   413 |     int type;                   /* Indicates option type; see below. */
+2026-08-18T17:55:24.1407410Z       |         ^
+2026-08-18T17:55:24.1407900Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:92:35: warning: 'src' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1408920Z    92 |     {geometryOpt, TK_ARGV_STRING, (char *) NULL, (char *) &geometry, geometryHelp},
+2026-08-18T17:55:24.1409260Z       |                                   ^
+2026-08-18T17:55:24.1409980Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:414:11: note: 'src' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1410650Z   414 |     char *src;                  /* Value to be used in setting dst; usage
+2026-08-18T17:55:24.1410910Z       |           ^
+2026-08-18T17:55:24.1411410Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:92:50: warning: 'dst' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1412040Z    92 |     {geometryOpt, TK_ARGV_STRING, (char *) NULL, (char *) &geometry, geometryHelp},
+2026-08-18T17:55:24.1412370Z       |                                                  ^
+2026-08-18T17:55:24.1412960Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:416:11: note: 'dst' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1413670Z   416 |     char *dst;                  /* Address of value to be modified; usage
+2026-08-18T17:55:24.1413940Z       |           ^
+2026-08-18T17:55:24.1414430Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:92:70: warning: 'help' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1415070Z    92 |     {geometryOpt, TK_ARGV_STRING, (char *) NULL, (char *) &geometry, geometryHelp},
+2026-08-18T17:55:24.1415430Z       |                                                                      ^
+2026-08-18T17:55:24.1416030Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:418:11: note: 'help' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1416660Z   418 |     char *help;                 /* Documentation message describing this
+2026-08-18T17:55:24.1416930Z       |           ^
+2026-08-18T17:55:24.1417430Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:93:6: warning: 'key' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1418070Z    93 |     {displayOpt, TK_ARGV_STRING, (char *) NULL, (char *) &display, displayHelp},
+2026-08-18T17:55:24.1418370Z       |      ^
+2026-08-18T17:55:24.1418890Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:411:11: note: 'key' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1419610Z   411 |     char *key;                  /* The key string that flags the option in the
+2026-08-18T17:55:24.1419900Z       |           ^
+2026-08-18T17:55:24.1420380Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:93:18: warning: 'type' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1421020Z    93 |     {displayOpt, TK_ARGV_STRING, (char *) NULL, (char *) &display, displayHelp},
+2026-08-18T17:55:24.1421320Z       |                  ^
+2026-08-18T17:55:24.1421830Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:429:26: note: expanded from macro 'TK_ARGV_STRING'
+2026-08-18T17:55:24.1422380Z   429 | #define TK_ARGV_STRING                  17
+2026-08-18T17:55:24.1422610Z       |                                         ^
+2026-08-18T17:55:24.1423190Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:413:9: note: 'type' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1423810Z   413 |     int type;                   /* Indicates option type; see below. */
+2026-08-18T17:55:24.1424070Z       |         ^
+2026-08-18T17:55:24.1424550Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:93:34: warning: 'src' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1425360Z    93 |     {displayOpt, TK_ARGV_STRING, (char *) NULL, (char *) &display, displayHelp},
+2026-08-18T17:55:24.1425670Z       |                                  ^
+2026-08-18T17:55:24.1426330Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:414:11: note: 'src' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1426960Z   414 |     char *src;                  /* Value to be used in setting dst; usage
+2026-08-18T17:55:24.1427220Z       |           ^
+2026-08-18T17:55:24.1427700Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:93:49: warning: 'dst' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1428340Z    93 |     {displayOpt, TK_ARGV_STRING, (char *) NULL, (char *) &display, displayHelp},
+2026-08-18T17:55:24.1428670Z       |                                                 ^
+2026-08-18T17:55:24.1429240Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:416:11: note: 'dst' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1429870Z   416 |     char *dst;                  /* Address of value to be modified; usage
+2026-08-18T17:55:24.1430130Z       |           ^
+2026-08-18T17:55:24.1430620Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:93:68: warning: 'help' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1431240Z    93 |     {displayOpt, TK_ARGV_STRING, (char *) NULL, (char *) &display, displayHelp},
+2026-08-18T17:55:24.1431580Z       |                                                                    ^
+2026-08-18T17:55:24.1432180Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:418:11: note: 'help' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1432870Z   418 |     char *help;                 /* Documentation message describing this
+2026-08-18T17:55:24.1433130Z       |           ^
+2026-08-18T17:55:24.1433700Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:94:6: warning: 'key' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1434320Z    94 |     {nameOpt, TK_ARGV_STRING, (char *) NULL, (char *) &name, nameHelp},
+2026-08-18T17:55:24.1434610Z       |      ^
+2026-08-18T17:55:24.1435130Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:411:11: note: 'key' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1435790Z   411 |     char *key;                  /* The key string that flags the option in the
+2026-08-18T17:55:24.1436070Z       |           ^
+2026-08-18T17:55:24.1436570Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:94:15: warning: 'type' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1437210Z    94 |     {nameOpt, TK_ARGV_STRING, (char *) NULL, (char *) &name, nameHelp},
+2026-08-18T17:55:24.1437480Z       |               ^
+2026-08-18T17:55:24.1438010Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:429:26: note: expanded from macro 'TK_ARGV_STRING'
+2026-08-18T17:55:24.1438590Z   429 | #define TK_ARGV_STRING                  17
+2026-08-18T17:55:24.1438840Z       |                                         ^
+2026-08-18T17:55:24.1439420Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:413:9: note: 'type' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1440070Z   413 |     int type;                   /* Indicates option type; see below. */
+2026-08-18T17:55:24.1440330Z       |         ^
+2026-08-18T17:55:24.1440830Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:94:31: warning: 'src' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1441590Z    94 |     {nameOpt, TK_ARGV_STRING, (char *) NULL, (char *) &name, nameHelp},
+2026-08-18T17:55:24.1441890Z       |                               ^
+2026-08-18T17:55:24.1442540Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:414:11: note: 'src' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1443200Z   414 |     char *src;                  /* Value to be used in setting dst; usage
+2026-08-18T17:55:24.1443460Z       |           ^
+2026-08-18T17:55:24.1444020Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:94:46: warning: 'dst' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1444630Z    94 |     {nameOpt, TK_ARGV_STRING, (char *) NULL, (char *) &name, nameHelp},
+2026-08-18T17:55:24.1444950Z       |                                              ^
+2026-08-18T17:55:24.1445580Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:416:11: note: 'dst' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1446230Z   416 |     char *dst;                  /* Address of value to be modified; usage
+2026-08-18T17:55:24.1446500Z       |           ^
+2026-08-18T17:55:24.1447000Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:94:62: warning: 'help' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1447660Z    94 |     {nameOpt, TK_ARGV_STRING, (char *) NULL, (char *) &name, nameHelp},
+2026-08-18T17:55:24.1448100Z       |                                                              ^
+2026-08-18T17:55:24.1448790Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:418:11: note: 'help' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1449470Z   418 |     char *help;                 /* Documentation message describing this
+2026-08-18T17:55:24.1449750Z       |           ^
+2026-08-18T17:55:24.1450250Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:95:6: warning: 'key' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1450880Z    95 |     {syncOpt, TK_ARGV_CONSTANT, (char *) 1, (char *) &synchronize, syncHelp},
+2026-08-18T17:55:24.1451170Z       |      ^
+2026-08-18T17:55:24.1451700Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:411:11: note: 'key' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1452360Z   411 |     char *key;                  /* The key string that flags the option in the
+2026-08-18T17:55:24.1452640Z       |           ^
+2026-08-18T17:55:24.1453190Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:95:15: warning: 'type' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1454010Z    95 |     {syncOpt, TK_ARGV_CONSTANT, (char *) 1, (char *) &synchronize, syncHelp},
+2026-08-18T17:55:24.1454340Z       |               ^
+2026-08-18T17:55:24.1454910Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:427:27: note: expanded from macro 'TK_ARGV_CONSTANT'
+2026-08-18T17:55:24.1455540Z   427 | #define TK_ARGV_CONSTANT                15
+2026-08-18T17:55:24.1455780Z       |                                         ^
+2026-08-18T17:55:24.1456370Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:413:9: note: 'type' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1457000Z   413 |     int type;                   /* Indicates option type; see below. */
+2026-08-18T17:55:24.1457270Z       |         ^
+2026-08-18T17:55:24.1457760Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:95:33: warning: 'src' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1458530Z    95 |     {syncOpt, TK_ARGV_CONSTANT, (char *) 1, (char *) &synchronize, syncHelp},
+2026-08-18T17:55:24.1458950Z       |                                 ^
+2026-08-18T17:55:24.1459610Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:414:11: note: 'src' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1460500Z   414 |     char *src;                  /* Value to be used in setting dst; usage
+2026-08-18T17:55:24.1460860Z       |           ^
+2026-08-18T17:55:24.1461490Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:95:45: warning: 'dst' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1462270Z    95 |     {syncOpt, TK_ARGV_CONSTANT, (char *) 1, (char *) &synchronize, syncHelp},
+2026-08-18T17:55:24.1462660Z       |                                             ^
+2026-08-18T17:55:24.1463270Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:416:11: note: 'dst' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1463950Z   416 |     char *dst;                  /* Address of value to be modified; usage
+2026-08-18T17:55:24.1464230Z       |           ^
+2026-08-18T17:55:24.1464730Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:95:68: warning: 'help' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1465440Z    95 |     {syncOpt, TK_ARGV_CONSTANT, (char *) 1, (char *) &synchronize, syncHelp},
+2026-08-18T17:55:24.1465800Z       |                                                                    ^
+2026-08-18T17:55:24.1466420Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:418:11: note: 'help' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1467110Z   418 |     char *help;                 /* Documentation message describing this
+2026-08-18T17:55:24.1467410Z       |           ^
+2026-08-18T17:55:24.1467920Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:96:6: warning: 'key' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1468550Z    96 |     {(char *) NULL, TK_ARGV_END, (char *) NULL, (char *) NULL, (char *) NULL}
+2026-08-18T17:55:24.1468840Z       |      ^
+2026-08-18T17:55:24.1469360Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:411:11: note: 'key' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1470020Z   411 |     char *key;                  /* The key string that flags the option in the
+2026-08-18T17:55:24.1470320Z       |           ^
+2026-08-18T17:55:24.1470850Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:96:21: warning: 'type' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1471470Z    96 |     {(char *) NULL, TK_ARGV_END, (char *) NULL, (char *) NULL, (char *) NULL}
+2026-08-18T17:55:24.1471770Z       |                     ^
+2026-08-18T17:55:24.1472300Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:439:23: note: expanded from macro 'TK_ARGV_END'
+2026-08-18T17:55:24.1472900Z   439 | #define TK_ARGV_END                     27
+2026-08-18T17:55:24.1473170Z       |                                         ^
+2026-08-18T17:55:24.1473780Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:413:9: note: 'type' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1474440Z   413 |     int type;                   /* Indicates option type; see below. */
+2026-08-18T17:55:24.1474700Z       |         ^
+2026-08-18T17:55:24.1475370Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:96:34: warning: 'src' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1476050Z    96 |     {(char *) NULL, TK_ARGV_END, (char *) NULL, (char *) NULL, (char *) NULL}
+2026-08-18T17:55:24.1476500Z       |                                  ^
+2026-08-18T17:55:24.1477080Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:414:11: note: 'src' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1477740Z   414 |     char *src;                  /* Value to be used in setting dst; usage
+2026-08-18T17:55:24.1478000Z       |           ^
+2026-08-18T17:55:24.1478500Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:96:49: warning: 'dst' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1479140Z    96 |     {(char *) NULL, TK_ARGV_END, (char *) NULL, (char *) NULL, (char *) NULL}
+2026-08-18T17:55:24.1479460Z       |                                                 ^
+2026-08-18T17:55:24.1480050Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:416:11: note: 'dst' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1480700Z   416 |     char *dst;                  /* Address of value to be modified; usage
+2026-08-18T17:55:24.1480970Z       |           ^
+2026-08-18T17:55:24.1481480Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:96:64: warning: 'help' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1482100Z    96 |     {(char *) NULL, TK_ARGV_END, (char *) NULL, (char *) NULL, (char *) NULL}
+2026-08-18T17:55:24.1482450Z       |                                                                ^
+2026-08-18T17:55:24.1483070Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:418:11: note: 'help' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1483740Z   418 |     char *help;                 /* Documentation message describing this
+2026-08-18T17:55:24.1484010Z       |           ^
+2026-08-18T17:55:24.1484520Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:90:8: warning: 'Tk_ArgvInfo' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1485160Z    90 | static Tk_ArgvInfo argTable[] = {
+2026-08-18T17:55:24.1485370Z       |        ^
+2026-08-18T17:55:24.1485900Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:420:3: note: 'Tk_ArgvInfo' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1494750Z   420 | } Tk_ArgvInfo;
+2026-08-18T17:55:24.1494930Z       |   ^
+2026-08-18T17:55:24.1495470Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:142:31: warning: 'Tk_Window' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1496240Z   142 |     if (Tk_ParseArgv(interp, (Tk_Window) NULL, &argc, CONST_CAST(CONST_FOR_ARGV char**,argv), argTable, 0)
+2026-08-18T17:55:24.1496610Z       |                               ^
+2026-08-18T17:55:24.1497200Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:120:28: note: 'Tk_Window' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1497800Z   120 | typedef struct Tk_Window_ *Tk_Window;
+2026-08-18T17:55:24.1498010Z       |                            ^
+2026-08-18T17:55:24.1498560Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:142:9: warning: 'Tk_ParseArgv' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1499300Z   142 |     if (Tk_ParseArgv(interp, (Tk_Window) NULL, &argc, CONST_CAST(CONST_FOR_ARGV char**,argv), argTable, 0)
+2026-08-18T17:55:24.1499660Z       |         ^
+2026-08-18T17:55:24.1500630Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tkDecls.h:905:13: note: 'Tk_ParseArgv' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1501470Z   905 | EXTERN int              Tk_ParseArgv(Tcl_Interp *interp, Tk_Window tkwin,
+2026-08-18T17:55:24.1501770Z       |                         ^
+2026-08-18T17:55:24.1502630Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:200:5: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1503580Z   200 |     sprintf(buf, "%d", argc-1);
+2026-08-18T17:55:24.1503760Z       |     ^
+2026-08-18T17:55:24.1504290Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:1: note: 'sprintf' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1505360Z   278 | __deprecated_msg("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")
+2026-08-18T17:55:24.1505960Z       | ^
+2026-08-18T17:55:24.1506480Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h:227:48: note: expanded from macro '__deprecated_msg'
+2026-08-18T17:55:24.1507150Z   227 |         #define __deprecated_msg(_msg) __attribute__((__deprecated__(_msg)))
+2026-08-18T17:55:24.1507470Z       |                                                       ^
+2026-08-18T17:55:24.1508050Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:274:5: warning: 'Tk_MainLoop' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1508600Z   274 |     Tk_MainLoop();
+2026-08-18T17:55:24.1508750Z       |     ^
+2026-08-18T17:55:24.1509290Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tkDecls.h:45:14: note: 'Tk_MainLoop' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1509910Z    45 | EXTERN void             Tk_MainLoop(void);
+2026-08-18T17:55:24.1510130Z       |                         ^
+2026-08-18T17:55:24.1510650Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:441:5: warning: 'Tk_Window' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1511220Z   441 |     Tk_Window main = Tk_MainWindow(interp);
+2026-08-18T17:55:24.1511430Z       |     ^
+2026-08-18T17:55:24.1511950Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tk.h:120:28: note: 'Tk_Window' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1512540Z   120 | typedef struct Tk_Window_ *Tk_Window;
+2026-08-18T17:55:24.1512750Z       |                            ^
+2026-08-18T17:55:24.1513300Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:441:22: warning: 'Tk_MainWindow' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1513910Z   441 |     Tk_Window main = Tk_MainWindow(interp);
+2026-08-18T17:55:24.1514120Z       |                      ^
+2026-08-18T17:55:24.1514710Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tkDecls.h:792:18: note: 'Tk_MainWindow' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1515370Z   792 | EXTERN Tk_Window        Tk_MainWindow(Tcl_Interp *interp);
+2026-08-18T17:55:24.1515630Z       |                         ^
+2026-08-18T17:55:24.1516150Z /Users/runner/work/mozart2/mozart2/wish/unixmain.cc:446:9: warning: 'Tk_Init' is deprecated: first deprecated in macOS 10.15 - Tk API deprecated. [-Wdeprecated-declarations]
+2026-08-18T17:55:24.1516710Z   446 |     if (Tk_Init(interp) == TCL_ERROR) {
+2026-08-18T17:55:24.1517100Z       |         ^
+2026-08-18T17:55:24.1517760Z /Applications/Xcode_26.6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/tkDecls.h:769:13: note: 'Tk_Init' has been explicitly marked deprecated here
+2026-08-18T17:55:24.1518520Z   769 | EXTERN int              Tk_Init(Tcl_Interp *interp);
+2026-08-18T17:55:24.1518770Z       |                         ^
+2026-08-18T17:55:24.1518890Z 
+2026-08-18T17:55:24.1518940Z In toplevel form:
+2026-08-18T17:55:24.1519770Z oz.el:1:1: Warning: file has no ‘lexical-binding’ directive on its first line
+2026-08-18T17:55:24.1520340Z oz.el:202:9: Warning: ‘x-display-color-p’ is an obsolete function (as of 30.1); use ‘display-color-p’ instead.
+2026-08-18T17:55:24.1520670Z 
+2026-08-18T17:55:24.1520730Z In oz-backward-begin:
+2026-08-18T17:55:24.1521100Z oz.el:463:2: Warning: docstring has wrong usage of unescaped single quotes (use \=' or different quoting such as `...')
+2026-08-18T17:55:24.1521430Z 
+2026-08-18T17:55:24.1521500Z In oz-indent-region:
+2026-08-18T17:55:24.1521860Z oz.el:604:6: Warning: ‘goto-line’ is for interactive use only; use ‘forward-line’ instead.
+2026-08-18T17:55:24.1522140Z 
+2026-08-18T17:55:24.1522200Z In backward-oz-expr:
+2026-08-18T17:55:24.1522600Z oz.el:855:21: Warning: ‘beginning-of-buffer’ is for interactive use only; use ‘(goto-char (point-min))’ instead.
+2026-08-18T17:55:24.1523090Z oz.el:948:9: Warning: global/dynamic var ‘map’ lacks a prefix
+2026-08-18T17:55:24.1545740Z 
+2026-08-18T17:55:24.1546040Z In oz-set-lucid-menu:
+2026-08-18T17:55:24.1546810Z oz.el:1261:16: Warning: ‘add-submenu’ is an obsolete function (as of 28.1); use ‘easy-menu-add-item’ instead.
+2026-08-18T17:55:24.1580260Z 
+2026-08-18T17:55:24.1580520Z In end of data:
+2026-08-18T17:55:24.1581040Z oz.el:1260:16: Warning: the function ‘set-buffer-menubar’ is not known to be defined.
+2026-08-18T17:55:24.1693600Z 39 warnings generated.
+2026-08-18T17:55:24.1823850Z [  0%] Generating: oz-server.elc
+2026-08-18T17:55:24.1824580Z [  1%] Linking CXX executable ozwish
+2026-08-18T17:55:24.2979540Z 
+2026-08-18T17:55:24.3080370Z In toplevel form:
+2026-08-18T17:55:24.3080590Z [  1%] Built target ozwish
+2026-08-18T17:55:24.3191290Z oz-server.el:1:1: Warning: file has no ‘lexical-binding’ directive on its first line
+2026-08-18T17:55:24.3292230Z 
+2026-08-18T17:55:24.3350380Z In oz-server-query-synchronously:
+2026-08-18T17:55:24.3354410Z oz-server.el:353:2: Warning: docstring has wrong usage of unescaped single quotes (use \=' or different quoting such as `...')
+2026-08-18T17:55:24.3470690Z [  2%] Generating: oz-extra.elc
+2026-08-18T17:55:24.3573810Z [  3%] Building CXX object vm/boostenv/main/CMakeFiles/mozartvmboost.dir/boostvm.cc.o
+2026-08-18T17:55:24.3791960Z Getting org.scala-sbt sbt 1.6.2 ...
+2026-08-18T17:55:24.3984630Z WARNING: An illegal reflective access operation has occurred
+2026-08-18T17:55:24.4089070Z WARNING: Illegal reflective access by org.apache.ivy.util.url.IvyAuthenticator (file:/Users/runner/work/mozart2/mozart2/bootcompiler/sbt-launch.jar) to field java.net.Authenticator.theAuthenticator
+2026-08-18T17:55:24.4199620Z WARNING: Please consider reporting this to the maintainers of org.apache.ivy.util.url.IvyAuthenticator
+2026-08-18T17:55:24.4301210Z WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+2026-08-18T17:55:24.4418080Z WARNING: All illegal access operations will be denied in a future release
+2026-08-18T17:55:24.4529180Z 
+2026-08-18T17:55:24.4630650Z In toplevel form:
+2026-08-18T17:55:24.4630860Z [  3%] Generating: mozart.elc
+2026-08-18T17:55:24.4736930Z oz-extra.el:1:1: Warning: file has no ‘lexical-binding’ directive on its first line
+2026-08-18T17:55:24.4838380Z 
+2026-08-18T17:55:24.4942730Z In oz-outline-mode:
+2026-08-18T17:55:24.5044070Z oz-extra.el:26:8: Warning: ‘hide-other’ is an obsolete function (as of 25.1); use ‘outline-hide-other’ instead.
+2026-08-18T17:55:24.5145100Z 
+2026-08-18T17:55:24.5246420Z In oz-outline-toggle-subtree:
+2026-08-18T17:55:24.5347490Z oz-extra.el:45:10: Warning: ‘hide-subtree’ is an obsolete function (as of 25.1); use ‘outline-hide-subtree’ instead.
+2026-08-18T17:55:24.5449430Z oz-extra.el:46:8: Warning: ‘show-subtree’ is an obsolete function (as of 25.1); use ‘outline-show-subtree’ instead.
+2026-08-18T17:55:24.5550290Z 
+2026-08-18T17:55:24.5651650Z In oz-outline-reveal-headings:
+2026-08-18T17:55:24.5752800Z oz-extra.el:51:4: Warning: ‘show-branches’ is an obsolete function (as of 25.1); use ‘outline-show-branches’ instead.
+2026-08-18T17:55:24.5853750Z 
+2026-08-18T17:55:24.5954350Z In toplevel form:
+2026-08-18T17:55:24.6055440Z mozart.el:1:1: Warning: file has no ‘lexical-binding’ directive on its first line
+2026-08-18T17:55:24.6156200Z mozart.el:440:9: Warning: global/dynamic var ‘methods’ lacks a prefix
+2026-08-18T17:55:24.6257560Z mozart.el:447:9: Warning: global/dynamic var ‘OZPATH’ lacks a prefix
+2026-08-18T17:55:24.6305930Z 
+2026-08-18T17:55:24.6324680Z In oz-compilation-parse-errors:
+2026-08-18T17:55:24.6340310Z mozart.el:900:9: Warning: assignment to free variable ‘compilation-error-list’
+2026-08-18T17:55:24.6360850Z mozart.el:904:23: Warning: reference to free variable ‘compilation-parsing-end’
+2026-08-18T17:55:24.6361710Z mozart.el:929:29: Warning: ‘goto-line’ is for interactive use only; use ‘forward-line’ instead.
+2026-08-18T17:55:24.6362530Z mozart.el:943:36: Warning: reference to free variable ‘compilation-error-list’
+2026-08-18T17:55:24.6363260Z mozart.el:945:9: Warning: assignment to free variable ‘compilation-parsing-end’
+2026-08-18T17:55:24.6363860Z mozart.el:1369:29: Warning: reference to free variable ‘string’
+2026-08-18T17:55:24.6364310Z 
+2026-08-18T17:55:24.6364570Z In oz-send-string:
+2026-08-18T17:55:24.6365290Z mozart.el:1385:17: Warning: ‘compilation-last-buffer’ is an obsolete variable (as of 29.1 (tho really since 22.1)); use ‘next-error-last-buffer’ instead.
+2026-08-18T17:55:24.6366120Z mozart.el:1389:17: Warning: assignment to free variable ‘compilation-error-list’
+2026-08-18T17:55:24.6366620Z 
+2026-08-18T17:55:24.6366880Z In oz-bar:
+2026-08-18T17:55:24.6367400Z mozart.el:1675:16: Warning: ‘goto-line’ is for interactive use only; use ‘forward-line’ instead.
+2026-08-18T17:55:24.6367880Z 
+2026-08-18T17:55:24.6368120Z In end of data:
+2026-08-18T17:55:24.6368640Z mozart.el:1797:6: Warning: the function ‘compile-internal’ is not known to be defined.
+2026-08-18T17:55:24.6369300Z mozart.el:1744:18: Warning: the function ‘delete-extent’ is not known to be defined.
+2026-08-18T17:55:24.6369960Z mozart.el:1733:13: Warning: the function ‘set-extent-face’ is not known to be defined.
+2026-08-18T17:55:24.6370650Z mozart.el:1702:23: Warning: the function ‘set-extent-endpoints’ is not known to be defined.
+2026-08-18T17:55:24.6371350Z mozart.el:1694:27: Warning: the function ‘set-extent-priority’ is not known to be defined.
+2026-08-18T17:55:24.6371830Z mozart.el:1692:48: Warning: the function ‘make-extent’ is not known to be defined.
+2026-08-18T17:55:24.6372500Z mozart.el:1396:21: Warning: the function ‘oz-encode-string’ is not known to be defined.
+2026-08-18T17:55:24.6654640Z [  3%] Built target emacs_mode
+2026-08-18T17:55:24.6790240Z [  3%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/memmanager.cc.o
+2026-08-18T17:55:25.7065370Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/emulate.cc:25:
+2026-08-18T17:55:25.7182060Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:25.7311750Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:25.7413600Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:25.7428220Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:25.7452900Z       |       ^
+2026-08-18T17:55:25.7453750Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:25.7457910Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:25.7458270Z       |                  ^
+2026-08-18T17:55:25.7492500Z       |                   , this
+2026-08-18T17:55:25.7495560Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/memmanager.cc:25:
+2026-08-18T17:55:25.7509040Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:25.7519190Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:25.7520120Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:25.7520880Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:25.7521220Z       |       ^
+2026-08-18T17:55:25.7521800Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:25.7522510Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:25.7522920Z       |                  ^
+2026-08-18T17:55:25.7523240Z       |                   , this
+2026-08-18T17:55:25.7531640Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostvm.cc:25:
+2026-08-18T17:55:25.7577110Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenv.hh:32:
+2026-08-18T17:55:25.7621670Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenv-decl.hh:28:
+2026-08-18T17:55:25.7622320Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:25.7622880Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:25.7623660Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:25.7624270Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:25.7624560Z       |       ^
+2026-08-18T17:55:25.7625020Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:25.7625600Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:25.7625850Z       |                  ^
+2026-08-18T17:55:25.7626120Z       |                   , this
+2026-08-18T17:55:26.1473270Z /Users/runner/work/mozart2/mozart2/vm/vm/main/emulate.cc:551:30: warning: variable length arrays in C++ are a Clang extension [-Wvla-cxx-extension]
+2026-08-18T17:55:26.1497610Z   551 |           UnstableNode* args[argc];
+2026-08-18T17:55:26.1499440Z       |                              ^~~~
+2026-08-18T17:55:26.1501840Z /Users/runner/work/mozart2/mozart2/vm/vm/main/emulate.cc:551:30: note: read of non-const variable 'argc' is not allowed in a constant expression
+2026-08-18T17:55:26.1503480Z /Users/runner/work/mozart2/mozart2/vm/vm/main/emulate.cc:549:18: note: declared here
+2026-08-18T17:55:26.1504680Z   549 |           size_t argc = IntPC(2);
+2026-08-18T17:55:26.1504960Z       |                  ^
+2026-08-18T17:55:27.5182770Z 1 warning generated.
+2026-08-18T17:55:27.5395730Z [  4%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/gcollect.cc.o
+2026-08-18T17:55:28.6481310Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostvm.cc:25:
+2026-08-18T17:55:28.6581580Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenv.hh:35:
+2026-08-18T17:55:28.6682380Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvutils.hh:104:58: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:28.6783340Z   104 |         head = buildCons(vm, (nativeint) (unsigned char) _readData[i-1],
+2026-08-18T17:55:28.6884770Z       |                                                          ^
+2026-08-18T17:55:28.6985350Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvutils.hh:98:24: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:28.7086700Z    98 |   env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:28.7187480Z       |                        ^
+2026-08-18T17:55:28.7288020Z       |                         , this
+2026-08-18T17:55:28.7389870Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostvm.cc:25:
+2026-08-18T17:55:28.7490020Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenv.hh:36:
+2026-08-18T17:55:28.7591370Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvtcp.hh:54:11: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:28.7691210Z    54 |           env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:28.7791860Z       |           ^
+2026-08-18T17:55:28.7893140Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvtcp.hh:51:30: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:28.7993630Z    51 |       auto connectHandler = [=] (const boost::system::error_code& error,
+2026-08-18T17:55:28.8093750Z       |                              ^
+2026-08-18T17:55:28.8194430Z       |                               , this
+2026-08-18T17:55:28.8252690Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/gcollect.cc:25:
+2026-08-18T17:55:28.8354190Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:28.8455590Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:28.8556910Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:28.8657500Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:28.8758830Z       |       ^
+2026-08-18T17:55:28.8859790Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:28.8960250Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:28.9061250Z       |                  ^
+2026-08-18T17:55:28.9162110Z       |                   , this
+2026-08-18T17:55:28.9263250Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvtcp.hh:54:11: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:28.9364930Z    54 |           env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:28.9465960Z       |           ^
+2026-08-18T17:55:28.9567740Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvtcp.hh:48:26: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:28.9668140Z    48 |   auto resolveHandler = [=] (const boost::system::error_code& error,
+2026-08-18T17:55:28.9769330Z       |                          ^
+2026-08-18T17:55:28.9869640Z       |                           , this
+2026-08-18T17:55:28.9971020Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvtcp.hh:92:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:29.0071370Z    92 |       env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:29.0172080Z       |       ^
+2026-08-18T17:55:29.0273310Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvtcp.hh:90:19: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:29.0374860Z    90 |   auto handler = [=] (const boost::system::error_code& error) {
+2026-08-18T17:55:29.0475170Z       |                   ^
+2026-08-18T17:55:29.0576350Z       |                    , this
+2026-08-18T17:55:31.1867120Z 1 warning generated.
+2026-08-18T17:55:31.2168810Z [  4%] Building CXX object vm/boostenv/main/CMakeFiles/mozartvmboost.dir/boostenvmodules.cc.o
+2026-08-18T17:55:31.9132030Z 2 warnings generated.
+2026-08-18T17:55:31.9334210Z [  4%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/unify.cc.o
+2026-08-18T17:55:32.4833600Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvmodules.cc:25:
+2026-08-18T17:55:32.4936770Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvmodules.hh:28:
+2026-08-18T17:55:32.5034240Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:32.5134630Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:32.5235910Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:32.5336110Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:32.5437190Z       |       ^
+2026-08-18T17:55:32.5538190Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:32.5638610Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:32.5739300Z       |                  ^
+2026-08-18T17:55:32.5839550Z       |                   , this
+2026-08-18T17:55:33.0361420Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/unify.cc:25:
+2026-08-18T17:55:33.0479780Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:33.0608540Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:33.0738860Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:33.0850910Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:33.0984500Z       |       ^
+2026-08-18T17:55:33.1107420Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:33.1229830Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:33.1383520Z       |                  ^
+2026-08-18T17:55:33.1484970Z       |                   , this
+2026-08-18T17:55:34.2476380Z 5 warnings generated.
+2026-08-18T17:55:34.2925780Z [  4%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/sclone.cc.o
+2026-08-18T17:55:35.6803390Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/sclone.cc:25:
+2026-08-18T17:55:35.6903750Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:35.7004070Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:35.7104880Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:35.7206710Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:35.7307070Z       |       ^
+2026-08-18T17:55:35.7407630Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:35.7508550Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:35.7632230Z       |                  ^
+2026-08-18T17:55:35.7733400Z       |                   , this
+2026-08-18T17:55:35.9905830Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvmodules.cc:25:
+2026-08-18T17:55:36.0006540Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvmodules.hh:29:
+2026-08-18T17:55:36.0106960Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenv.hh:35:
+2026-08-18T17:55:36.0208120Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvutils.hh:104:58: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:36.0307840Z   104 |         head = buildCons(vm, (nativeint) (unsigned char) _readData[i-1],
+2026-08-18T17:55:36.0408220Z       |                                                          ^
+2026-08-18T17:55:36.0509160Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvutils.hh:98:24: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:36.0609930Z    98 |   env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:36.0710140Z       |                        ^
+2026-08-18T17:55:36.0810460Z       |                         , this
+2026-08-18T17:55:36.0911580Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvmodules.cc:25:
+2026-08-18T17:55:36.1012930Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvmodules.hh:29:
+2026-08-18T17:55:36.1112640Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenv.hh:36:
+2026-08-18T17:55:36.1213740Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvtcp.hh:54:11: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:36.1314490Z    54 |           env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:36.1414750Z       |           ^
+2026-08-18T17:55:36.1515750Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvtcp.hh:51:30: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:36.1616980Z    51 |       auto connectHandler = [=] (const boost::system::error_code& error,
+2026-08-18T17:55:36.1716700Z       |                              ^
+2026-08-18T17:55:36.1817620Z       |                               , this
+2026-08-18T17:55:36.1918870Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvtcp.hh:54:11: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:36.2018860Z    54 |           env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:36.2120400Z       |           ^
+2026-08-18T17:55:36.2220770Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvtcp.hh:48:26: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:36.2321880Z    48 |   auto resolveHandler = [=] (const boost::system::error_code& error,
+2026-08-18T17:55:36.2422000Z       |                          ^
+2026-08-18T17:55:36.2522860Z       |                           , this
+2026-08-18T17:55:36.2623860Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvtcp.hh:92:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:36.2724210Z    92 |       env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:36.2835410Z       |       ^
+2026-08-18T17:55:36.2937110Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvtcp.hh:90:19: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:36.3037320Z    90 |   auto handler = [=] (const boost::system::error_code& error) {
+2026-08-18T17:55:36.3138850Z       |                   ^
+2026-08-18T17:55:36.3239320Z       |                    , this
+2026-08-18T17:55:36.4165950Z 1 warning generated.
+2026-08-18T17:55:36.4530880Z [  6%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/vm.cc.o
+2026-08-18T17:55:37.6454950Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvmodules.cc:25:
+2026-08-18T17:55:37.6555590Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvmodules.hh:29:
+2026-08-18T17:55:37.6656680Z In file included from /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenv.hh:35:
+2026-08-18T17:55:37.6757510Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvutils.hh:104:58: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:37.6758450Z   104 |         head = buildCons(vm, (nativeint) (unsigned char) _readData[i-1],
+2026-08-18T17:55:37.6859480Z       |                                                          ^
+2026-08-18T17:55:37.6961600Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvutils.hh:65:11: note: in instantiation of member function 'mozart::boostenv::BaseSocketConnection<mozart::boostenv::TCPConnection, boost::asio::ip::tcp>::readHandler' requested here
+2026-08-18T17:55:37.7064310Z    65 |     self->readHandler(error, bytes_transferred, tailNode, statusNode);
+2026-08-18T17:55:37.7165490Z       |           ^
+2026-08-18T17:55:37.7267120Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/modos.hh:619:17: note: in instantiation of member function 'mozart::boostenv::BaseSocketConnection<mozart::boostenv::TCPConnection, boost::asio::ip::tcp>::startAsyncReadSome' requested here
+2026-08-18T17:55:37.7368700Z   619 |     connection->startAsyncReadSome(tailNode, statusNode);
+2026-08-18T17:55:37.7497670Z       |                 ^
+2026-08-18T17:55:37.7599250Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/modos.hh:690:7: note: in instantiation of function template specialization 'mozart::boostenv::builtins::ModOS::baseSocketConnectionRead<mozart::boostenv::TCPConnection, boost::asio::ip::tcp>' requested here
+2026-08-18T17:55:37.7701010Z   690 |       baseSocketConnectionRead(vm, getTCPConnectionArg(vm, connection),
+2026-08-18T17:55:37.7802100Z       |       ^
+2026-08-18T17:55:37.7903400Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvutils.hh:98:24: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:37.8004880Z    98 |   env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:37.8105960Z       |                        ^
+2026-08-18T17:55:37.8206990Z       |                         , this
+2026-08-18T17:55:37.8308580Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvutils.hh:104:58: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:37.8410410Z   104 |         head = buildCons(vm, (nativeint) (unsigned char) _readData[i-1],
+2026-08-18T17:55:37.8514440Z       |                                                          ^
+2026-08-18T17:55:37.8616170Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvutils.hh:65:11: note: in instantiation of member function 'mozart::boostenv::BaseSocketConnection<mozart::boostenv::PipeConnection, boost::asio::local::stream_protocol>::readHandler' requested here
+2026-08-18T17:55:37.8718090Z    65 |     self->readHandler(error, bytes_transferred, tailNode, statusNode);
+2026-08-18T17:55:37.8819410Z       |           ^
+2026-08-18T17:55:37.8921430Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/modos.hh:619:17: note: in instantiation of member function 'mozart::boostenv::BaseSocketConnection<mozart::boostenv::PipeConnection, boost::asio::local::stream_protocol>::startAsyncReadSome' requested here
+2026-08-18T17:55:37.9023390Z   619 |     connection->startAsyncReadSome(tailNode, statusNode);
+2026-08-18T17:55:37.9124660Z       |                 ^
+2026-08-18T17:55:37.9226380Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/modos.hh:1152:7: note: in instantiation of function template specialization 'mozart::boostenv::builtins::ModOS::baseSocketConnectionRead<mozart::boostenv::PipeConnection, boost::asio::local::stream_protocol>' requested here
+2026-08-18T17:55:37.9328700Z  1152 |       baseSocketConnectionRead(vm, getPipeConnectionArg(vm, connection),
+2026-08-18T17:55:37.9429960Z       |       ^
+2026-08-18T17:55:37.9531600Z /Users/runner/work/mozart2/mozart2/vm/boostenv/main/boostenvutils.hh:98:24: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:37.9633170Z    98 |   env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:37.9734330Z       |                        ^
+2026-08-18T17:55:37.9835790Z       |                         , this
+2026-08-18T17:55:37.9937540Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/vm.cc:25:
+2026-08-18T17:55:38.0039020Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:38.0140560Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:38.0242790Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:38.0345050Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:38.0446200Z       |       ^
+2026-08-18T17:55:38.0547810Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:38.0663430Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:38.0764700Z       |                  ^
+2026-08-18T17:55:38.0865930Z       |                   , this
+2026-08-18T17:55:38.4179700Z 1 warning generated.
+2026-08-18T17:55:38.4548050Z [  6%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/coredatatypes.cc.o
+2026-08-18T17:55:39.3298960Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.cc:25:
+2026-08-18T17:55:39.3399030Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:39.3499460Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:39.3599920Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:39.3700460Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:39.3801320Z       |       ^
+2026-08-18T17:55:39.3902290Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:39.4002210Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:39.4102680Z       |                  ^
+2026-08-18T17:55:39.4202820Z       |                   , this
+2026-08-18T17:55:40.0865090Z 1 warning generated.
+2026-08-18T17:55:40.1133450Z [  6%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/coders.cc.o
+2026-08-18T17:55:40.8252420Z 1 warning generated.
+2026-08-18T17:55:40.8399330Z [  7%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/properties.cc.o
+2026-08-18T17:55:40.9344770Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coders.cc:25:
+2026-08-18T17:55:40.9446210Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:40.9547390Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:40.9649110Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:40.9750380Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:40.9851320Z       |       ^
+2026-08-18T17:55:40.9952540Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:41.0053740Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:41.0154640Z       |                  ^
+2026-08-18T17:55:41.0255510Z       |                   , this
+2026-08-18T17:55:41.5675190Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/properties.cc:25:
+2026-08-18T17:55:41.5781610Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:41.5929700Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:41.6031290Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:41.6161570Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:41.6262780Z       |       ^
+2026-08-18T17:55:41.6365270Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:41.6488250Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:41.6589330Z       |                  ^
+2026-08-18T17:55:41.6690440Z       |                   , this
+2026-08-18T17:55:42.1073740Z 7 warnings generated.
+2026-08-18T17:55:42.1300460Z [  7%] Linking CXX static library libmozartvmboost.a
+2026-08-18T17:55:42.8768700Z 1 warning generated.
+2026-08-18T17:55:42.8919430Z [  7%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/coremodules.cc.o
+2026-08-18T17:55:43.7293590Z 1 warning generated.
+2026-08-18T17:55:43.7494610Z [  7%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/unpickler.cc.o
+2026-08-18T17:55:43.8698930Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coremodules.cc:25:
+2026-08-18T17:55:43.8800430Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:43.8902110Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:43.9003810Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:43.9103810Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:43.9205010Z       |       ^
+2026-08-18T17:55:43.9306310Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:43.9406380Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:43.9507510Z       |                  ^
+2026-08-18T17:55:43.9611000Z       |                   , this
+2026-08-18T17:55:43.9911980Z [  7%] Built target mozartvmboost
+2026-08-18T17:55:44.0026770Z [  8%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/serializer.cc.o
+2026-08-18T17:55:44.5216710Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/unpickler.cc:25:
+2026-08-18T17:55:44.5351480Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:44.5479180Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:44.5603440Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:44.5725670Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:44.5826690Z       |       ^
+2026-08-18T17:55:44.5928120Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:44.6028190Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:44.6128420Z       |                  ^
+2026-08-18T17:55:44.6229670Z       |                   , this
+2026-08-18T17:55:44.7825610Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/serializer.cc:25:
+2026-08-18T17:55:44.7926090Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:44.8027300Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:44.8128140Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:44.8228740Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:44.8329870Z       |       ^
+2026-08-18T17:55:44.8445290Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:44.8542270Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:44.8542690Z       |                  ^
+2026-08-18T17:55:44.8542940Z       |                   , this
+2026-08-18T17:55:46.5965560Z 1 warning generated.
+2026-08-18T17:55:46.6066890Z [  8%] Building CXX object vm/vm/main/CMakeFiles/mozartvm.dir/pickler.cc.o
+2026-08-18T17:55:46.6910750Z 1 warning generated.
+2026-08-18T17:55:47.4364880Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/pickler.cc:25:
+2026-08-18T17:55:47.4465830Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:47.4568080Z In file included from /Users/runner/work/mozart2/mozart2/vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:47.4667990Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:47.4737980Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:47.4798870Z       |       ^
+2026-08-18T17:55:47.4799770Z /Users/runner/work/mozart2/mozart2/vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:47.4800490Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:47.4800870Z       |                  ^
+2026-08-18T17:55:47.4801320Z       |                   , this
+2026-08-18T17:55:49.6774180Z 1 warning generated.
+2026-08-18T17:55:51.7583790Z 1 warning generated.
+2026-08-18T17:55:51.7765360Z [  8%] Linking CXX static library libmozartvm.a
+2026-08-18T17:55:51.8478140Z [  8%] Built target mozartvm
+2026-08-18T17:55:51.8725660Z [  9%] Building CXX object boosthost/emulator/CMakeFiles/ozemulator.dir/emulator.cc.o
+2026-08-18T17:55:52.5353670Z In file included from /Users/runner/work/mozart2/mozart2/boosthost/emulator/emulator.cc:25:
+2026-08-18T17:55:52.5354390Z In file included from /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/vm/main/mozart.hh:30:
+2026-08-18T17:55:52.5355190Z In file included from /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/vm/main/coredatatypes.hh:44:
+2026-08-18T17:55:52.5356340Z /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/vm/main/dictionary.hh:108:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:52.5357110Z   108 |       freeNode(vm, node->left);
+2026-08-18T17:55:52.5357510Z       |       ^
+2026-08-18T17:55:52.5358170Z /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/vm/main/dictionary.hh:105:18: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:52.5358840Z   105 |   postOrderWalk([=] (Node* node) {
+2026-08-18T17:55:52.5359100Z       |                  ^
+2026-08-18T17:55:52.5359390Z       |                   , this
+2026-08-18T17:55:54.9256270Z In file included from /Users/runner/work/mozart2/mozart2/boosthost/emulator/emulator.cc:26:
+2026-08-18T17:55:54.9257170Z In file included from /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/boostenv/main/boostenv.hh:35:
+2026-08-18T17:55:54.9258320Z /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/boostenv/main/boostenvutils.hh:104:58: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:54.9259580Z   104 |         head = buildCons(vm, (nativeint) (unsigned char) _readData[i-1],
+2026-08-18T17:55:54.9260050Z       |                                                          ^
+2026-08-18T17:55:54.9260830Z /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/boostenv/main/boostenvutils.hh:98:24: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:54.9261570Z    98 |   env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:54.9261920Z       |                        ^
+2026-08-18T17:55:54.9262220Z       |                         , this
+2026-08-18T17:55:54.9462590Z In file included from /Users/runner/work/mozart2/mozart2/boosthost/emulator/emulator.cc:26:
+2026-08-18T17:55:54.9472470Z In file included from /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/boostenv/main/boostenv.hh:36:
+2026-08-18T17:55:54.9477470Z /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/boostenv/main/boostenvtcp.hh:54:11: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:54.9479660Z    54 |           env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:54.9480240Z       |           ^
+2026-08-18T17:55:54.9481500Z /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/boostenv/main/boostenvtcp.hh:51:30: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:54.9538420Z    51 |       auto connectHandler = [=] (const boost::system::error_code& error,
+2026-08-18T17:55:54.9538960Z       |                              ^
+2026-08-18T17:55:54.9539570Z       |                               , this
+2026-08-18T17:55:54.9540640Z /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/boostenv/main/boostenvtcp.hh:54:11: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:54.9541890Z    54 |           env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:54.9542270Z       |           ^
+2026-08-18T17:55:54.9543120Z /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/boostenv/main/boostenvtcp.hh:48:26: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:54.9546770Z    48 |   auto resolveHandler = [=] (const boost::system::error_code& error,
+2026-08-18T17:55:54.9547640Z       |                          ^
+2026-08-18T17:55:54.9548400Z       |                           , this
+2026-08-18T17:55:54.9570950Z /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/boostenv/main/boostenvtcp.hh:92:7: warning: implicit capture of 'this' with a capture default of '=' is deprecated [-Wdeprecated-this-capture]
+2026-08-18T17:55:54.9572690Z    92 |       env.postVMEvent(vm, [=] (BoostVM& boostVM) {
+2026-08-18T17:55:54.9573460Z       |       ^
+2026-08-18T17:55:54.9574230Z /Users/runner/work/mozart2/mozart2/boosthost/emulator/../../vm/boostenv/main/boostenvtcp.hh:90:19: note: add an explicit capture of 'this' to capture '*this' by reference
+2026-08-18T17:55:54.9575060Z    90 |   auto handler = [=] (const boost::system::error_code& error) {
+2026-08-18T17:55:54.9575460Z       |                   ^
+2026-08-18T17:55:54.9575930Z       |                    , this
+2026-08-18T17:55:58.3532290Z 5 warnings generated.
+2026-08-18T17:55:58.3719820Z [  9%] Linking CXX executable ozemulator
+2026-08-18T17:55:58.4829830Z [  9%] Built target ozemulator
+2026-08-18T17:56:00.8997050Z downloading https://repo1.maven.org/maven2/org/scala-sbt/sbt/1.6.2/sbt-1.6.2.jar ...
+2026-08-18T17:56:00.9746310Z 	[SUCCESSFUL ] org.scala-sbt#sbt;1.6.2!sbt.jar (75ms)
+2026-08-18T17:56:00.9753580Z downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.15/scala-library-2.12.15.jar ...
+2026-08-18T17:56:01.1898030Z 	[SUCCESSFUL ] org.scala-lang#scala-library;2.12.15!scala-library.jar (214ms)
+2026-08-18T17:56:01.1903060Z downloading https://repo1.maven.org/maven2/org/scala-sbt/main_2.12/1.6.2/main_2.12-1.6.2.jar ...
+2026-08-18T17:56:01.3207250Z 	[SUCCESSFUL ] org.scala-sbt#main_2.12;1.6.2!main_2.12.jar (130ms)
+2026-08-18T17:56:01.3209240Z downloading https://repo1.maven.org/maven2/org/scala-sbt/io_2.12/1.6.0/io_2.12-1.6.0.jar ...
+2026-08-18T17:56:01.4365120Z 	[SUCCESSFUL ] org.scala-sbt#io_2.12;1.6.0!io_2.12.jar (116ms)
+2026-08-18T17:56:01.4372880Z downloading https://repo1.maven.org/maven2/org/scala-sbt/logic_2.12/1.6.2/logic_2.12-1.6.2.jar ...
+2026-08-18T17:56:01.5074920Z 	[SUCCESSFUL ] org.scala-sbt#logic_2.12;1.6.2!logic_2.12.jar (70ms)
+2026-08-18T17:56:01.5080710Z downloading https://repo1.maven.org/maven2/org/scala-sbt/actions_2.12/1.6.2/actions_2.12-1.6.2.jar ...
+2026-08-18T17:56:01.5814960Z 	[SUCCESSFUL ] org.scala-sbt#actions_2.12;1.6.2!actions_2.12.jar (74ms)
+2026-08-18T17:56:01.5817510Z downloading https://repo1.maven.org/maven2/org/scala-sbt/main-settings_2.12/1.6.2/main-settings_2.12-1.6.2.jar ...
+2026-08-18T17:56:01.6658770Z 	[SUCCESSFUL ] org.scala-sbt#main-settings_2.12;1.6.2!main-settings_2.12.jar (84ms)
+2026-08-18T17:56:01.6661290Z downloading https://repo1.maven.org/maven2/org/scala-sbt/run_2.12/1.6.2/run_2.12-1.6.2.jar ...
+2026-08-18T17:56:01.7244440Z 	[SUCCESSFUL ] org.scala-sbt#run_2.12;1.6.2!run_2.12.jar (59ms)
+2026-08-18T17:56:01.7246820Z downloading https://repo1.maven.org/maven2/org/scala-sbt/command_2.12/1.6.2/command_2.12-1.6.2.jar ...
+2026-08-18T17:56:01.8280510Z 	[SUCCESSFUL ] org.scala-sbt#command_2.12;1.6.2!command_2.12.jar (103ms)
+2026-08-18T17:56:01.8289010Z downloading https://repo1.maven.org/maven2/org/scala-sbt/collections_2.12/1.6.2/collections_2.12-1.6.2.jar ...
+2026-08-18T17:56:01.9160950Z 	[SUCCESSFUL ] org.scala-sbt#collections_2.12;1.6.2!collections_2.12.jar (87ms)
+2026-08-18T17:56:01.9165440Z downloading https://repo1.maven.org/maven2/org/scala-sbt/scripted-plugin_2.12/1.6.2/scripted-plugin_2.12-1.6.2.jar ...
+2026-08-18T17:56:01.9828880Z 	[SUCCESSFUL ] org.scala-sbt#scripted-plugin_2.12;1.6.2!scripted-plugin_2.12.jar (66ms)
+2026-08-18T17:56:01.9831200Z downloading https://repo1.maven.org/maven2/org/scala-sbt/zinc-lm-integration_2.12/1.6.2/zinc-lm-integration_2.12-1.6.2.jar ...
+2026-08-18T17:56:02.0492320Z 	[SUCCESSFUL ] org.scala-sbt#zinc-lm-integration_2.12;1.6.2!zinc-lm-integration_2.12.jar (66ms)
+2026-08-18T17:56:02.0504160Z downloading https://repo1.maven.org/maven2/org/scala-sbt/util-logging_2.12/1.6.2/util-logging_2.12-1.6.2.jar ...
+2026-08-18T17:56:02.1498720Z 	[SUCCESSFUL ] org.scala-sbt#util-logging_2.12;1.6.2!util-logging_2.12.jar (100ms)
+2026-08-18T17:56:02.1504130Z downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.3.0/scala-xml_2.12-1.3.0.jar ...
+2026-08-18T17:56:02.2593830Z 	[SUCCESSFUL ] org.scala-lang.modules#scala-xml_2.12;1.3.0!scala-xml_2.12.jar(bundle) (109ms)
+2026-08-18T17:56:02.2598800Z downloading https://repo1.maven.org/maven2/org/scala-sbt/launcher-interface/1.3.3/launcher-interface-1.3.3.jar ...
+2026-08-18T17:56:02.3256460Z 	[SUCCESSFUL ] org.scala-sbt#launcher-interface;1.3.3!launcher-interface.jar (66ms)
+2026-08-18T17:56:02.3263720Z downloading https://repo1.maven.org/maven2/com/github/ben-manes/caffeine/caffeine/2.8.5/caffeine-2.8.5.jar ...
+2026-08-18T17:56:02.4571930Z 	[SUCCESSFUL ] com.github.ben-manes.caffeine#caffeine;2.8.5!caffeine.jar (131ms)
+2026-08-18T17:56:02.4576900Z downloading https://repo1.maven.org/maven2/io/get-coursier/lm-coursier-shaded_2.12/2.0.10/lm-coursier-shaded_2.12-2.0.10.jar ...
+2026-08-18T17:56:02.9135390Z 	[SUCCESSFUL ] io.get-coursier#lm-coursier-shaded_2.12;2.0.10!lm-coursier-shaded_2.12.jar (456ms)
+2026-08-18T17:56:02.9137980Z downloading https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.17.1/log4j-api-2.17.1.jar ...
+2026-08-18T17:56:02.9929950Z 	[SUCCESSFUL ] org.apache.logging.log4j#log4j-api;2.17.1!log4j-api.jar (79ms)
+2026-08-18T17:56:02.9931650Z downloading https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.17.1/log4j-core-2.17.1.jar ...
+2026-08-18T17:56:03.1229610Z 	[SUCCESSFUL ] org.apache.logging.log4j#log4j-core;2.17.1!log4j-core.jar (129ms)
+2026-08-18T17:56:03.1231780Z downloading https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-slf4j-impl/2.17.1/log4j-slf4j-impl-2.17.1.jar ...
+2026-08-18T17:56:03.2088010Z 	[SUCCESSFUL ] org.apache.logging.log4j#log4j-slf4j-impl;2.17.1!log4j-slf4j-impl.jar (85ms)
+2026-08-18T17:56:03.2089770Z downloading https://repo1.maven.org/maven2/org/scala-sbt/librarymanagement-core_2.12/1.6.1/librarymanagement-core_2.12-1.6.1.jar ...
+2026-08-18T17:56:03.2970380Z 	[SUCCESSFUL ] org.scala-sbt#librarymanagement-core_2.12;1.6.1!librarymanagement-core_2.12.jar (88ms)
+2026-08-18T17:56:03.2972460Z downloading https://repo1.maven.org/maven2/org/scala-sbt/librarymanagement-ivy_2.12/1.6.1/librarymanagement-ivy_2.12-1.6.1.jar ...
+2026-08-18T17:56:03.3791350Z 	[SUCCESSFUL ] org.scala-sbt#librarymanagement-ivy_2.12;1.6.1!librarymanagement-ivy_2.12.jar (81ms)
+2026-08-18T17:56:03.3793800Z downloading https://repo1.maven.org/maven2/org/scala-sbt/compiler-interface/1.6.0/compiler-interface-1.6.0.jar ...
+2026-08-18T17:56:03.4534360Z 	[SUCCESSFUL ] org.scala-sbt#compiler-interface;1.6.0!compiler-interface.jar (74ms)
+2026-08-18T17:56:03.4536740Z downloading https://repo1.maven.org/maven2/org/scala-sbt/zinc-compile_2.12/1.6.0/zinc-compile_2.12-1.6.0.jar ...
+2026-08-18T17:56:03.5363570Z 	[SUCCESSFUL ] org.scala-sbt#zinc-compile_2.12;1.6.0!zinc-compile_2.12.jar (83ms)
+2026-08-18T17:56:03.5372590Z downloading https://repo1.maven.org/maven2/org/scala-sbt/util-relation_2.12/1.6.2/util-relation_2.12-1.6.2.jar ...
+2026-08-18T17:56:03.6104500Z 	[SUCCESSFUL ] org.scala-sbt#util-relation_2.12;1.6.2!util-relation_2.12.jar (74ms)
+2026-08-18T17:56:03.6117230Z downloading https://repo1.maven.org/maven2/org/scala-sbt/util-position_2.12/1.6.2/util-position_2.12-1.6.2.jar ...
+2026-08-18T17:56:03.6831250Z 	[SUCCESSFUL ] org.scala-sbt#util-position_2.12;1.6.2!util-position_2.12.jar (71ms)
+2026-08-18T17:56:03.6843350Z downloading https://repo1.maven.org/maven2/com/eed3si9n/sjson-new-scalajson_2.12/0.9.1/sjson-new-scalajson_2.12-0.9.1.jar ...
+2026-08-18T17:56:03.7574480Z 	[SUCCESSFUL ] com.eed3si9n#sjson-new-scalajson_2.12;0.9.1!sjson-new-scalajson_2.12.jar (73ms)
+2026-08-18T17:56:03.7675200Z downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.15/scala-reflect-2.12.15.jar ...
+2026-08-18T17:56:03.9413570Z 	[SUCCESSFUL ] org.scala-lang#scala-reflect;2.12.15!scala-reflect.jar (183ms)
+2026-08-18T17:56:03.9418940Z downloading https://repo1.maven.org/maven2/com/eed3si9n/sjson-new-core_2.12/0.9.1/sjson-new-core_2.12-0.9.1.jar ...
+2026-08-18T17:56:04.0212220Z 	[SUCCESSFUL ] com.eed3si9n#sjson-new-core_2.12;0.9.1!sjson-new-core_2.12.jar (80ms)
+2026-08-18T17:56:04.0217230Z downloading https://repo1.maven.org/maven2/com/eed3si9n/shaded-jawn-parser_2.12/0.9.1/shaded-jawn-parser_2.12-0.9.1.jar ...
+2026-08-18T17:56:04.0908930Z 	[SUCCESSFUL ] com.eed3si9n#shaded-jawn-parser_2.12;0.9.1!shaded-jawn-parser_2.12.jar (69ms)
+2026-08-18T17:56:04.0913670Z downloading https://repo1.maven.org/maven2/com/eed3si9n/shaded-scalajson_2.12/1.0.0-M4/shaded-scalajson_2.12-1.0.0-M4.jar ...
+2026-08-18T17:56:04.1584880Z 	[SUCCESSFUL ] com.eed3si9n#shaded-scalajson_2.12;1.0.0-M4!shaded-scalajson_2.12.jar (67ms)
+2026-08-18T17:56:04.1589050Z downloading https://repo1.maven.org/maven2/org/scala-sbt/completion_2.12/1.6.2/completion_2.12-1.6.2.jar ...
+2026-08-18T17:56:04.2341080Z 	[SUCCESSFUL ] org.scala-sbt#completion_2.12;1.6.2!completion_2.12.jar (75ms)
+2026-08-18T17:56:04.2344150Z downloading https://repo1.maven.org/maven2/org/scala-sbt/task-system_2.12/1.6.2/task-system_2.12-1.6.2.jar ...
+2026-08-18T17:56:04.3040420Z 	[SUCCESSFUL ] org.scala-sbt#task-system_2.12;1.6.2!task-system_2.12.jar (69ms)
+2026-08-18T17:56:04.3045560Z downloading https://repo1.maven.org/maven2/org/scala-sbt/tasks_2.12/1.6.2/tasks_2.12-1.6.2.jar ...
+2026-08-18T17:56:04.4039020Z 	[SUCCESSFUL ] org.scala-sbt#tasks_2.12;1.6.2!tasks_2.12.jar (99ms)
+2026-08-18T17:56:04.4046480Z downloading https://repo1.maven.org/maven2/org/scala-sbt/testing_2.12/1.6.2/testing_2.12-1.6.2.jar ...
+2026-08-18T17:56:04.4955360Z 	[SUCCESSFUL ] org.scala-sbt#testing_2.12;1.6.2!testing_2.12.jar (91ms)
+2026-08-18T17:56:04.4958740Z downloading https://repo1.maven.org/maven2/org/scala-sbt/util-tracking_2.12/1.6.2/util-tracking_2.12-1.6.2.jar ...
+2026-08-18T17:56:04.5787090Z 	[SUCCESSFUL ] org.scala-sbt#util-tracking_2.12;1.6.2!util-tracking_2.12.jar (83ms)
+2026-08-18T17:56:04.5791490Z downloading https://repo1.maven.org/maven2/org/jline/jline-terminal/3.19.0/jline-terminal-3.19.0.jar ...
+2026-08-18T17:56:04.6626350Z 	[SUCCESSFUL ] org.jline#jline-terminal;3.19.0!jline-terminal.jar (84ms)
+2026-08-18T17:56:04.6633850Z downloading https://repo1.maven.org/maven2/org/scala-sbt/zinc-classpath_2.12/1.6.0/zinc-classpath_2.12-1.6.0.jar ...
+2026-08-18T17:56:04.7461130Z 	[SUCCESSFUL ] org.scala-sbt#zinc-classpath_2.12;1.6.0!zinc-classpath_2.12.jar (83ms)
+2026-08-18T17:56:04.7466280Z downloading https://repo1.maven.org/maven2/org/scala-sbt/zinc-apiinfo_2.12/1.6.0/zinc-apiinfo_2.12-1.6.0.jar ...
+2026-08-18T17:56:04.8182460Z 	[SUCCESSFUL ] org.scala-sbt#zinc-apiinfo_2.12;1.6.0!zinc-apiinfo_2.12.jar (72ms)
+2026-08-18T17:56:04.8184840Z downloading https://repo1.maven.org/maven2/org/scala-sbt/zinc_2.12/1.6.0/zinc_2.12-1.6.0.jar ...
+2026-08-18T17:56:04.8906180Z 	[SUCCESSFUL ] org.scala-sbt#zinc_2.12;1.6.0!zinc_2.12.jar (72ms)
+2026-08-18T17:56:04.8911310Z downloading https://repo1.maven.org/maven2/org/scala-sbt/util-control_2.12/1.6.2/util-control_2.12-1.6.2.jar ...
+2026-08-18T17:56:04.9543180Z 	[SUCCESSFUL ] org.scala-sbt#util-control_2.12;1.6.2!util-control_2.12.jar (64ms)
+2026-08-18T17:56:04.9546640Z downloading https://repo1.maven.org/maven2/org/scala-sbt/jline/jline/2.14.7-sbt-a1b0ffbb8f64bb820f4f84a0c07a0c0964507493/jline-2.14.7-sbt-a1b0ffbb8f64bb820f4f84a0c07a0c0964507493.jar ...
+2026-08-18T17:56:05.1464090Z 	[SUCCESSFUL ] org.scala-sbt.jline#jline;2.14.7-sbt-a1b0ffbb8f64bb820f4f84a0c07a0c0964507493!jline.jar (191ms)
+2026-08-18T17:56:05.1473950Z downloading https://repo1.maven.org/maven2/org/jline/jline-reader/3.19.0/jline-reader-3.19.0.jar ...
+2026-08-18T17:56:05.2406290Z 	[SUCCESSFUL ] org.jline#jline-reader;3.19.0!jline-reader.jar (94ms)
+2026-08-18T17:56:05.2415840Z downloading https://repo1.maven.org/maven2/org/jline/jline-builtins/3.19.0/jline-builtins-3.19.0.jar ...
+2026-08-18T17:56:05.3381770Z 	[SUCCESSFUL ] org.jline#jline-builtins;3.19.0!jline-builtins.jar (97ms)
+2026-08-18T17:56:05.3389540Z downloading https://repo1.maven.org/maven2/org/scala-sbt/util-interface/1.6.2/util-interface-1.6.2.jar ...
+2026-08-18T17:56:05.4104140Z 	[SUCCESSFUL ] org.scala-sbt#util-interface;1.6.2!util-interface.jar (71ms)
+2026-08-18T17:56:05.4115140Z downloading https://repo1.maven.org/maven2/org/scala-sbt/core-macros_2.12/1.6.2/core-macros_2.12-1.6.2.jar ...
+2026-08-18T17:56:05.4963690Z 	[SUCCESSFUL ] org.scala-sbt#core-macros_2.12;1.6.2!core-macros_2.12.jar (84ms)
+2026-08-18T17:56:05.4972440Z downloading https://repo1.maven.org/maven2/org/jline/jline-terminal-jna/3.19.0/jline-terminal-jna-3.19.0.jar ...
+2026-08-18T17:56:05.5680040Z 	[SUCCESSFUL ] org.jline#jline-terminal-jna;3.19.0!jline-terminal-jna.jar (71ms)
+2026-08-18T17:56:05.5684180Z downloading https://repo1.maven.org/maven2/org/jline/jline-terminal-jansi/3.19.0/jline-terminal-jansi-3.19.0.jar ...
+2026-08-18T17:56:05.6535280Z 	[SUCCESSFUL ] org.jline#jline-terminal-jansi;3.19.0!jline-terminal-jansi.jar (85ms)
+2026-08-18T17:56:05.6542200Z downloading https://repo1.maven.org/maven2/com/lmax/disruptor/3.4.2/disruptor-3.4.2.jar ...
+2026-08-18T17:56:05.7420270Z 	[SUCCESSFUL ] com.lmax#disruptor;3.4.2!disruptor.jar (88ms)
+2026-08-18T17:56:05.7428280Z downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.15/scala-compiler-2.12.15.jar ...
+2026-08-18T17:56:06.1668510Z 	[SUCCESSFUL ] org.scala-lang#scala-compiler;2.12.15!scala-compiler.jar (424ms)
+2026-08-18T17:56:06.1671330Z downloading https://repo1.maven.org/maven2/org/fusesource/jansi/jansi/2.1.0/jansi-2.1.0.jar ...
+2026-08-18T17:56:06.2373270Z 	[SUCCESSFUL ] org.fusesource.jansi#jansi;2.1.0!jansi.jar (71ms)
+2026-08-18T17:56:06.2375530Z downloading https://repo1.maven.org/maven2/com/swoval/file-tree-views/2.1.7/file-tree-views-2.1.7.jar ...
+2026-08-18T17:56:06.3155970Z 	[SUCCESSFUL ] com.swoval#file-tree-views;2.1.7!file-tree-views.jar (78ms)
+2026-08-18T17:56:06.3158170Z downloading https://repo1.maven.org/maven2/net/java/dev/jna/jna/5.8.0/jna-5.8.0.jar ...
+2026-08-18T17:56:06.4216270Z 	[SUCCESSFUL ] net.java.dev.jna#jna;5.8.0!jna.jar (106ms)
+2026-08-18T17:56:06.4218670Z downloading https://repo1.maven.org/maven2/net/java/dev/jna/jna-platform/5.8.0/jna-platform-5.8.0.jar ...
+2026-08-18T17:56:06.5276880Z 	[SUCCESSFUL ] net.java.dev.jna#jna-platform;5.8.0!jna-platform.jar (106ms)
+2026-08-18T17:56:06.5280090Z downloading https://repo1.maven.org/maven2/org/jline/jline-style/3.19.0/jline-style-3.19.0.jar ...
+2026-08-18T17:56:06.6083820Z 	[SUCCESSFUL ] org.jline#jline-style;3.19.0!jline-style.jar (81ms)
+2026-08-18T17:56:06.6089660Z downloading https://repo1.maven.org/maven2/org/scala-sbt/util-cache_2.12/1.6.2/util-cache_2.12-1.6.2.jar ...
+2026-08-18T17:56:06.6761370Z 	[SUCCESSFUL ] org.scala-sbt#util-cache_2.12;1.6.2!util-cache_2.12.jar (67ms)
+2026-08-18T17:56:06.6764010Z downloading https://repo1.maven.org/maven2/com/eed3si9n/sjson-new-murmurhash_2.12/0.9.1/sjson-new-murmurhash_2.12-0.9.1.jar ...
+2026-08-18T17:56:06.7441230Z 	[SUCCESSFUL ] com.eed3si9n#sjson-new-murmurhash_2.12;0.9.1!sjson-new-murmurhash_2.12.jar (67ms)
+2026-08-18T17:56:06.7446630Z downloading https://repo1.maven.org/maven2/org/scala-sbt/test-agent/1.6.2/test-agent-1.6.2.jar ...
+2026-08-18T17:56:06.8163460Z 	[SUCCESSFUL ] org.scala-sbt#test-agent;1.6.2!test-agent.jar (71ms)
+2026-08-18T17:56:06.8172750Z downloading https://repo1.maven.org/maven2/org/scala-sbt/test-interface/1.0/test-interface-1.0.jar ...
+2026-08-18T17:56:06.8852630Z 	[SUCCESSFUL ] org.scala-sbt#test-interface;1.0!test-interface.jar (68ms)
+2026-08-18T17:56:06.8859780Z downloading https://repo1.maven.org/maven2/org/scala-sbt/compiler-bridge_2.12/1.6.0/compiler-bridge_2.12-1.6.0.jar ...
+2026-08-18T17:56:06.9801880Z 	[SUCCESSFUL ] org.scala-sbt#compiler-bridge_2.12;1.6.0!compiler-bridge_2.12.jar (94ms)
+2026-08-18T17:56:06.9815870Z downloading https://repo1.maven.org/maven2/org/scala-sbt/zinc-classfile_2.12/1.6.0/zinc-classfile_2.12-1.6.0.jar ...
+2026-08-18T17:56:07.0587620Z 	[SUCCESSFUL ] org.scala-sbt#zinc-classfile_2.12;1.6.0!zinc-classfile_2.12.jar (78ms)
+2026-08-18T17:56:07.0593880Z downloading https://repo1.maven.org/maven2/com/jcraft/jsch/0.1.54/jsch-0.1.54.jar ...
+2026-08-18T17:56:07.1481690Z 	[SUCCESSFUL ] com.jcraft#jsch;0.1.54!jsch.jar (89ms)
+2026-08-18T17:56:07.1486560Z downloading https://repo1.maven.org/maven2/com/eed3si9n/gigahorse-okhttp_2.12/0.5.0/gigahorse-okhttp_2.12-0.5.0.jar ...
+2026-08-18T17:56:07.2159170Z 	[SUCCESSFUL ] com.eed3si9n#gigahorse-okhttp_2.12;0.5.0!gigahorse-okhttp_2.12.jar (67ms)
+2026-08-18T17:56:07.2166970Z downloading https://repo1.maven.org/maven2/com/squareup/okhttp3/okhttp-urlconnection/3.7.0/okhttp-urlconnection-3.7.0.jar ...
+2026-08-18T17:56:07.2845710Z 	[SUCCESSFUL ] com.squareup.okhttp3#okhttp-urlconnection;3.7.0!okhttp-urlconnection.jar (66ms)
+2026-08-18T17:56:07.2847760Z downloading https://repo1.maven.org/maven2/com/eed3si9n/gigahorse-core_2.12/0.5.0/gigahorse-core_2.12-0.5.0.jar ...
+2026-08-18T17:56:07.3655260Z 	[SUCCESSFUL ] com.eed3si9n#gigahorse-core_2.12;0.5.0!gigahorse-core_2.12.jar (83ms)
+2026-08-18T17:56:07.3660870Z downloading https://repo1.maven.org/maven2/com/squareup/okhttp3/okhttp/3.14.2/okhttp-3.14.2.jar ...
+2026-08-18T17:56:07.4678990Z 	[SUCCESSFUL ] com.squareup.okhttp3#okhttp;3.14.2!okhttp.jar (102ms)
+2026-08-18T17:56:07.4684430Z downloading https://repo1.maven.org/maven2/com/typesafe/ssl-config-core_2.12/0.4.0/ssl-config-core_2.12-0.4.0.jar ...
+2026-08-18T17:56:07.6173240Z 	[SUCCESSFUL ] com.typesafe#ssl-config-core_2.12;0.4.0!ssl-config-core_2.12.jar(bundle) (148ms)
+2026-08-18T17:56:07.6176760Z downloading https://repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.2/reactive-streams-1.0.2.jar ...
+2026-08-18T17:56:07.7174240Z 	[SUCCESSFUL ] org.reactivestreams#reactive-streams;1.0.2!reactive-streams.jar (100ms)
+2026-08-18T17:56:07.7178130Z downloading https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.26/slf4j-api-1.7.26.jar ...
+2026-08-18T17:56:07.8027180Z 	[SUCCESSFUL ] org.slf4j#slf4j-api;1.7.26!slf4j-api.jar (85ms)
+2026-08-18T17:56:07.8036600Z downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.12/1.1.2/scala-parser-combinators_2.12-1.1.2.jar ...
+2026-08-18T17:56:07.8969750Z 	[SUCCESSFUL ] org.scala-lang.modules#scala-parser-combinators_2.12;1.1.2!scala-parser-combinators_2.12.jar(bundle) (93ms)
+2026-08-18T17:56:07.8971430Z downloading https://repo1.maven.org/maven2/com/typesafe/config/1.3.3/config-1.3.3.jar ...
+2026-08-18T17:56:07.9929380Z 	[SUCCESSFUL ] com.typesafe#config;1.3.3!config.jar(bundle) (96ms)
+2026-08-18T17:56:07.9934290Z downloading https://repo1.maven.org/maven2/com/squareup/okio/okio/1.17.2/okio-1.17.2.jar ...
+2026-08-18T17:56:08.0705340Z 	[SUCCESSFUL ] com.squareup.okio#okio;1.17.2!okio.jar (78ms)
+2026-08-18T17:56:08.0712750Z downloading https://repo1.maven.org/maven2/org/scala-sbt/zinc-core_2.12/1.6.0/zinc-core_2.12-1.6.0.jar ...
+2026-08-18T17:56:08.1819960Z 	[SUCCESSFUL ] org.scala-sbt#zinc-core_2.12;1.6.0!zinc-core_2.12.jar (111ms)
+2026-08-18T17:56:08.1822720Z downloading https://repo1.maven.org/maven2/org/scala-sbt/zinc-persist_2.12/1.6.0/zinc-persist_2.12-1.6.0.jar ...
+2026-08-18T17:56:08.2571960Z 	[SUCCESSFUL ] org.scala-sbt#zinc-persist_2.12;1.6.0!zinc-persist_2.12.jar (74ms)
+2026-08-18T17:56:08.2587190Z downloading https://repo1.maven.org/maven2/org/scala-sbt/zinc-compile-core_2.12/1.6.0/zinc-compile-core_2.12-1.6.0.jar ...
+2026-08-18T17:56:08.3328910Z 	[SUCCESSFUL ] org.scala-sbt#zinc-compile-core_2.12;1.6.0!zinc-compile-core_2.12.jar (75ms)
+2026-08-18T17:56:08.3330750Z downloading https://repo1.maven.org/maven2/org/scala-sbt/zinc-persist-core-assembly/1.6.0/zinc-persist-core-assembly-1.6.0.jar ...
+2026-08-18T17:56:08.4911390Z 	[SUCCESSFUL ] org.scala-sbt#zinc-persist-core-assembly;1.6.0!zinc-persist-core-assembly.jar (158ms)
+2026-08-18T17:56:08.4912930Z downloading https://repo1.maven.org/maven2/net/openhft/zero-allocation-hashing/0.10.1/zero-allocation-hashing-0.10.1.jar ...
+2026-08-18T17:56:08.5561070Z 	[SUCCESSFUL ] net.openhft#zero-allocation-hashing;0.10.1!zero-allocation-hashing.jar(bundle) (64ms)
+2026-08-18T17:56:08.5563240Z downloading https://repo1.maven.org/maven2/org/scala-sbt/sbinary_2.12/0.5.1/sbinary_2.12-0.5.1.jar ...
+2026-08-18T17:56:08.6392820Z 	[SUCCESSFUL ] org.scala-sbt#sbinary_2.12;0.5.1!sbinary_2.12.jar (82ms)
+2026-08-18T17:56:08.6393650Z downloading https://repo1.maven.org/maven2/org/scala-sbt/protocol_2.12/1.6.2/protocol_2.12-1.6.2.jar ...
+2026-08-18T17:56:08.7567810Z 	[SUCCESSFUL ] org.scala-sbt#protocol_2.12;1.6.2!protocol_2.12.jar (118ms)
+2026-08-18T17:56:08.7569250Z downloading https://repo1.maven.org/maven2/org/scala-sbt/template-resolver/0.1/template-resolver-0.1.jar ...
+2026-08-18T17:56:08.8312040Z 	[SUCCESSFUL ] org.scala-sbt#template-resolver;0.1!template-resolver.jar (74ms)
+2026-08-18T17:56:08.8317830Z downloading https://repo1.maven.org/maven2/org/scala-sbt/ipcsocket/ipcsocket/1.3.1/ipcsocket-1.3.1.jar ...
+2026-08-18T17:56:08.9093880Z 	[SUCCESSFUL ] org.scala-sbt.ipcsocket#ipcsocket;1.3.1!ipcsocket.jar (78ms)
+2026-08-18T17:56:08.9098540Z downloading https://repo1.maven.org/maven2/org/checkerframework/checker-qual/3.4.1/checker-qual-3.4.1.jar ...
+2026-08-18T17:56:08.9925210Z 	[SUCCESSFUL ] org.checkerframework#checker-qual;3.4.1!checker-qual.jar (83ms)
+2026-08-18T17:56:08.9930150Z downloading https://repo1.maven.org/maven2/com/google/errorprone/error_prone_annotations/2.4.0/error_prone_annotations-2.4.0.jar ...
+2026-08-18T17:56:09.0675370Z 	[SUCCESSFUL ] com.google.errorprone#error_prone_annotations;2.4.0!error_prone_annotations.jar (75ms)
+2026-08-18T17:56:09.0679170Z downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-collection-compat_2.12/2.6.0/scala-collection-compat_2.12-2.6.0.jar ...
+2026-08-18T17:56:09.1716750Z 	[SUCCESSFUL ] org.scala-lang.modules#scala-collection-compat_2.12;2.6.0!scala-collection-compat_2.12.jar (104ms)
+2026-08-18T17:56:09.1724570Z downloading https://repo1.maven.org/maven2/org/scala-sbt/ivy/ivy/2.3.0-sbt-fbc4f586aeeb1591710b14eb4f41b94880dcd745/ivy-2.3.0-sbt-fbc4f586aeeb1591710b14eb4f41b94880dcd745.jar ...
+2026-08-18T17:56:09.2981010Z 	[SUCCESSFUL ] org.scala-sbt.ivy#ivy;2.3.0-sbt-fbc4f586aeeb1591710b14eb4f41b94880dcd745!ivy.jar (126ms)
+2026-08-18T17:56:09.3398010Z :: retrieving :: org.scala-sbt#boot-app
+2026-08-18T17:56:09.3449680Z 	confs: [default]
+2026-08-18T17:56:09.4043270Z 	83 artifacts copied, 0 already retrieved (41533kB/65ms)
+2026-08-18T17:56:09.4155720Z Getting Scala 2.12.15 (for sbt)...
+2026-08-18T17:56:10.5254730Z downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.jar ...
+2026-08-18T17:56:10.6870170Z 	[SUCCESSFUL ] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.jar(bundle) (161ms)
+2026-08-18T17:56:10.6876540Z downloading https://repo1.maven.org/maven2/jline/jline/2.14.6/jline-2.14.6.jar ...
+2026-08-18T17:56:10.9266610Z 	[SUCCESSFUL ] jline#jline;2.14.6!jline.jar (239ms)
+2026-08-18T17:56:10.9278960Z :: retrieving :: org.scala-sbt#boot-scala
+2026-08-18T17:56:10.9288460Z 	confs: [default]
+2026-08-18T17:56:10.9426600Z 	5 artifacts copied, 0 already retrieved (20426kB/15ms)
+2026-08-18T17:56:11.9494370Z [0m[[0m[0minfo[0m] [0m[0mwelcome to sbt 1.6.2 (Eclipse Adoptium Java 11.0.31)[0m
+2026-08-18T17:56:13.3250970Z [0m[[0m[0minfo[0m] [0m[0mloading settings for project bootcompiler-build from plugins.sbt ...[0m
+2026-08-18T17:56:13.6663770Z [0m[[0m[0minfo[0m] [0m[0mloading project definition from /Users/runner/work/mozart2/mozart2/bootcompiler/project[0m
+2026-08-18T17:56:17.0399280Z /Users/runner/work/mozart2/mozart2/bootcompiler/build.sbt:14: warning: method in in trait ScopingSetting is deprecated (since 1.5.0): `in` is deprecated; migrate to slash syntax - https://www.scala-sbt.org/1.x/docs/Migrating-from-sbt-013x.html#slash
+2026-08-18T17:56:17.0400490Z unmanagedClasspath in Compile +=
+2026-08-18T17:56:17.0401000Z                    ^
+2026-08-18T17:56:17.1690840Z [0m[[0m[0minfo[0m] [0m[0mloading settings for project bootcompiler from build.sbt ...[0m
+2026-08-18T17:56:17.2290370Z [0m[[0m[0minfo[0m] [0m[0mset current project to bootcompiler (in build file:/Users/runner/work/mozart2/mozart2/bootcompiler/)[0m
+2026-08-18T17:56:18.0617540Z [0m[[0m[0minfo[0m] [0m[0mcompiling 42 Scala sources to /Users/runner/work/mozart2/mozart2/bootcompiler/target/scala-2.13/classes ...[0m
+2026-08-18T17:56:18.2518530Z [0m[[0m[0minfo[0m] [0m[0mNon-compiled module 'compiler-bridge_2.13' for Scala 2.13.8. Compiling...[0m
+2026-08-18T17:56:22.5122930Z [0m[[0m[0minfo[0m] [0m[0m  Compilation completed in 4.256s.[0m
+2026-08-18T17:56:24.5484560Z [0m[[0m[33mwarn[0m] [0m[0m/Users/runner/work/mozart2/mozart2/bootcompiler/src/main/scala/org/mozartoz/bootcompiler/Main.scala:363:49: type TraversableOnce in package scala is deprecated (since 2.13.0): Use IterableOnce instead of TraversableOnce[0m
+2026-08-18T17:56:24.5494910Z [0m[[0m[33mwarn[0m] [0m[0m  private def writeFileLines(file: File, lines: TraversableOnce[String]) = {[0m
+2026-08-18T17:56:24.5495670Z [0m[[0m[33mwarn[0m] [0m[0m                                                ^[0m
+2026-08-18T17:56:24.5496860Z [0m[[0m[33mwarn[0m] [0m[0m/Users/runner/work/mozart2/mozart2/bootcompiler/src/main/scala/org/mozartoz/bootcompiler/Main.scala:366:20: method foreach in class IterableOnceExtensionMethods is deprecated (since 2.13.0): Use .iterator.foreach(...) instead[0m
+2026-08-18T17:56:24.5498220Z [0m[[0m[33mwarn[0m] [0m[0m      for (line <- lines)[0m
+2026-08-18T17:56:24.5498950Z [0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+2026-08-18T17:56:24.5634750Z [0m[[0m[33mwarn[0m] [0m[0m/Users/runner/work/mozart2/mozart2/bootcompiler/src/main/scala/org/mozartoz/bootcompiler/ast/Expressions.scala:312:49: type Traversable in package scala is deprecated (since 2.13.0): Use Iterable instead of Traversable[0m
+2026-08-18T17:56:24.5636850Z [0m[[0m[33mwarn[0m] [0m[0m    def sectionSyntax(sectionKw: String, elems: Traversable[Node]) = {[0m
+2026-08-18T17:56:24.5639910Z [0m[[0m[33mwarn[0m] [0m[0m                                                ^[0m
+2026-08-18T17:56:24.5641030Z [0m[[0m[33mwarn[0m] [0m[0m/Users/runner/work/mozart2/mozart2/bootcompiler/src/main/scala/org/mozartoz/bootcompiler/ast/Expressions.scala:315:40: method /: in trait IterableOnceOps is deprecated (since 2.13.0): Use foldLeft instead of /:[0m
+2026-08-18T17:56:24.5647210Z [0m[[0m[33mwarn[0m] [0m[0m        (("\n\n" + indent + sectionKw) /: elems) {[0m
+2026-08-18T17:56:24.5677290Z [0m[[0m[33mwarn[0m] [0m[0m                                       ^[0m
+2026-08-18T17:56:24.5743250Z [0m[[0m[33mwarn[0m] [0m[0m/Users/runner/work/mozart2/mozart2/bootcompiler/src/main/scala/org/mozartoz/bootcompiler/ast/Expressions.scala:654:49: type Traversable in package scala is deprecated (since 2.13.0): Use Iterable instead of Traversable[0m
+2026-08-18T17:56:24.5744580Z [0m[[0m[33mwarn[0m] [0m[0m    def sectionSyntax(sectionKw: String, elems: Traversable[Node]) = {[0m
+2026-08-18T17:56:24.5752600Z [0m[[0m[33mwarn[0m] [0m[0m                                                ^[0m
+2026-08-18T17:56:24.5754000Z [0m[[0m[33mwarn[0m] [0m[0m/Users/runner/work/mozart2/mozart2/bootcompiler/src/main/scala/org/mozartoz/bootcompiler/ast/Expressions.scala:657:43: method /: in trait IterableOnceOps is deprecated (since 2.13.0): Use foldLeft instead of /:[0m
+2026-08-18T17:56:24.5755040Z [0m[[0m[33mwarn[0m] [0m[0m        (("\n\n" + subIndent + sectionKw) /: elems) {[0m
+2026-08-18T17:56:24.5755470Z [0m[[0m[33mwarn[0m] [0m[0m                                          ^[0m
+2026-08-18T17:56:24.5824600Z [0m[[0m[33mwarn[0m] [0m[0m/Users/runner/work/mozart2/mozart2/bootcompiler/src/main/scala/org/mozartoz/bootcompiler/ast/Expressions.scala:668:41: method /: in trait IterableOnceOps is deprecated (since 2.13.0): Use foldLeft instead of /:[0m
+2026-08-18T17:56:24.5829060Z [0m[[0m[33mwarn[0m] [0m[0m    val untilMethods = (untilAttributes /: methods) {[0m
+2026-08-18T17:56:24.5829740Z [0m[[0m[33mwarn[0m] [0m[0m                                        ^[0m
+2026-08-18T17:56:24.5863320Z [0m[[0m[33mwarn[0m] [0m[0m/Users/runner/work/mozart2/mozart2/bootcompiler/src/main/scala/org/mozartoz/bootcompiler/bytecode/OpCode.scala:20:11: method /: in trait IterableOnceOps is deprecated (since 2.13.0): Use foldLeft instead of /:[0m
+2026-08-18T17:56:24.5865690Z [0m[[0m[33mwarn[0m] [0m[0m    (name /: arguments) {[0m
+2026-08-18T17:56:24.5866340Z [0m[[0m[33mwarn[0m] [0m[0m          ^[0m
+2026-08-18T17:56:24.6159180Z [0m[[0m[33mwarn[0m] [0m[0m/Users/runner/work/mozart2/mozart2/bootcompiler/src/main/scala/org/mozartoz/bootcompiler/parser/OzLexical.scala:76:37: method + in class Char is deprecated (since 2.13.0): Adding a number and a String is deprecated. Use the string interpolation `s"$num$str"`[0m
+2026-08-18T17:56:24.6160490Z [0m[[0m[33mwarn[0m] [0m[0m    quoted(quoteChar) ^^ (quoteChar + _ + quoteChar)[0m
+2026-08-18T17:56:24.6161240Z [0m[[0m[33mwarn[0m] [0m[0m                                    ^[0m
+2026-08-18T17:56:24.6400790Z [0m[[0m[33mwarn[0m] [0m[0m/Users/runner/work/mozart2/mozart2/bootcompiler/src/main/scala/org/mozartoz/bootcompiler/transform/Namer.scala:375:52: method + in class Char is deprecated (since 2.13.0): Adding a number and a String is deprecated. Use the string interpolation `s"$num$str"`[0m
+2026-08-18T17:56:24.6402270Z [0m[[0m[33mwarn[0m] [0m[0m          val strFeature = value.name.head.toLower + value.name.tail[0m
+2026-08-18T17:56:24.6402960Z [0m[[0m[33mwarn[0m] [0m[0m                                                   ^[0m
+2026-08-18T17:56:24.6610190Z [0m[[0m[33mwarn[0m] [0m[0m/Users/runner/work/mozart2/mozart2/bootcompiler/src/main/scala/org/mozartoz/bootcompiler/Main.scala:192:7: match may not be exhaustive.[0m
+2026-08-18T17:56:24.6611320Z [0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following inputs: Error(_, _), Failure(_, _)[0m
+2026-08-18T17:56:24.6612760Z [0m[[0m[33mwarn[0m] [0m[0m      result match {[0m
+2026-08-18T17:56:24.6613330Z [0m[[0m[33mwarn[0m] [0m[0m      ^[0m
+2026-08-18T17:56:25.5717310Z [0m[[0m[33mwarn[0m] [0m[0m/Users/runner/work/mozart2/mozart2/bootcompiler/src/main/scala/org/mozartoz/bootcompiler/transform/CodeGen.scala:69:5: Exhaustivity analysis reached max recursion depth, not all missing cases are reported.[0m
+2026-08-18T17:56:25.5718900Z [0m[[0m[33mwarn[0m] [0m[0m(Please try with scalac -Ypatmat-exhaust-depth 40 or -Ypatmat-exhaust-depth off.)[0m
+2026-08-18T17:56:25.5724070Z [0m[[0m[33mwarn[0m] [0m[0m    statement match {[0m
+2026-08-18T17:56:25.5724620Z [0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+2026-08-18T17:56:34.1983070Z [0m[[0m[33mwarn[0m] [0m[0m-optimize is deprecated: Since 2.12, enables -opt:l:inline -opt-inline-from:**. See -opt:help.[0m
+2026-08-18T17:56:34.1999090Z [0m[[0m[33mwarn[0m] [0m[0m177 feature warnings; re-run with -feature for details[0m
+2026-08-18T17:56:34.2027300Z [0m[[0m[33mwarn[0m] [0m[0m14 warnings found[0m
+2026-08-18T17:56:34.2043000Z [0m[[0m[0minfo[0m] [0m[0mdone compiling[0m
+2026-08-18T17:56:34.6121090Z [0m[[0m[0minfo[0m] [0m[0mIncluding: scopt_2.13-4.1.0.jar[0m
+2026-08-18T17:56:34.6129250Z [0m[[0m[0minfo[0m] [0m[0mIncluding: scala-parser-combinators_2.13-2.1.1.jar[0m
+2026-08-18T17:56:34.6403600Z [0m[[0m[0minfo[0m] [0m[0mIncluding: scala-library-2.13.8.jar[0m
+2026-08-18T17:56:34.6781750Z [0m[[0m[0minfo[0m] [0m[0mIncluding: spray-json_2.13-1.3.6.jar[0m
+2026-08-18T17:56:35.5733260Z [0m[[0m[0minfo[0m] [0m[0mChecking every *.class/*.jar file's SHA-1.[0m
+2026-08-18T17:56:35.6426780Z [0m[[0m[0minfo[0m] [0m[0mMerging files...[0m
+2026-08-18T17:56:35.6509430Z [0m[[0m[33mwarn[0m] [0m[0mMerging 'NOTICE' with strategy 'rename'[0m
+2026-08-18T17:56:35.6698340Z [0m[[0m[33mwarn[0m] [0m[0mMerging 'LICENSE' with strategy 'rename'[0m
+2026-08-18T17:56:35.7299790Z [0m[[0m[33mwarn[0m] [0m[0mMerging 'META-INF/MANIFEST.MF' with strategy 'discard'[0m
+2026-08-18T17:56:35.7609690Z [0m[[0m[33mwarn[0m] [0m[0mStrategy 'discard' was applied to a file[0m
+2026-08-18T17:56:35.7614000Z [0m[[0m[33mwarn[0m] [0m[0mStrategy 'rename' was applied to 2 files[0m
+2026-08-18T17:56:35.7923160Z [0m[[0m[0minfo[0m] [0m[0mSHA-1: 1ddae22321756389e392666b14e8c7181a6062e7[0m
+2026-08-18T17:56:35.7938240Z [0m[[0m[33mwarn[0m] [0m[0mIgnored unknown package option FixedTimestamp(Some(1262304000000))[0m
+2026-08-18T17:56:36.3891600Z [0m[[0m[32msuccess[0m] [0m[0mTotal time: 19 s, completed Aug 18, 2026, 5:56:36 PM[0m
+2026-08-18T17:56:36.4901610Z [0J[  9%] Built target bootcompiler
+2026-08-18T17:56:36.5144660Z [  9%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/Base.ozf
+2026-08-18T17:56:38.1722940Z [ 10%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/Init.ozf
+2026-08-18T17:56:38.1730760Z [ 10%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/RunTime.ozf
+2026-08-18T17:56:38.1741060Z [ 10%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Property.ozf
+2026-08-18T17:56:38.1759240Z [ 10%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Space.ozf
+2026-08-18T17:56:39.5320970Z [ 10%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Pickle.ozf
+2026-08-18T17:56:39.8301580Z [ 12%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/CompilerSupport.ozf
+2026-08-18T17:56:40.1415120Z [ 13%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/ErrorListener.ozf
+2026-08-18T17:56:41.3149870Z [ 13%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Listener.ozf
+2026-08-18T17:56:41.5659320Z [ 13%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Narrator.ozf
+2026-08-18T17:56:41.8387370Z [ 13%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/ObjectSupport.ozf
+2026-08-18T17:56:41.9666130Z [ 13%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Type.ozf
+2026-08-18T17:56:43.0613180Z [ 13%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Error.ozf
+2026-08-18T17:56:43.7055720Z [ 13%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/ErrorFormatters.ozf
+2026-08-18T17:56:43.9530030Z [ 13%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Open.ozf
+2026-08-18T17:56:44.1936160Z [ 14%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Combinator.ozf
+2026-08-18T17:56:45.3447970Z [ 15%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/RecordC.ozf
+2026-08-18T17:56:46.1764710Z [ 15%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Application.ozf
+2026-08-18T17:56:46.3168920Z [ 16%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/OS.ozf
+2026-08-18T17:56:46.7399100Z [ 16%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Compile.ozf
+2026-08-18T17:56:47.0346630Z [ 16%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Annotate.ozf
+2026-08-18T17:56:48.8223280Z [ 18%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Assembler.ozf
+2026-08-18T17:56:48.8524650Z [ 18%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/BackquoteMacro.ozf
+2026-08-18T17:56:49.2157890Z [ 18%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Builtins.ozf
+2026-08-18T17:56:49.7611810Z [ 19%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/CodeEmitter.ozf
+2026-08-18T17:56:50.7364670Z [ 19%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/CodeGen.ozf
+2026-08-18T17:56:50.7967770Z [ 19%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/CodeStore.ozf
+2026-08-18T17:56:51.2722410Z [ 19%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Compiler.ozf
+2026-08-18T17:56:53.8050620Z [ 19%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Core.ozf
+2026-08-18T17:56:55.0363170Z [ 19%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/ForLoop.ozf
+2026-08-18T17:56:55.7607910Z [ 19%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/GroundZip.ozf
+2026-08-18T17:56:55.9971660Z [ 20%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Lexer.ozf
+2026-08-18T17:56:57.3971060Z [ 20%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/ListComprehension.ozf
+2026-08-18T17:56:57.4273270Z [ 21%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Macro.ozf
+2026-08-18T17:56:57.4475170Z [ 21%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/NewAssembler.ozf
+2026-08-18T17:56:58.5865900Z [ 21%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Parser.ozf
+2026-08-18T17:57:00.8855960Z [ 22%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/PEG.ozf
+2026-08-18T17:57:00.9124900Z [ 24%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Preprocessor.ozf
+2026-08-18T17:57:01.3562120Z [ 24%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/PrintName.ozf
+2026-08-18T17:57:02.3712370Z [ 25%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/StaticAnalysis.ozf
+2026-08-18T17:57:02.9263400Z [ 25%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/Unnester.ozf
+2026-08-18T17:57:03.2174410Z [ 26%] (stage 0) /Users/runner/work/mozart2/mozart2/build/lib/stage0/x-oz/system/WhileLoop.ozf
+2026-08-18T17:57:07.2736620Z [ 26%] Built target library_stage_0
+2026-08-18T17:57:07.2948590Z [ 26%] (stage 1) /Users/runner/work/mozart2/mozart2/build/lib/stage1/Base.ozf
+2026-08-18T18:03:27.1309100Z [ 27%] (stage 1) /Users/runner/work/mozart2/mozart2/build/lib/stage1/x-oz/system/RunTime.ozf
+2026-08-18T18:03:42.2587170Z [ 27%] (stage 1) /Users/runner/work/mozart2/mozart2/build/lib/Init.ozf
+2026-08-18T18:05:29.3984170Z [ 27%] Built target library_stage_1
+2026-08-18T18:05:29.4465700Z [ 27%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Pickle.ozf
+2026-08-18T18:05:29.4537220Z [ 27%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Property.ozf
+2026-08-18T18:05:29.4550960Z [ 27%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/CompilerSupport.ozf
+2026-08-18T18:05:29.4560350Z [ 28%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Space.ozf
+2026-08-18T18:05:31.1516950Z [ 30%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/ErrorListener.ozf
+2026-08-18T18:05:33.2303270Z [ 30%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Listener.ozf
+2026-08-18T18:05:34.2727740Z [ 31%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Narrator.ozf
+2026-08-18T18:05:37.3497760Z [ 32%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/ObjectSupport.ozf
+2026-08-18T18:05:41.8628210Z [ 32%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Type.ozf
+2026-08-18T18:05:43.2940490Z [ 32%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Error.ozf
+2026-08-18T18:05:50.5808030Z [ 32%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/ErrorFormatters.ozf
+2026-08-18T18:05:51.9307930Z [ 32%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Open.ozf
+2026-08-18T18:06:09.1213770Z [ 32%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Combinator.ozf
+2026-08-18T18:06:35.9032020Z [ 32%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/RecordC.ozf
+2026-08-18T18:06:37.3852660Z [ 32%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Application.ozf
+2026-08-18T18:06:39.7559760Z [ 32%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/OS.ozf
+2026-08-18T18:07:12.4662400Z [ 33%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Compile.ozf
+2026-08-18T18:07:14.9705400Z [ 33%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Annotate.ozf
+2026-08-18T18:07:23.9393290Z [ 34%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Assembler.ozf
+2026-08-18T18:07:47.3380870Z [ 34%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/BackquoteMacro.ozf
+2026-08-18T18:07:54.3544990Z [ 34%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Builtins.ozf
+2026-08-18T18:07:57.9629580Z [ 36%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/CodeEmitter.ozf
+2026-08-18T18:08:04.1600340Z [ 36%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/CodeStore.ozf
+2026-08-18T18:08:04.3701730Z [ 36%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Compiler.ozf
+2026-08-18T18:08:26.4379790Z [ 37%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Core.ozf
+2026-08-18T18:09:01.5840220Z [ 37%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/ForLoop.ozf
+2026-08-18T18:09:55.2398300Z [ 37%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/GroundZip.ozf
+2026-08-18T18:10:01.7640260Z [ 37%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Lexer.ozf
+2026-08-18T18:10:41.3959150Z [ 38%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/ListComprehension.ozf
+2026-08-18T18:10:42.2719440Z [ 38%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Macro.ozf
+2026-08-18T18:11:35.9251400Z [ 38%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/NewAssembler.ozf
+2026-08-18T18:11:55.2946900Z [ 39%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Parser.ozf
+2026-08-18T18:12:00.9549640Z [ 39%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/PEG.ozf
+2026-08-18T18:12:45.0979390Z [ 39%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Preprocessor.ozf
+2026-08-18T18:12:57.2153400Z [ 40%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/PrintName.ozf
+2026-08-18T18:13:01.3793960Z [ 40%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/StaticAnalysis.ozf
+2026-08-18T18:13:02.8782380Z [ 42%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/Unnester.ozf
+2026-08-18T18:13:10.2561350Z [ 42%] (stage 2) /Users/runner/work/mozart2/mozart2/build/lib/stage2/x-oz/system/WhileLoop.ozf
+2026-08-18T18:19:19.9234000Z [ 42%] Built target library_stage_2
+2026-08-18T18:19:19.9698290Z [ 42%] (stage 3) /Users/runner/work/mozart2/mozart2/build/lib/stage3/x-oz/system/TkBoot.ozf
+2026-08-18T18:19:19.9778430Z [ 42%] (stage 3) /Users/runner/work/mozart2/mozart2/build/lib/stage3/x-oz/system/TkTools.ozf
+2026-08-18T18:19:19.9818520Z [ 42%] (stage 3) /Users/runner/work/mozart2/mozart2/build/lib/stage3/x-oz/system/Tix.ozf
+2026-08-18T18:19:19.9832260Z [ 43%] (stage 3) /Users/runner/work/mozart2/mozart2/build/lib/stage3/x-oz/system/Tk.ozf
+2026-08-18T18:19:28.9208330Z [ 44%] (stage 3) /Users/runner/work/mozart2/mozart2/build/lib/stage3/x-oz/system/VM.ozf
+2026-08-18T18:20:39.9167040Z [ 44%] Built target library_stage_3
+2026-08-18T18:20:40.0046450Z [ 46%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Space.ozf
+2026-08-18T18:20:40.0081140Z [ 46%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Property.ozf
+2026-08-18T18:20:40.0117380Z [ 46%] Copying from stage 1: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/RunTime.ozf
+2026-08-18T18:20:40.0221550Z [ 48%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Pickle.ozf
+2026-08-18T18:20:40.0781450Z [ 48%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/CompilerSupport.ozf
+2026-08-18T18:20:40.0847010Z [ 48%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Listener.ozf
+2026-08-18T18:20:40.0898990Z [ 48%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/ErrorListener.ozf
+2026-08-18T18:20:40.0977590Z [ 48%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Narrator.ozf
+2026-08-18T18:20:40.1254260Z [ 48%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/ObjectSupport.ozf
+2026-08-18T18:20:40.1406320Z [ 49%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Type.ozf
+2026-08-18T18:20:40.1517020Z [ 50%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Error.ozf
+2026-08-18T18:20:40.1536400Z [ 50%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/ErrorFormatters.ozf
+2026-08-18T18:20:40.1911820Z [ 51%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Open.ozf
+2026-08-18T18:20:40.2013310Z [ 51%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/RecordC.ozf
+2026-08-18T18:20:40.2130250Z [ 51%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Combinator.ozf
+2026-08-18T18:20:40.2248170Z [ 53%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Application.ozf
+2026-08-18T18:20:40.2457550Z [ 53%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/OS.ozf
+2026-08-18T18:20:40.2575470Z [ 53%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Compile.ozf
+2026-08-18T18:20:40.2679200Z [ 53%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Annotate.ozf
+2026-08-18T18:20:40.2793420Z [ 53%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Assembler.ozf
+2026-08-18T18:20:40.3159240Z [ 53%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/BackquoteMacro.ozf
+2026-08-18T18:20:40.3273100Z [ 54%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Builtins.ozf
+2026-08-18T18:20:40.3601210Z [ 54%] Copying from stage 0: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/CodeGen.ozf
+2026-08-18T18:20:40.3749670Z [ 54%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/CodeEmitter.ozf
+2026-08-18T18:20:40.4178040Z [ 55%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/CodeStore.ozf
+2026-08-18T18:20:40.4280530Z [ 56%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Compiler.ozf
+2026-08-18T18:20:40.4383910Z [ 56%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Core.ozf
+2026-08-18T18:20:40.4514170Z [ 57%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/ForLoop.ozf
+2026-08-18T18:20:40.4722360Z [ 57%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/GroundZip.ozf
+2026-08-18T18:20:40.5181530Z [ 59%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/ListComprehension.ozf
+2026-08-18T18:20:40.5182490Z [ 59%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Macro.ozf
+2026-08-18T18:20:40.5289000Z [ 59%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Lexer.ozf
+2026-08-18T18:20:40.5627880Z [ 60%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/NewAssembler.ozf
+2026-08-18T18:20:40.5741940Z [ 60%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/PEG.ozf
+2026-08-18T18:20:40.5861670Z [ 60%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Parser.ozf
+2026-08-18T18:20:40.5970210Z [ 60%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Preprocessor.ozf
+2026-08-18T18:20:40.6337920Z [ 60%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/PrintName.ozf
+2026-08-18T18:20:40.6454000Z [ 60%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/StaticAnalysis.ozf
+2026-08-18T18:20:40.6568680Z [ 60%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Unnester.ozf
+2026-08-18T18:20:40.6675810Z [ 61%] Copying from stage 2: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/WhileLoop.ozf
+2026-08-18T18:20:40.6998500Z [ 61%] Copying from stage 3: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/TkBoot.ozf
+2026-08-18T18:20:40.7229760Z [ 62%] Copying from stage 3: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Tk.ozf
+2026-08-18T18:20:40.7333720Z [ 62%] Copying from stage 3: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/Tix.ozf
+2026-08-18T18:20:40.7460570Z [ 62%] Copying from stage 3: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/TkTools.ozf
+2026-08-18T18:20:40.7688050Z [ 62%] Copying from stage 3: /Users/runner/work/mozart2/mozart2/build/lib/cache/x-oz/system/VM.ozf
+2026-08-18T18:20:41.0639330Z [ 80%] Built target library
+2026-08-18T18:20:41.1450830Z [ 80%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/panel/Panel.ozf
+2026-08-18T18:20:41.1554050Z [ 80%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/browser/Browser.ozf
+2026-08-18T18:20:41.1672260Z [ 81%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/inspector/InspectorMain.ozf
+2026-08-18T18:20:41.1787800Z [ 83%] (compiling) /Users/runner/work/mozart2/mozart2/build/opi/opi/OPI.ozf
+2026-08-18T18:20:51.5525160Z [ 83%] (compiling) /Users/runner/work/mozart2/mozart2/build/opi/opi/Emacs.ozf
+2026-08-18T18:21:09.9632870Z [ 83%] (compiling) /Users/runner/work/mozart2/mozart2/build/opi/opi/OPIEnv.ozf
+2026-08-18T18:21:16.2006490Z [ 83%] (compiling) /Users/runner/work/mozart2/mozart2/build/opi/opi/OPIServer.ozf
+2026-08-18T18:21:32.0725550Z [ 83%] Built target opilibrary
+2026-08-18T18:21:32.0941880Z [ 83%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/inspector/InspectorOptions.ozf
+2026-08-18T18:22:35.8786250Z [ 83%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkImageLibBoot.ozf
+2026-08-18T18:23:05.7196910Z [ 83%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkDropdownbutton_bitmap.ozf
+2026-08-18T18:23:06.6359360Z [ 83%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkNumberentry_bitmap.ozf
+2026-08-18T18:23:07.8925500Z [ 84%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/PrintCanvas.ozf
+2026-08-18T18:23:37.9116250Z [ 84%] Built target panel
+2026-08-18T18:23:37.9319020Z [ 85%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/inspector/Reflection.ozf
+2026-08-18T18:24:21.4276770Z [ 85%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/Prototyper.ozf
+2026-08-18T18:24:41.7558220Z [ 85%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/inspector/CreateObjects.ozf
+2026-08-18T18:24:43.6606620Z [ 86%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/inspector/DrawObjects.ozf
+2026-08-18T18:25:22.1066550Z [ 86%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTk.ozf
+2026-08-18T18:25:22.7408470Z [ 87%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkBare.ozf
+2026-08-18T18:25:52.6977740Z [ 87%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkButton.ozf
+2026-08-18T18:26:03.3551260Z [ 87%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/inspector/GraphicSupport.ozf
+2026-08-18T18:26:33.5474400Z [ 87%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkCanvas.ozf
+2026-08-18T18:26:37.9802300Z [ 89%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkCheckbutton.ozf
+2026-08-18T18:26:38.3681870Z [ 89%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/inspector/Helper.ozf
+2026-08-18T18:26:44.5947170Z [ 89%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/inspector/LayoutObjects.ozf
+2026-08-18T18:26:55.8114270Z [ 89%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkDevel.ozf
+2026-08-18T18:27:24.4037300Z [ 90%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkDropdownlistbox.ozf
+2026-08-18T18:27:36.2593850Z [ 90%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/inspector/RelationManager.ozf
+2026-08-18T18:27:45.5065560Z [ 90%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkEntry.ozf
+2026-08-18T18:27:53.7962890Z [ 90%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/inspector/StoreListener.ozf
+2026-08-18T18:27:58.8895380Z [ 91%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/inspector/TreeNodes.ozf
+2026-08-18T18:28:02.0793080Z [ 91%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/inspector/TreeWidget.ozf
+2026-08-18T18:28:06.6764020Z [ 91%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkFrame.ozf
+2026-08-18T18:28:26.6380820Z [ 92%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkGrid.ozf
+2026-08-18T18:28:37.7175040Z [ 92%] (compiling) /Users/runner/work/mozart2/mozart2/build/lib/tools/inspector/Inspector.ozf
+2026-08-18T18:28:38.5894060Z [ 92%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkImage.ozf
+2026-08-18T18:28:58.8243020Z [ 93%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkLabel.ozf
+2026-08-18T18:29:10.3855360Z [ 93%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkListbox.ozf
+2026-08-18T18:29:14.6715490Z [ 93%] Built target inspector
+2026-08-18T18:29:14.6916060Z [ 93%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkMenu.ozf
+2026-08-18T18:29:29.6325720Z [ 95%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkNumberentry.ozf
+2026-08-18T18:29:32.0758400Z [ 95%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkPanel.ozf
+2026-08-18T18:29:44.0897990Z [ 96%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkPlaceholder.ozf
+2026-08-18T18:29:52.2724320Z [ 96%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkRadiobutton.ozf
+2026-08-18T18:29:57.3935760Z [ 96%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkRubberframe.ozf
+2026-08-18T18:30:01.9732100Z [ 97%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkScale.ozf
+2026-08-18T18:30:02.5311010Z [ 97%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkScrollbar.ozf
+2026-08-18T18:30:07.7618200Z [ 97%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkScrollframe.ozf
+2026-08-18T18:30:08.7961780Z [ 98%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkSpace.ozf
+2026-08-18T18:30:14.4893080Z [ 98%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkText.ozf
+2026-08-18T18:30:19.8773810Z [ 98%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/QTkToolbar.ozf
+2026-08-18T18:30:27.5066580Z [100%] (compiling) /Users/runner/work/mozart2/mozart2/build/stdlib/wp/qtk/TkTranslator.ozf
+2026-08-18T18:31:12.8418510Z [100%] Built target qtklibrary
+2026-08-18T18:32:52.2109130Z [100%] Built target browser
+2026-08-18T18:32:52.2947040Z ##[group]Run cpack -G DragNDrop
+2026-08-18T18:32:52.2948000Z [36;1mcpack -G DragNDrop[0m
+2026-08-18T18:32:52.4056890Z shell: /bin/bash -e {0}
+2026-08-18T18:32:52.4057230Z env:
+2026-08-18T18:32:52.4057660Z   JAVA_HOME: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/arm64/Contents/Home
+2026-08-18T18:32:52.4058580Z   JAVA_HOME_11_ARM64: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/arm64/Contents/Home
+2026-08-18T18:32:52.4059090Z ##[endgroup]
+2026-08-18T18:32:52.5718990Z CPack: Create package using DragNDrop
+2026-08-18T18:32:52.5724430Z CPack: Install projects
+2026-08-18T18:32:52.5729730Z CPack: - Run preinstall target for: MOZART
+2026-08-18T18:32:54.6167850Z CPack: - Install project: MOZART []
+2026-08-18T18:32:57.5039580Z CPack: Create package
+2026-08-18T18:33:21.3596610Z CPack: - package: /Users/runner/work/mozart2/mozart2/build/mozart2-unknown-unknown-darwin.dmg generated.
+2026-08-18T18:33:21.3890880Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-18T18:33:21.3892040Z ##[group]Run actions/upload-artifact@v4
+2026-08-18T18:33:21.3892530Z with:
+2026-08-18T18:33:21.3892740Z   name: Mozart2-macOS-ARM64-App
+2026-08-18T18:33:21.3893070Z   path: ./build/*.dmg
+2026-08-18T18:33:21.3893300Z   if-no-files-found: error
+2026-08-18T18:33:21.3893600Z   compression-level: 6
+2026-08-18T18:33:21.3893810Z   overwrite: false
+2026-08-18T18:33:21.3894130Z   include-hidden-files: false
+2026-08-18T18:33:21.3894370Z env:
+2026-08-18T18:33:21.3894790Z   JAVA_HOME: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/arm64/Contents/Home
+2026-08-18T18:33:21.3895530Z   JAVA_HOME_11_ARM64: /Users/runner/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.31-11/arm64/Contents/Home
+2026-08-18T18:33:21.3896180Z ##[endgroup]
+2026-08-18T18:33:21.9967660Z (node:65856) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-18T18:33:21.9968330Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-18T18:33:22.0025510Z With the provided path, there will be 1 file uploaded
+2026-08-18T18:33:22.0027880Z Artifact name is valid!
+2026-08-18T18:33:22.0028290Z Root directory input is valid!
+2026-08-18T18:33:22.1525980Z Beginning upload of artifact content to blob storage
+2026-08-18T18:33:22.3459240Z (node:65856) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-18T18:33:22.5842900Z Uploaded bytes 5822941
+2026-08-18T18:33:22.5975620Z Finished uploading artifact content to blob storage!
+2026-08-18T18:33:22.5976590Z SHA256 digest of uploaded artifact zip is 05eb53b0810efdd0891b0a42dd241e7d936b887c0247cbce616af9fb8bc3dc29
+2026-08-18T18:33:22.5977350Z Finalizing artifact upload
+2026-08-18T18:33:22.7880620Z Artifact Mozart2-macOS-ARM64-App.zip successfully finalized. Artifact ID 9337474119
+2026-08-18T18:33:22.7893480Z Artifact Mozart2-macOS-ARM64-App has been successfully uploaded! Final size is 5822941 bytes. Artifact ID is 9337474119
+2026-08-18T18:33:22.7896890Z Artifact download URL: https://github.com/Arthvrr/mozart2/actions/runs/32168095843/artifacts/9337474119
+2026-08-18T18:33:22.8160170Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-18T18:33:22.8161340Z Post job cleanup.
+2026-08-18T18:33:23.0100100Z (node:65862) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-18T18:33:23.0102100Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-18T18:33:23.0278960Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-18T18:33:23.0280040Z Post job cleanup.
+2026-08-18T18:33:23.1460000Z [command]/opt/homebrew/bin/git version
+2026-08-18T18:33:23.1775710Z git version 2.55.0
+2026-08-18T18:33:23.1801760Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/ceb109a1-19ba-4152-90aa-d92d08fa5f32/.gitconfig'
+2026-08-18T18:33:23.1815460Z Temporarily overriding HOME='/Users/runner/work/_temp/ceb109a1-19ba-4152-90aa-d92d08fa5f32' before making global git config changes
+2026-08-18T18:33:23.1816390Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-18T18:33:23.1825440Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/mozart2/mozart2
+2026-08-18T18:33:23.2024330Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-18T18:33:23.2121640Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-18T18:33:23.3970720Z Entering 'stdlib'
+2026-08-18T18:33:23.4323630Z Entering 'vm/vm/test/gtest'
+2026-08-18T18:33:23.4701070Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-18T18:33:23.4734740Z http.https://github.com/.extraheader
+2026-08-18T18:33:23.4746700Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-08-18T18:33:23.4828400Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-18T18:33:23.6099470Z Entering 'stdlib'
+2026-08-18T18:33:23.6309600Z http.https://github.com/.extraheader
+2026-08-18T18:33:23.6471440Z Entering 'vm/vm/test/gtest'
+2026-08-18T18:33:23.6650780Z http.https://github.com/.extraheader
+2026-08-18T18:33:23.6817640Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-18T18:33:23.6900820Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-18T18:33:23.8080300Z Entering 'stdlib'
+2026-08-18T18:33:23.8236880Z file:/Users/runner/work/mozart2/mozart2/.git/modules/stdlib/config	remote.origin.url
+2026-08-18T18:33:23.8318370Z Entering 'vm/vm/test/gtest'
+2026-08-18T18:33:23.8460800Z file:/Users/runner/work/mozart2/mozart2/.git/modules/gtest/config	remote.origin.url
+2026-08-18T18:33:23.8561470Z [command]/opt/homebrew/bin/git config --file /Users/runner/work/mozart2/mozart2/.git/modules/stdlib/config --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-18T18:33:23.8707910Z [command]/opt/homebrew/bin/git config --file /Users/runner/work/mozart2/mozart2/.git/modules/gtest/config --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-18T18:33:23.8897820Z Cleaning up orphan processes
+2026-08-18T18:33:26.4010580Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-java@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
