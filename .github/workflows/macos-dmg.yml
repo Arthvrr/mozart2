@@ -1,8 +1,8 @@
 name: Build macOS DMG (ARM64 Natif)
 
 on:
-  push:
-    branches: [ app-installer ]
+  # Permet de déclencher la compilation manuellement via un bouton sur GitHub
+  workflow_dispatch: 
 
 jobs:
   build-mac:
